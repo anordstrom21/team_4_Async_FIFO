@@ -1,6 +1,5 @@
 Milestone-1: (15pts)
 1a. Complete design specifications document with calculations for your DUT.
-1b. Verification Plan document in place with initial information. Must include the 
-division of tasks among the team members and schedule 
+1b. Verification Plan document in place with initial information. Must include the division of tasks among the team members and schedule 
 1c. Implementation of design and successful compilation
 1d. A simple conventional testbench to check very basic functionality of the design.
