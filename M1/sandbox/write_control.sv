@@ -24,5 +24,6 @@ module write_control #(
         end
     end
 
-    // Synchronization from read domain (not shown here)
+    // Instationation for synchronization from read domain
+    sync_r2w #(.ADDR_WIDTH(ADDR_WIDTH)) sync_r2w_inst (.rptr(rptr_sync), .wclk(wclk), .wrst_n(wrst_n), .wq2_rptr(wptr));
 endmodule
