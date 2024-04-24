@@ -1,0 +1,377 @@
+# //  Questa Sim-64
+# //  Version 2019.2_1 linux_x86_64 May 13 2019
+# //
+# //  Copyright 1991-2019 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+do run.do
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 14:24:32 on Apr 24,2024
+# vlog -reportprogress 300 -lint fifo_top.sv "+acc" -sv 
+# -- Compiling module fifo_top
+# 
+# Top level modules:
+# 	fifo_top
+# End time: 14:24:32 on Apr 24,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 14:24:33 on Apr 24,2024
+# vlog -reportprogress 300 -lint fifo_memory.sv "+acc" -sv 
+# -- Compiling module fifo_memory
+# 
+# Top level modules:
+# 	fifo_memory
+# End time: 14:24:33 on Apr 24,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 14:24:33 on Apr 24,2024
+# vlog -reportprogress 300 -lint read_pointer.sv "+acc" -sv 
+# -- Compiling module read_pointer
+# 
+# Top level modules:
+# 	read_pointer
+# End time: 14:24:33 on Apr 24,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 14:24:33 on Apr 24,2024
+# vlog -reportprogress 300 -lint write_pointer.sv "+acc" -sv 
+# -- Compiling module write_pointer
+# 
+# Top level modules:
+# 	write_pointer
+# End time: 14:24:33 on Apr 24,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 14:24:33 on Apr 24,2024
+# vlog -reportprogress 300 -lint sync.sv "+acc" -sv 
+# -- Compiling module sync
+# 
+# Top level modules:
+# 	sync
+# End time: 14:24:33 on Apr 24,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 14:24:33 on Apr 24,2024
+# vlog -reportprogress 300 -lint fifo_tb.sv "+acc" -sv 
+# -- Compiling module top
+# 
+# Top level modules:
+# 	top
+# End time: 14:24:34 on Apr 24,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vopt 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 14:24:34 on Apr 24,2024
+# vopt -reportprogress 300 top -o top_optimized "+acc" "+cover=sbfec+fifo_top(rtl)." 
+# 
+# Top level modules:
+# 	top
+# 
+# Analyzing design...
+# -- Loading module top
+# -- Loading module fifo_top
+# -- Loading module fifo_memory
+# -- Loading module write_pointer
+# -- Loading module read_pointer
+# -- Loading module sync
+# Optimizing 6 design-units (inlining 0/7 module instances):
+# -- Optimizing module top(fast)
+# -- Optimizing module fifo_top(fast)
+# -- Optimizing module write_pointer(fast)
+# -- Optimizing module fifo_memory(fast)
+# -- Optimizing module read_pointer(fast)
+# -- Optimizing module sync(fast)
+# Optimized design name is top_optimized
+# End time: 14:24:35 on Apr 24,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vsim top_optimized -coverage 
+# Start time: 14:24:35 on Apr 24,2024
+# Loading sv_std.std
+# Loading work.top(fast)
+# Loading work.fifo_top(fast)
+# Loading work.fifo_memory(fast)
+# Loading work.write_pointer(fast)
+# Loading work.read_pointer(fast)
+# Loading work.sync(fast)
+# 1
+# QuestaSim-64 vcover 2019.2_1 Coverage Utility 2019.05 May 13 2019
+# Start time: 14:26:09 on Apr 24,2024
+# vcover report cascaded_ece593_alu.ucdb 
+# Coverage Report Summary Data by instance
+# 
+# =================================================================================
+# === Instance: /top/dut/mem_inst
+# === Design Unit: work.fifo_memory
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         4         0         4     0.00%
+#     Statements                       4         0         4     0.00%
+# 
+# =================================================================================
+# === Instance: /top/dut/write_ptr
+# === Design Unit: work.write_pointer
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         3         1         2    33.33%
+#     Conditions                       2         0         2     0.00%
+#     Expressions                      2         0         2     0.00%
+#     Statements                       6         3         3    50.00%
+# 
+# =================================================================================
+# === Instance: /top/dut/read_ptr
+# === Design Unit: work.read_pointer
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         3         1         2    33.33%
+#     Conditions                       2         0         2     0.00%
+#     Expressions                      1         0         1     0.00%
+#     Statements                       6         3         3    50.00%
+# 
+# =================================================================================
+# === Instance: /top/dut/sync_w2r
+# === Design Unit: work.sync
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         2         1         1    50.00%
+#     Statements                       5         3         2    60.00%
+# 
+# =================================================================================
+# === Instance: /top/dut/sync_r2w
+# === Design Unit: work.sync
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         2         1         1    50.00%
+#     Statements                       5         3         2    60.00%
+# 
+# =================================================================================
+# === Instance: /top/dut
+# === Design Unit: work.fifo_top
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Expressions                      8         0         8     0.00%
+# 
+# =================================================================================
+# === Instance: /top
+# === Design Unit: work.top
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Covergroups                      1        na        na     0.00%
+#         Coverpoints/Crosses          4        na        na        na
+#             Covergroup Bins          8         0         8     0.00%
+# 
+# 
+# TOTAL COVERGROUP COVERAGE: 0.00%  COVERGROUP TYPES: 1
+# 
+# Total Coverage By Instance (filtered view): 14.94%
+# 
+# End time: 14:26:09 on Apr 24,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcover 2019.2_1 Coverage Utility 2019.05 May 13 2019
+# Start time: 14:26:09 on Apr 24,2024
+# vcover report cascaded_ece593_alu.ucdb -cvg -details 
+# Coverage Report by instance with details
+# 
+# =================================================================================
+# === Instance: /top
+# === Design Unit: work.top
+# =================================================================================
+# 
+# Covergroup Coverage:
+#     Covergroups                      1        na        na     0.00%
+#         Coverpoints/Crosses          4        na        na        na
+#             Covergroup Bins          8         0         8     0.00%
+# ----------------------------------------------------------------------------------------------------------
+# Covergroup                                             Metric       Goal       Bins    Status               
+#                                                                                                          
+# ----------------------------------------------------------------------------------------------------------
+#  TYPE /top/cg_fifo                                      0.00%        100          -    ZERO                 
+#     covered/total bins:                                     0          8          -                      
+#     missing/total bins:                                     8          8          -                      
+#     % Hit:                                              0.00%        100          -                      
+#     Coverpoint wr_en                                    0.00%        100          -    ZERO                 
+#         covered/total bins:                                 0          2          -                      
+#         missing/total bins:                                 2          2          -                      
+#         % Hit:                                          0.00%        100          -                      
+#     Coverpoint rd_en                                    0.00%        100          -    ZERO                 
+#         covered/total bins:                                 0          2          -                      
+#         missing/total bins:                                 2          2          -                      
+#         % Hit:                                          0.00%        100          -                      
+#     Coverpoint full                                     0.00%        100          -    ZERO                 
+#         covered/total bins:                                 0          2          -                      
+#         missing/total bins:                                 2          2          -                      
+#         % Hit:                                          0.00%        100          -                      
+#     Coverpoint empty                                    0.00%        100          -    ZERO                 
+#         covered/total bins:                                 0          2          -                      
+#         missing/total bins:                                 2          2          -                      
+#         % Hit:                                          0.00%        100          -                      
+#  Covergroup instance \/top/cg                           0.00%        100          -    ZERO                 
+#     covered/total bins:                                     0          8          -                      
+#     missing/total bins:                                     8          8          -                      
+#     % Hit:                                              0.00%        100          -                      
+#     Coverpoint wr_en                                    0.00%        100          -    ZERO                 
+#         covered/total bins:                                 0          2          -                      
+#         missing/total bins:                                 2          2          -                      
+#         % Hit:                                          0.00%        100          -                      
+#         bin auto[0]                                         0          1          -    ZERO                 
+#         bin auto[1]                                         0          1          -    ZERO                 
+#     Coverpoint rd_en                                    0.00%        100          -    ZERO                 
+#         covered/total bins:                                 0          2          -                      
+#         missing/total bins:                                 2          2          -                      
+#         % Hit:                                          0.00%        100          -                      
+#         bin auto[0]                                         0          1          -    ZERO                 
+#         bin auto[1]                                         0          1          -    ZERO                 
+#     Coverpoint full                                     0.00%        100          -    ZERO                 
+#         covered/total bins:                                 0          2          -                      
+#         missing/total bins:                                 2          2          -                      
+#         % Hit:                                          0.00%        100          -                      
+#         bin auto[0]                                         0          1          -    ZERO                 
+#         bin auto[1]                                         0          1          -    ZERO                 
+#     Coverpoint empty                                    0.00%        100          -    ZERO                 
+#         covered/total bins:                                 0          2          -                      
+#         missing/total bins:                                 2          2          -                      
+#         % Hit:                                          0.00%        100          -                      
+#         bin auto[0]                                         0          1          -    ZERO                 
+#         bin auto[1]                                         0          1          -    ZERO                 
+# 
+# COVERGROUP COVERAGE:
+# ----------------------------------------------------------------------------------------------------------
+# Covergroup                                             Metric       Goal       Bins    Status               
+#                                                                                                          
+# ----------------------------------------------------------------------------------------------------------
+#  TYPE /top/cg_fifo                                      0.00%        100          -    ZERO                 
+#     covered/total bins:                                     0          8          -                      
+#     missing/total bins:                                     8          8          -                      
+#     % Hit:                                              0.00%        100          -                      
+#     Coverpoint wr_en                                    0.00%        100          -    ZERO                 
+#         covered/total bins:                                 0          2          -                      
+#         missing/total bins:                                 2          2          -                      
+#         % Hit:                                          0.00%        100          -                      
+#     Coverpoint rd_en                                    0.00%        100          -    ZERO                 
+#         covered/total bins:                                 0          2          -                      
+#         missing/total bins:                                 2          2          -                      
+#         % Hit:                                          0.00%        100          -                      
+#     Coverpoint full                                     0.00%        100          -    ZERO                 
+#         covered/total bins:                                 0          2          -                      
+#         missing/total bins:                                 2          2          -                      
+#         % Hit:                                          0.00%        100          -                      
+#     Coverpoint empty                                    0.00%        100          -    ZERO                 
+#         covered/total bins:                                 0          2          -                      
+#         missing/total bins:                                 2          2          -                      
+#         % Hit:                                          0.00%        100          -                      
+#  Covergroup instance \/top/cg                           0.00%        100          -    ZERO                 
+#     covered/total bins:                                     0          8          -                      
+#     missing/total bins:                                     8          8          -                      
+#     % Hit:                                              0.00%        100          -                      
+#     Coverpoint wr_en                                    0.00%        100          -    ZERO                 
+#         covered/total bins:                                 0          2          -                      
+#         missing/total bins:                                 2          2          -                      
+#         % Hit:                                          0.00%        100          -                      
+#         bin auto[0]                                         0          1          -    ZERO                 
+#         bin auto[1]                                         0          1          -    ZERO                 
+#     Coverpoint rd_en                                    0.00%        100          -    ZERO                 
+#         covered/total bins:                                 0          2          -                      
+#         missing/total bins:                                 2          2          -                      
+#         % Hit:                                          0.00%        100          -                      
+#         bin auto[0]                                         0          1          -    ZERO                 
+#         bin auto[1]                                         0          1          -    ZERO                 
+#     Coverpoint full                                     0.00%        100          -    ZERO                 
+#         covered/total bins:                                 0          2          -                      
+#         missing/total bins:                                 2          2          -                      
+#         % Hit:                                          0.00%        100          -                      
+#         bin auto[0]                                         0          1          -    ZERO                 
+#         bin auto[1]                                         0          1          -    ZERO                 
+#     Coverpoint empty                                    0.00%        100          -    ZERO                 
+#         covered/total bins:                                 0          2          -                      
+#         missing/total bins:                                 2          2          -                      
+#         % Hit:                                          0.00%        100          -                      
+#         bin auto[0]                                         0          1          -    ZERO                 
+#         bin auto[1]                                         0          1          -    ZERO                 
+# 
+# TOTAL COVERGROUP COVERAGE: 0.00%  COVERGROUP TYPES: 1
+# 
+# Total Coverage By Instance (filtered view): 0.00%
+# 
+# End time: 14:26:09 on Apr 24,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+
+
+coverage report -codeAll
+# Coverage Report Summary Data by instance
+# 
+# =================================================================================
+# === Instance: /top/dut/mem_inst
+# === Design Unit: work.fifo_memory
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         4         0         4     0.00%
+#     Statements                       4         0         4     0.00%
+# 
+# =================================================================================
+# === Instance: /top/dut/write_ptr
+# === Design Unit: work.write_pointer
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         3         1         2    33.33%
+#     Conditions                       2         0         2     0.00%
+#     Expressions                      2         0         2     0.00%
+#     Statements                       6         3         3    50.00%
+# 
+# =================================================================================
+# === Instance: /top/dut/read_ptr
+# === Design Unit: work.read_pointer
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         3         1         2    33.33%
+#     Conditions                       2         0         2     0.00%
+#     Expressions                      1         0         1     0.00%
+#     Statements                       6         3         3    50.00%
+# 
+# =================================================================================
+# === Instance: /top/dut/sync_w2r
+# === Design Unit: work.sync
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         2         1         1    50.00%
+#     Statements                       5         3         2    60.00%
+# 
+# =================================================================================
+# === Instance: /top/dut/sync_r2w
+# === Design Unit: work.sync
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         2         1         1    50.00%
+#     Statements                       5         3         2    60.00%
+# 
+# =================================================================================
+# === Instance: /top/dut
+# === Design Unit: work.fifo_top
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Expressions                      8         0         8     0.00%
+# 
+# 
+# Total Coverage By Instance (filtered view): 18.68%
+# 
+# 
+# End time: 14:35:39 on Apr 24,2024, Elapsed time: 0:11:04
+# Errors: 4, Warnings: 0

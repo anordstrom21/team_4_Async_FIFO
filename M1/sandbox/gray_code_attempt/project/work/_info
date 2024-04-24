@@ -1,0 +1,163 @@
+m255
+K4
+z2
+!s11f vlog 2019.2_1 2019.05, May 13 2019
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/amaso/common/Documents/ECE593/final_project/team_4_Async_FIFO/M1/sandbox/gray_code_attempt/project
+vfifo_memory
+Z1 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z2 !s110 1713993873
+!i10b 1
+!s100 `]nFLRE>P8gXR1j0Wec^]2
+!s11b `4WgbhjJb1:L5ebfIWoli2
+ITbA>8=?ainC1B]eEeVTm20
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+S1
+R0
+w1713993833
+8fifo_memory.sv
+Ffifo_memory.sv
+L0 1
+Z4 OL;L;2019.2_1;69
+r1
+!s85 0
+31
+Z5 !s108 1713993873.000000
+!s107 fifo_memory.sv|
+!s90 -reportprogress|300|-lint|fifo_memory.sv|+acc|-sv|
+!i113 0
+Z6 o-lint +acc -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z7 tCvgOpt 0
+vfifo_top
+R1
+!s110 1713993872
+!i10b 1
+!s100 =FA9iXQ>TklhC0DPLPn<a1
+!s11b VJaRB4WO7@143ebmEkH1l0
+IGz`Leg1n:D;YY5;<RU=Hk3
+R3
+S1
+R0
+Z8 w1713993704
+8fifo_top.sv
+Ffifo_top.sv
+L0 1
+R4
+r1
+!s85 0
+31
+!s108 1713993872.000000
+!s107 fifo_top.sv|
+!s90 -reportprogress|300|-lint|fifo_top.sv|+acc|-sv|
+!i113 0
+R6
+R7
+vread_pointer
+R1
+R2
+!i10b 1
+!s100 _UMno>OeNhA[JQaV:EB3`2
+!s11b UAl>B^1`fafR3:8h=H3183
+I>3UcbgY=k:i5NGd]S?f690
+R3
+S1
+R0
+R8
+8read_pointer.sv
+Fread_pointer.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+!s107 read_pointer.sv|
+!s90 -reportprogress|300|-lint|read_pointer.sv|+acc|-sv|
+!i113 0
+R6
+R7
+vsync
+R1
+R2
+!i10b 1
+!s100 R;Azo`gFLXF;LbDm0TSOE1
+!s11b kP0>]i<5`S9U@NGX3Qi_h0
+I2dF31d0FDN7QC15XaalEA2
+R3
+S1
+R0
+R8
+8sync.sv
+Fsync.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+!s107 sync.sv|
+!s90 -reportprogress|300|-lint|sync.sv|+acc|-sv|
+!i113 0
+R6
+R7
+vtop
+R1
+Z9 !s110 1713993874
+!i10b 1
+!s100 O[:k5EoiRab52o@eB[DPi2
+!s11b Ym2LHGMQI8=eV`VIlda9>0
+Ibm2b[hGA;RmP4Qa>iD8<F0
+R3
+S1
+R0
+R8
+8fifo_tb.sv
+Ffifo_tb.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+!s107 fifo_tb.sv|
+!s90 -reportprogress|300|-lint|fifo_tb.sv|+acc|-sv|
+!i113 0
+R6
+R7
+Ttop_optimized
+R9
+V[@=SdG5JU?7XfHK[:ndh_1
+04 3 4 work top fast 0
+o+acc +cover=sbfec+fifo_top(rtl).
+R7
+ntop_optimized
+OL;O;2019.2_1;69
+vwrite_pointer
+R1
+R2
+!i10b 1
+!s100 BiKzYX[eQLD:Vz48GOZjF2
+!s11b 16[<Uf>?SAZGh;XVcn_`E2
+I@I@>H<cO`iM_=F95@kPo92
+R3
+S1
+R0
+R8
+8write_pointer.sv
+Fwrite_pointer.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+!s107 write_pointer.sv|
+!s90 -reportprogress|300|-lint|write_pointer.sv|+acc|-sv|
+!i113 0
+R6
+R7
