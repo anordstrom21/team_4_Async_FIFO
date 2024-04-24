@@ -3,7 +3,7 @@ module fifo_memory #(
     parameter ADDR_WIDTH = 6
 )(
     input  logic                      clk_wr, clk_rd,
-    input  logic                      wr_en, rd_en
+    input  logic                      wr_en, rd_en,
     input  logic  [ADDR_WIDTH-1:0]    waddr, raddr,
     input  logic  [DATA_WIDTH-1:0]    data_in,
     output logic  [DATA_WIDTH-1:0]    data_out
