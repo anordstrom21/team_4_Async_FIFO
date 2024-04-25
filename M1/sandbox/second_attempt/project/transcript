@@ -14,61 +14,61 @@
 # //
 do run.do
 # QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
-# Start time: 14:24:32 on Apr 24,2024
+# Start time: 19:13:54 on Apr 24,2024
 # vlog -reportprogress 300 -lint fifo_top.sv "+acc" -sv 
 # -- Compiling module fifo_top
 # 
 # Top level modules:
 # 	fifo_top
-# End time: 14:24:32 on Apr 24,2024, Elapsed time: 0:00:00
+# End time: 19:13:55 on Apr 24,2024, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
-# Start time: 14:24:33 on Apr 24,2024
+# Start time: 19:13:55 on Apr 24,2024
 # vlog -reportprogress 300 -lint fifo_memory.sv "+acc" -sv 
 # -- Compiling module fifo_memory
 # 
 # Top level modules:
 # 	fifo_memory
-# End time: 14:24:33 on Apr 24,2024, Elapsed time: 0:00:00
+# End time: 19:13:55 on Apr 24,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
-# Start time: 14:24:33 on Apr 24,2024
+# Start time: 19:13:55 on Apr 24,2024
 # vlog -reportprogress 300 -lint read_pointer.sv "+acc" -sv 
 # -- Compiling module read_pointer
 # 
 # Top level modules:
 # 	read_pointer
-# End time: 14:24:33 on Apr 24,2024, Elapsed time: 0:00:00
+# End time: 19:13:55 on Apr 24,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
-# Start time: 14:24:33 on Apr 24,2024
+# Start time: 19:13:55 on Apr 24,2024
 # vlog -reportprogress 300 -lint write_pointer.sv "+acc" -sv 
 # -- Compiling module write_pointer
 # 
 # Top level modules:
 # 	write_pointer
-# End time: 14:24:33 on Apr 24,2024, Elapsed time: 0:00:00
+# End time: 19:13:55 on Apr 24,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
-# Start time: 14:24:33 on Apr 24,2024
+# Start time: 19:13:55 on Apr 24,2024
 # vlog -reportprogress 300 -lint sync.sv "+acc" -sv 
 # -- Compiling module sync
 # 
 # Top level modules:
 # 	sync
-# End time: 14:24:33 on Apr 24,2024, Elapsed time: 0:00:00
+# End time: 19:13:56 on Apr 24,2024, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
-# Start time: 14:24:33 on Apr 24,2024
+# Start time: 19:13:56 on Apr 24,2024
 # vlog -reportprogress 300 -lint fifo_tb.sv "+acc" -sv 
 # -- Compiling module top
 # 
 # Top level modules:
 # 	top
-# End time: 14:24:34 on Apr 24,2024, Elapsed time: 0:00:01
+# End time: 19:13:56 on Apr 24,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vopt 2019.2_1 Compiler 2019.05 May 13 2019
-# Start time: 14:24:34 on Apr 24,2024
+# Start time: 19:13:56 on Apr 24,2024
 # vopt -reportprogress 300 top -o top_optimized "+acc" "+cover=sbfec+fifo_top(rtl)." 
 # 
 # Top level modules:
@@ -89,10 +89,10 @@ do run.do
 # -- Optimizing module read_pointer(fast)
 # -- Optimizing module sync(fast)
 # Optimized design name is top_optimized
-# End time: 14:24:35 on Apr 24,2024, Elapsed time: 0:00:01
+# End time: 19:13:57 on Apr 24,2024, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # vsim top_optimized -coverage 
-# Start time: 14:24:35 on Apr 24,2024
+# Start time: 19:13:57 on Apr 24,2024
 # Loading sv_std.std
 # Loading work.top(fast)
 # Loading work.fifo_top(fast)
@@ -101,8 +101,259 @@ do run.do
 # Loading work.read_pointer(fast)
 # Loading work.sync(fast)
 # 1
+# Mismatch at           0: expected 8d, got xx
+# Mismatch at           1: expected 01, got xx
+# Mismatch at           2: expected 3d, got 8d
+# Mismatch at           3: expected f9, got 01
+# Mismatch at           4: expected 12, got 3d
+# Mismatch at           5: expected ce, got f9
+# Mismatch at           6: expected 65, got f9
+# Mismatch at           7: expected 80, got 12
+# Mismatch at           8: expected d5, got ce
+# Mismatch at           9: expected 0a, got 80
+# Mismatch at          10: expected 4f, got d5
+# Mismatch at          11: expected 7e, got d5
+# Mismatch at          12: expected d9, got 0a
+# Mismatch at          13: expected b7, got 4f
+# Mismatch at          14: expected 5b, got 7e
+# Mismatch at          15: expected d0, got d9
+# Mismatch at          16: expected 96, got b7
+# Mismatch at          17: expected 12, got 5b
+# Mismatch at          18: expected 85, got d0
+# Mismatch at          19: expected 58, got 96
+# Mismatch at          20: expected b3, got 12
+# Mismatch at          21: expected f7, got 85
+# Mismatch at          22: expected 5a, got 58
+# Mismatch at          23: expected da, got b3
+# Mismatch at          24: expected df, got f7
+# Mismatch at          25: expected d0, got 5a
+# Mismatch at          26: expected 4e, got da
+# Mismatch at          27: expected b6, got df
+# Mismatch at          28: expected 4d, got d0
+# Mismatch at          29: expected 76, got 4e
+# Mismatch at          30: expected 88, got b6
+# Mismatch at          31: expected 1c, got 4d
+# Mismatch at          32: expected b9, got 76
+# Mismatch at          33: expected c0, got 88
+# Mismatch at          34: expected 61, got 1c
+# Mismatch at          35: expected 86, got b9
+# Mismatch at          36: expected c5, got c0
+# Mismatch at          37: expected b6, got 61
+# Mismatch at          38: expected fb, got 86
+# Mismatch at          39: expected c9, got c5
+# Mismatch at          40: expected ae, got b6
+# Mismatch at          41: expected 28, got fb
+# Mismatch at          42: expected c2, got c9
+# Mismatch at          43: expected d8, got 28
+# Mismatch at          44: expected 5b, got c2
+# Mismatch at          45: expected a1, got 5b
+# Mismatch at          46: expected c8, got a1
+# Mismatch at          48: expected ed, got a7
+# Mismatch at          49: expected ad, got 49
+# Mismatch at          50: expected a7, got 51
+# Mismatch at          51: expected 49, got fa
+# Mismatch at          52: expected 51, got 7c
+# Mismatch at          53: expected fa, got f0
+# Mismatch at          54: expected 7c, got 17
+# Mismatch at          55: expected f0, got 86
+# Mismatch at          56: expected 17, got 8d
+# Mismatch at          57: expected 86, got 4b
+# Mismatch at          58: expected 8d, got fd
+# Mismatch at          59: expected 4b, got 03
+# Mismatch at          60: expected fd, got b1
+# Mismatch at          61: expected 03, got f8
+# Mismatch at          62: expected b1, got 84
+# Mismatch at          63: expected f8, got 84
+# Mismatch at          64: expected 84, got 3d
+# Mismatch at          65: expected 84, got 47
+# Mismatch at          66: expected a2, got 47
+# Mismatch at          67: expected 3d, got 11
+# Mismatch at          68: expected 47, got df
+# Mismatch at          69: expected 11, got 1c
+# Mismatch at          70: expected df, got 1c
+# Mismatch at          71: expected 1c, got 2a
+# Mismatch at          72: expected 69, got bb
+# Mismatch at          73: expected c2, got 51
+# Mismatch at          74: expected 59, got 4a
+# Mismatch at          75: expected 24, got 4a
+# Mismatch at          76: expected b9, got 01
+# Mismatch at          78: expected af, got c2
+# Mismatch at          79: expected ee, got af
+# Mismatch at          80: expected 81, got ee
+# Mismatch at          81: expected f0, got 81
+# Mismatch at          85: expected ab, got b7
+# Mismatch at          86: expected 13, got e5
+# Mismatch at          87: expected 0a, got 41
+# Mismatch at          88: expected 70, got cd
+# Mismatch at          89: expected 04, got dc
+# Mismatch at          90: expected dc, got c8
+# Mismatch at          91: expected d3, got 73
+# Mismatch at          92: expected 5d, got 15
+# Mismatch at          93: expected e9, got 15
+# Mismatch at          94: expected 9f, got 29
+# Mismatch at          95: expected 29, got 7f
+# Mismatch at          98: expected 5d, got 31
+# Mismatch at          99: expected 69, got 5d
+# Mismatch at         102: expected da, got 56
+# Mismatch at         103: expected 51, got da
+# Mismatch at         104: expected 7e, got da
+# Mismatch at         105: expected a7, got 51
+# Mismatch at         106: expected 00, got 51
+# Mismatch at         107: expected 5f, got 7e
+# Mismatch at         108: expected 25, got 00
+# Mismatch at         109: expected 27, got 5f
+# Mismatch at         110: expected 16, got 25
+# Mismatch at         111: expected 55, got 27
+# Mismatch at         112: expected cd, got 27
+# Mismatch at         113: expected 82, got 55
+# Mismatch at         114: expected ac, got 82
+# Mismatch at         115: expected f1, got ac
+# Mismatch at         116: expected 31, got f1
+# Mismatch at         117: expected e3, got f1
+# Mismatch at         118: expected c2, got 31
+# Mismatch at         119: expected 05, got e3
+# Mismatch at         120: expected 6b, got c2
+# Mismatch at         121: expected 4f, got 05
+# Mismatch at         122: expected 54, got 6b
+# Mismatch at         123: expected 6a, got 4f
+# Mismatch at         124: expected a8, got 54
+# Mismatch at         129: expected 73, got 1b
+# Mismatch at         130: expected 1b, got 84
+# Mismatch at         131: expected 84, got b3
+# Mismatch at         132: expected b3, got cc
+# Mismatch at         133: expected cc, got ca
+# Mismatch at         153: expected 25, got ad
+# Mismatch at         154: expected e0, got 25
+# Mismatch at         155: expected a1, got e0
+# Mismatch at         156: expected eb, got a1
+# Mismatch at         157: expected 9c, got eb
+# Mismatch at         164: expected ac, got be
+# Mismatch at         165: expected be, got d7
+# Mismatch at         166: expected b4, got 96
+# Mismatch at         167: expected d7, got 3d
+# Mismatch at         168: expected 96, got df
+# Mismatch at         169: expected 3d, got c0
+# Mismatch at         170: expected df, got 18
+# Mismatch at         171: expected c0, got 7d
+# Mismatch at         172: expected 18, got 0a
+# Mismatch at         173: expected 7d, got c5
+# Mismatch at         174: expected 0a, got ca
+# Mismatch at         175: expected c5, got dd
+# Mismatch at         176: expected ca, got dd
+# Mismatch at         177: expected dd, got 26
+# Mismatch at         178: expected 26, got f2
+# Mismatch at         179: expected f2, got 04
+# Mismatch at         180: expected 04, got 3b
+# Mismatch at         181: expected 3b, got cb
+# Mismatch at         182: expected cb, got e3
+# Mismatch at         187: expected 17, got 19
+# Mismatch at         188: expected 6f, got 19
+# Mismatch at         190: expected ed, got af
+# Mismatch at         191: expected aa, got af
+# Mismatch at         192: expected 19, got aa
+# Mismatch at         193: expected b3, got 19
+# Mismatch at         194: expected 30, got 0c
+# Mismatch at         195: expected 0c, got aa
+# Mismatch at         196: expected 7e, got c2
+# Mismatch at         197: expected aa, got fd
+# Mismatch at         198: expected c2, got 59
+# Mismatch at         199: expected fd, got d9
+# Mismatch at         200: expected 59, got cd
+# Mismatch at         201: expected 69, got 58
+# Mismatch at         202: expected d9, got 58
+# Mismatch at         203: expected cd, got ad
+# Mismatch at         204: expected 58, got ad
+# Mismatch at         205: expected ad, got 0d
+# Mismatch at         206: expected 0d, got b1
+# Mismatch at         207: expected b1, got 5d
+# Mismatch at         208: expected 30, got 76
+# Mismatch at         209: expected e3, got 6a
+# Mismatch at         210: expected 5d, got 6c
+# Mismatch at         211: expected 76, got 56
+# Mismatch at         212: expected 6a, got f1
+# Mismatch at         213: expected 6c, got ea
+# Mismatch at         214: expected 56, got ea
+# Mismatch at         215: expected f1, got d8
+# Mismatch at         216: expected ea, got e8
+# Mismatch at         217: expected db, got 3c
+# Mismatch at         218: expected d8, got 3c
+# Mismatch at         219: expected e8, got 2a
+# Mismatch at         220: expected 3c, got b5
+# Mismatch at         221: expected 15, got b5
+# Mismatch at         222: expected 2a, got a8
+# Mismatch at         223: expected b5, got 69
+# Mismatch at         224: expected d3, got f8
+# Mismatch at         225: expected a8, got c9
+# Mismatch at         226: expected 69, got 33
+# Mismatch at         227: expected c1, got a4
+# Mismatch at         228: expected f8, got 4d
+# Mismatch at         229: expected c9, got 9c
+# Mismatch at         230: expected 33, got 0c
+# Mismatch at         231: expected a4, got cf
+# Mismatch at         232: expected 40, got 89
+# Mismatch at         233: expected 4d, got b5
+# Mismatch at         234: expected 9c, got 49
+# Mismatch at         235: expected 0c, got 94
+# Mismatch at         236: expected cf, got 75
+# Mismatch at         238: expected 89, got ca
+# Mismatch at         239: expected b5, got ca
+# Mismatch at         240: expected 9b, got 4f
+# Mismatch at         241: expected 49, got 94
+# Mismatch at         242: expected 94, got 0b
+# Mismatch at         243: expected 75, got 2a
+# Mismatch at         244: expected 72, got 85
+# Mismatch at         245: expected ca, got 28
+# Mismatch at         246: expected 4f, got 2e
+# Mismatch at         247: expected 94, got d9
+# Mismatch at         248: expected 0b, got 63
+# Mismatch at         249: expected 2a, got 94
+# Mismatch at         250: expected 43, got b3
+# Mismatch at         251: expected 85, got 3f
+# Mismatch at         252: expected 28, got 92
+# Mismatch at         253: expected 2e, got 0a
+# Mismatch at         255: expected 63, got c8
+# Mismatch at         256: expected 41, got 35
+# Mismatch at         257: expected 94, got 56
+# Mismatch at         258: expected b3, got 56
+# Mismatch at         259: expected 3f, got ea
+# Mismatch at         260: expected 92, got 53
+# Mismatch at         261: expected 0a, got 21
+# Mismatch at         262: expected d9, got 23
+# Mismatch at         263: expected 1b, got 23
+# Mismatch at         264: expected c8, got b2
+# Mismatch at         265: expected 35, got b2
+# Mismatch at         266: expected 56, got 1d
+# Mismatch at         267: expected ea, got 1d
+# Mismatch at         268: expected 53, got 13
+# Mismatch at         269: expected 21, got 50
+# Mismatch at         270: expected 23, got 50
+# Mismatch at         271: expected b2, got e2
+# Mismatch at         272: expected 1d, got 1e
+# Mismatch at         273: expected 13, got e2
+# Mismatch at         274: expected 50, got d7
+# Mismatch at         275: expected e2, got a3
+# Mismatch at         276: expected 1e, got 40
+# Mismatch at         277: expected 45, got 1a
+# Mismatch at         278: expected e2, got a2
+# Mismatch at         279: expected d7, got 8e
+# Mismatch at         280: expected a3, got 77
+# Mismatch at         281: expected b4, got 79
+# Mismatch at         282: expected 8f, got db
+# Mismatch at         283: expected ad, got 25
+# Mismatch at         284: expected 1f, got 38
+# Mismatch at         285: expected d4, got dc
+# Mismatch at         286: expected b2, got a2
+# Mismatch at         287: expected 6a, got 08
+# Mismatch at         288: expected 79, got 75
+# Mismatch at         289: expected db, got 83
+# Mismatch at         290: expected 25, got d5
+# Mismatch at         291: expected 38, got 16
+# ** Note: $finish    : fifo_tb.sv(61)
+#    Time: 12234 ns  Iteration: 1  Instance: /top
+# 1
+# Break in Module top at fifo_tb.sv line 61
 # QuestaSim-64 vcover 2019.2_1 Coverage Utility 2019.05 May 13 2019
-# Start time: 14:26:09 on Apr 24,2024
+# Start time: 19:14:07 on Apr 24,2024
 # vcover report cascaded_ece593_alu.ucdb 
 # Coverage Report Summary Data by instance
 # 
@@ -112,8 +363,8 @@ do run.do
 # =================================================================================
 #     Enabled Coverage              Bins      Hits    Misses  Coverage
 #     ----------------              ----      ----    ------  --------
-#     Branches                         4         0         4     0.00%
-#     Statements                       4         0         4     0.00%
+#     Branches                         4         4         0   100.00%
+#     Statements                       4         4         0   100.00%
 # 
 # =================================================================================
 # === Instance: /top/dut/write_ptr
@@ -121,10 +372,10 @@ do run.do
 # =================================================================================
 #     Enabled Coverage              Bins      Hits    Misses  Coverage
 #     ----------------              ----      ----    ------  --------
-#     Branches                         3         1         2    33.33%
-#     Conditions                       2         0         2     0.00%
-#     Expressions                      2         0         2     0.00%
-#     Statements                       6         3         3    50.00%
+#     Branches                         3         3         0   100.00%
+#     Conditions                       2         1         1    50.00%
+#     Expressions                      2         2         0   100.00%
+#     Statements                       6         6         0   100.00%
 # 
 # =================================================================================
 # === Instance: /top/dut/read_ptr
@@ -132,10 +383,10 @@ do run.do
 # =================================================================================
 #     Enabled Coverage              Bins      Hits    Misses  Coverage
 #     ----------------              ----      ----    ------  --------
-#     Branches                         3         1         2    33.33%
-#     Conditions                       2         0         2     0.00%
-#     Expressions                      1         0         1     0.00%
-#     Statements                       6         3         3    50.00%
+#     Branches                         3         3         0   100.00%
+#     Conditions                       2         1         1    50.00%
+#     Expressions                      1         1         0   100.00%
+#     Statements                       6         6         0   100.00%
 # 
 # =================================================================================
 # === Instance: /top/dut/sync_w2r
@@ -143,8 +394,8 @@ do run.do
 # =================================================================================
 #     Enabled Coverage              Bins      Hits    Misses  Coverage
 #     ----------------              ----      ----    ------  --------
-#     Branches                         2         1         1    50.00%
-#     Statements                       5         3         2    60.00%
+#     Branches                         2         2         0   100.00%
+#     Statements                       5         5         0   100.00%
 # 
 # =================================================================================
 # === Instance: /top/dut/sync_r2w
@@ -152,8 +403,8 @@ do run.do
 # =================================================================================
 #     Enabled Coverage              Bins      Hits    Misses  Coverage
 #     ----------------              ----      ----    ------  --------
-#     Branches                         2         1         1    50.00%
-#     Statements                       5         3         2    60.00%
+#     Branches                         2         2         0   100.00%
+#     Statements                       5         5         0   100.00%
 # 
 # =================================================================================
 # === Instance: /top/dut
@@ -161,7 +412,7 @@ do run.do
 # =================================================================================
 #     Enabled Coverage              Bins      Hits    Misses  Coverage
 #     ----------------              ----      ----    ------  --------
-#     Expressions                      8         0         8     0.00%
+#     Expressions                      8         8         0   100.00%
 # 
 # =================================================================================
 # === Instance: /top
@@ -169,19 +420,19 @@ do run.do
 # =================================================================================
 #     Enabled Coverage              Bins      Hits    Misses  Coverage
 #     ----------------              ----      ----    ------  --------
-#     Covergroups                      1        na        na     0.00%
+#     Covergroups                      1        na        na   100.00%
 #         Coverpoints/Crosses          4        na        na        na
-#             Covergroup Bins          8         0         8     0.00%
+#             Covergroup Bins          8         8         0   100.00%
 # 
 # 
-# TOTAL COVERGROUP COVERAGE: 0.00%  COVERGROUP TYPES: 1
+# TOTAL COVERGROUP COVERAGE: 100.00%  COVERGROUP TYPES: 1
 # 
-# Total Coverage By Instance (filtered view): 14.94%
+# Total Coverage By Instance (filtered view): 90.00%
 # 
-# End time: 14:26:09 on Apr 24,2024, Elapsed time: 0:00:00
+# End time: 19:14:07 on Apr 24,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vcover 2019.2_1 Coverage Utility 2019.05 May 13 2019
-# Start time: 14:26:09 on Apr 24,2024
+# Start time: 19:14:07 on Apr 24,2024
 # vcover report cascaded_ece593_alu.ucdb -cvg -details 
 # Coverage Report by instance with details
 # 
@@ -191,187 +442,122 @@ do run.do
 # =================================================================================
 # 
 # Covergroup Coverage:
-#     Covergroups                      1        na        na     0.00%
+#     Covergroups                      1        na        na   100.00%
 #         Coverpoints/Crosses          4        na        na        na
-#             Covergroup Bins          8         0         8     0.00%
+#             Covergroup Bins          8         8         0   100.00%
 # ----------------------------------------------------------------------------------------------------------
 # Covergroup                                             Metric       Goal       Bins    Status               
 #                                                                                                          
 # ----------------------------------------------------------------------------------------------------------
-#  TYPE /top/cg_fifo                                      0.00%        100          -    ZERO                 
-#     covered/total bins:                                     0          8          -                      
-#     missing/total bins:                                     8          8          -                      
-#     % Hit:                                              0.00%        100          -                      
-#     Coverpoint wr_en                                    0.00%        100          -    ZERO                 
-#         covered/total bins:                                 0          2          -                      
-#         missing/total bins:                                 2          2          -                      
-#         % Hit:                                          0.00%        100          -                      
-#     Coverpoint rd_en                                    0.00%        100          -    ZERO                 
-#         covered/total bins:                                 0          2          -                      
-#         missing/total bins:                                 2          2          -                      
-#         % Hit:                                          0.00%        100          -                      
-#     Coverpoint full                                     0.00%        100          -    ZERO                 
-#         covered/total bins:                                 0          2          -                      
-#         missing/total bins:                                 2          2          -                      
-#         % Hit:                                          0.00%        100          -                      
-#     Coverpoint empty                                    0.00%        100          -    ZERO                 
-#         covered/total bins:                                 0          2          -                      
-#         missing/total bins:                                 2          2          -                      
-#         % Hit:                                          0.00%        100          -                      
-#  Covergroup instance \/top/cg                           0.00%        100          -    ZERO                 
-#     covered/total bins:                                     0          8          -                      
-#     missing/total bins:                                     8          8          -                      
-#     % Hit:                                              0.00%        100          -                      
-#     Coverpoint wr_en                                    0.00%        100          -    ZERO                 
-#         covered/total bins:                                 0          2          -                      
-#         missing/total bins:                                 2          2          -                      
-#         % Hit:                                          0.00%        100          -                      
-#         bin auto[0]                                         0          1          -    ZERO                 
-#         bin auto[1]                                         0          1          -    ZERO                 
-#     Coverpoint rd_en                                    0.00%        100          -    ZERO                 
-#         covered/total bins:                                 0          2          -                      
-#         missing/total bins:                                 2          2          -                      
-#         % Hit:                                          0.00%        100          -                      
-#         bin auto[0]                                         0          1          -    ZERO                 
-#         bin auto[1]                                         0          1          -    ZERO                 
-#     Coverpoint full                                     0.00%        100          -    ZERO                 
-#         covered/total bins:                                 0          2          -                      
-#         missing/total bins:                                 2          2          -                      
-#         % Hit:                                          0.00%        100          -                      
-#         bin auto[0]                                         0          1          -    ZERO                 
-#         bin auto[1]                                         0          1          -    ZERO                 
-#     Coverpoint empty                                    0.00%        100          -    ZERO                 
-#         covered/total bins:                                 0          2          -                      
-#         missing/total bins:                                 2          2          -                      
-#         % Hit:                                          0.00%        100          -                      
-#         bin auto[0]                                         0          1          -    ZERO                 
-#         bin auto[1]                                         0          1          -    ZERO                 
+#  TYPE /top/cg_fifo                                    100.00%        100          -    Covered              
+#     covered/total bins:                                     8          8          -                      
+#     missing/total bins:                                     0          8          -                      
+#     % Hit:                                            100.00%        100          -                      
+#     Coverpoint wr_en                                  100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#     Coverpoint rd_en                                  100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#     Coverpoint full                                   100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#     Coverpoint empty                                  100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#  Covergroup instance \/top/cg                         100.00%        100          -    Covered              
+#     covered/total bins:                                     8          8          -                      
+#     missing/total bins:                                     0          8          -                      
+#     % Hit:                                            100.00%        100          -                      
+#     Coverpoint wr_en                                  100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin auto[0]                                       533          1          -    Covered              
+#         bin auto[1]                                       486          1          -    Covered              
+#     Coverpoint rd_en                                  100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin auto[0]                                       502          1          -    Covered              
+#         bin auto[1]                                       517          1          -    Covered              
+#     Coverpoint full                                   100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin auto[0]                                       999          1          -    Covered              
+#         bin auto[1]                                        20          1          -    Covered              
+#     Coverpoint empty                                  100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin auto[0]                                      1001          1          -    Covered              
+#         bin auto[1]                                        18          1          -    Covered              
 # 
 # COVERGROUP COVERAGE:
 # ----------------------------------------------------------------------------------------------------------
 # Covergroup                                             Metric       Goal       Bins    Status               
 #                                                                                                          
 # ----------------------------------------------------------------------------------------------------------
-#  TYPE /top/cg_fifo                                      0.00%        100          -    ZERO                 
-#     covered/total bins:                                     0          8          -                      
-#     missing/total bins:                                     8          8          -                      
-#     % Hit:                                              0.00%        100          -                      
-#     Coverpoint wr_en                                    0.00%        100          -    ZERO                 
-#         covered/total bins:                                 0          2          -                      
-#         missing/total bins:                                 2          2          -                      
-#         % Hit:                                          0.00%        100          -                      
-#     Coverpoint rd_en                                    0.00%        100          -    ZERO                 
-#         covered/total bins:                                 0          2          -                      
-#         missing/total bins:                                 2          2          -                      
-#         % Hit:                                          0.00%        100          -                      
-#     Coverpoint full                                     0.00%        100          -    ZERO                 
-#         covered/total bins:                                 0          2          -                      
-#         missing/total bins:                                 2          2          -                      
-#         % Hit:                                          0.00%        100          -                      
-#     Coverpoint empty                                    0.00%        100          -    ZERO                 
-#         covered/total bins:                                 0          2          -                      
-#         missing/total bins:                                 2          2          -                      
-#         % Hit:                                          0.00%        100          -                      
-#  Covergroup instance \/top/cg                           0.00%        100          -    ZERO                 
-#     covered/total bins:                                     0          8          -                      
-#     missing/total bins:                                     8          8          -                      
-#     % Hit:                                              0.00%        100          -                      
-#     Coverpoint wr_en                                    0.00%        100          -    ZERO                 
-#         covered/total bins:                                 0          2          -                      
-#         missing/total bins:                                 2          2          -                      
-#         % Hit:                                          0.00%        100          -                      
-#         bin auto[0]                                         0          1          -    ZERO                 
-#         bin auto[1]                                         0          1          -    ZERO                 
-#     Coverpoint rd_en                                    0.00%        100          -    ZERO                 
-#         covered/total bins:                                 0          2          -                      
-#         missing/total bins:                                 2          2          -                      
-#         % Hit:                                          0.00%        100          -                      
-#         bin auto[0]                                         0          1          -    ZERO                 
-#         bin auto[1]                                         0          1          -    ZERO                 
-#     Coverpoint full                                     0.00%        100          -    ZERO                 
-#         covered/total bins:                                 0          2          -                      
-#         missing/total bins:                                 2          2          -                      
-#         % Hit:                                          0.00%        100          -                      
-#         bin auto[0]                                         0          1          -    ZERO                 
-#         bin auto[1]                                         0          1          -    ZERO                 
-#     Coverpoint empty                                    0.00%        100          -    ZERO                 
-#         covered/total bins:                                 0          2          -                      
-#         missing/total bins:                                 2          2          -                      
-#         % Hit:                                          0.00%        100          -                      
-#         bin auto[0]                                         0          1          -    ZERO                 
-#         bin auto[1]                                         0          1          -    ZERO                 
+#  TYPE /top/cg_fifo                                    100.00%        100          -    Covered              
+#     covered/total bins:                                     8          8          -                      
+#     missing/total bins:                                     0          8          -                      
+#     % Hit:                                            100.00%        100          -                      
+#     Coverpoint wr_en                                  100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#     Coverpoint rd_en                                  100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#     Coverpoint full                                   100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#     Coverpoint empty                                  100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#  Covergroup instance \/top/cg                         100.00%        100          -    Covered              
+#     covered/total bins:                                     8          8          -                      
+#     missing/total bins:                                     0          8          -                      
+#     % Hit:                                            100.00%        100          -                      
+#     Coverpoint wr_en                                  100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin auto[0]                                       533          1          -    Covered              
+#         bin auto[1]                                       486          1          -    Covered              
+#     Coverpoint rd_en                                  100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin auto[0]                                       502          1          -    Covered              
+#         bin auto[1]                                       517          1          -    Covered              
+#     Coverpoint full                                   100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin auto[0]                                       999          1          -    Covered              
+#         bin auto[1]                                        20          1          -    Covered              
+#     Coverpoint empty                                  100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin auto[0]                                      1001          1          -    Covered              
+#         bin auto[1]                                        18          1          -    Covered              
 # 
-# TOTAL COVERGROUP COVERAGE: 0.00%  COVERGROUP TYPES: 1
+# TOTAL COVERGROUP COVERAGE: 100.00%  COVERGROUP TYPES: 1
 # 
-# Total Coverage By Instance (filtered view): 0.00%
+# Total Coverage By Instance (filtered view): 100.00%
 # 
-# End time: 14:26:09 on Apr 24,2024, Elapsed time: 0:00:00
+# End time: 19:14:07 on Apr 24,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-
-
-coverage report -codeAll
-# Coverage Report Summary Data by instance
-# 
-# =================================================================================
-# === Instance: /top/dut/mem_inst
-# === Design Unit: work.fifo_memory
-# =================================================================================
-#     Enabled Coverage              Bins      Hits    Misses  Coverage
-#     ----------------              ----      ----    ------  --------
-#     Branches                         4         0         4     0.00%
-#     Statements                       4         0         4     0.00%
-# 
-# =================================================================================
-# === Instance: /top/dut/write_ptr
-# === Design Unit: work.write_pointer
-# =================================================================================
-#     Enabled Coverage              Bins      Hits    Misses  Coverage
-#     ----------------              ----      ----    ------  --------
-#     Branches                         3         1         2    33.33%
-#     Conditions                       2         0         2     0.00%
-#     Expressions                      2         0         2     0.00%
-#     Statements                       6         3         3    50.00%
-# 
-# =================================================================================
-# === Instance: /top/dut/read_ptr
-# === Design Unit: work.read_pointer
-# =================================================================================
-#     Enabled Coverage              Bins      Hits    Misses  Coverage
-#     ----------------              ----      ----    ------  --------
-#     Branches                         3         1         2    33.33%
-#     Conditions                       2         0         2     0.00%
-#     Expressions                      1         0         1     0.00%
-#     Statements                       6         3         3    50.00%
-# 
-# =================================================================================
-# === Instance: /top/dut/sync_w2r
-# === Design Unit: work.sync
-# =================================================================================
-#     Enabled Coverage              Bins      Hits    Misses  Coverage
-#     ----------------              ----      ----    ------  --------
-#     Branches                         2         1         1    50.00%
-#     Statements                       5         3         2    60.00%
-# 
-# =================================================================================
-# === Instance: /top/dut/sync_r2w
-# === Design Unit: work.sync
-# =================================================================================
-#     Enabled Coverage              Bins      Hits    Misses  Coverage
-#     ----------------              ----      ----    ------  --------
-#     Branches                         2         1         1    50.00%
-#     Statements                       5         3         2    60.00%
-# 
-# =================================================================================
-# === Instance: /top/dut
-# === Design Unit: work.fifo_top
-# =================================================================================
-#     Enabled Coverage              Bins      Hits    Misses  Coverage
-#     ----------------              ----      ----    ------  --------
-#     Expressions                      8         0         8     0.00%
-# 
-# 
-# Total Coverage By Instance (filtered view): 18.68%
-# 
-# 
-# End time: 14:35:39 on Apr 24,2024, Elapsed time: 0:11:04
-# Errors: 4, Warnings: 0
+add wave -position insertpoint sim:/top/*
+# End time: 19:33:57 on Apr 24,2024, Elapsed time: 0:20:00
+# Errors: 30, Warnings: 0
