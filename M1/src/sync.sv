@@ -1,12 +1,12 @@
 module sync #(
-    parameter ADDR_WIDTH = 7
+    parameter ADDR_WIDTH = 6
 )(
     input  logic             clk, rst_n,
-    input  logic [ADDR_WIDTH-1:0] data_in,
-    output logic [ADDR_WIDTH-1:0] data_out
+    input  logic [ADDR_WIDTH:0] data_in,
+    output logic [ADDR_WIDTH:0] data_out
 );
 
-    logic [ADDR_WIDTH-1:0] buffer;
+    logic [ADDR_WIDTH:0] buffer;
 
     always_ff @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin

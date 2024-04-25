@@ -37,7 +37,7 @@ module top;
 	clk_rd = '0;
   
     rst_n = 1'b0;
-    repeat (1) @(negedge clk_wr);
+    @(negedge clk_wr);
     rst_n = 1'b1;
   end
 
@@ -52,10 +52,13 @@ module top;
     rd_en = 0;
     repeat (10) @(posedge clk_wr);
     repeat (1000) begin
-      wr_en = $random;
-      rd_en = $random;
       data_in = getdata();
+      @(negedge clk_wr)
+      wr_en = $random;
+      @(negedge clk_rd)
+      rd_en = $random;
       @(posedge clk_wr);
+      @(posedge clk_rd);
     end
     repeat (10) @(posedge clk_wr);
     $finish;
@@ -71,7 +74,7 @@ module top;
 
   // Scoreboard for checking data integrity
   logic [DATA_WIDTH-1:0] memory [0:(1<<ADDR_WIDTH)-1];
-  integer write_ptr = 0, read_ptr = 0;
+  logic [ADDR_WIDTH:0] write_ptr = 0, read_ptr = 0;
 
   always @(posedge clk_wr) begin
     if (wr_en && !full) begin
@@ -82,8 +85,8 @@ module top;
 
   always @(posedge clk_rd) begin
     if (rd_en && !empty) begin
-      if (data_out !== memory[read_ptr[ADDR_WIDTH-1:0]]) begin
-        $display("Mismatch at %d: expected %h, got %h", read_ptr, memory[read_ptr[ADDR_WIDTH-1:0]], data_out);
+      if (data_out !== memory[read_ptr[ADDR_WIDTH-1:0]-1]) begin
+        $display("Mismatch at %d: expected %h, got %h", read_ptr, memory[read_ptr[ADDR_WIDTH-1:0]-1], data_out);
       end
       read_ptr++;
     end

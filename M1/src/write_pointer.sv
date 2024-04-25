@@ -16,8 +16,7 @@ module write_pointer #(
     end
 
     always_ff @(posedge clk) begin
-        full <= (wptr[ADDR_WIDTH-1:0] == wq2_rptr[ADDR_WIDTH-1:0]) &&
-                (wptr[ADDR_WIDTH] != wq2_rptr[ADDR_WIDTH]);
+        full <= (wptr[ADDR_WIDTH-1:0] == wq2_rptr[ADDR_WIDTH-1:0]) && (wptr[ADDR_WIDTH] != wq2_rptr[ADDR_WIDTH]);
     end
 
     assign waddr = wptr[ADDR_WIDTH-1:0];
