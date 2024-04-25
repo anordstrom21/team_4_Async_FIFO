@@ -22,7 +22,7 @@ module sync #(
             buffer <= data_in;
             buffer2 <= buffer;
             buffer3 <= buffer2;
-            buffer4 <= buffer4;
+            buffer4 <= buffer3;
             data_out <= buffer4;
         end
     end
