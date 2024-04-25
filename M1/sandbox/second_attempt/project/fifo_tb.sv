@@ -52,10 +52,13 @@ module top;
     rd_en = 0;
     repeat (10) @(posedge clk_wr);
     repeat (1000) begin
-      wr_en = $random;
-      rd_en = $random;
       data_in = getdata();
+      @(negedge clk_wr)
+      wr_en = $random;
+      @(negedge clk_rd)
+      rd_en = $random;
       @(posedge clk_wr);
+      @(posedge clk_rd);
     end
     repeat (10) @(posedge clk_wr);
     $finish;
