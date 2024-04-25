@@ -12,4 +12,61 @@
 # //  is prohibited from disclosure under the Trade Secrets Act,
 # //  18 U.S.C. Section 1905.
 # //
-# OpenFile fifo_tb.sv
+do run.do
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 21:28:09 on Apr 24,2024
+# vlog -reportprogress 300 -lint fifo_top.sv "+acc" -sv 
+# -- Compiling module fifo_top
+# 
+# Top level modules:
+# 	fifo_top
+# End time: 21:28:10 on Apr 24,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 21:28:10 on Apr 24,2024
+# vlog -reportprogress 300 -lint fifo_memory.sv "+acc" -sv 
+# -- Compiling module fifo_memory
+# 
+# Top level modules:
+# 	fifo_memory
+# End time: 21:28:10 on Apr 24,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 21:28:10 on Apr 24,2024
+# vlog -reportprogress 300 -lint read_pointer.sv "+acc" -sv 
+# -- Compiling module read_pointer
+# 
+# Top level modules:
+# 	read_pointer
+# End time: 21:28:10 on Apr 24,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 21:28:10 on Apr 24,2024
+# vlog -reportprogress 300 -lint write_pointer.sv "+acc" -sv 
+# -- Compiling module write_pointer
+# 
+# Top level modules:
+# 	write_pointer
+# End time: 21:28:10 on Apr 24,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 21:28:10 on Apr 24,2024
+# vlog -reportprogress 300 -lint sync.sv "+acc" -sv 
+# -- Compiling module sync
+# 
+# Top level modules:
+# 	sync
+# End time: 21:28:10 on Apr 24,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 21:28:11 on Apr 24,2024
+# vlog -reportprogress 300 -lint fifo_tb.sv "+acc" -sv 
+# -- Compiling module top
+# ** Error (suppressible): fifo_tb.sv(74): (vlog-13169) Packed dimension must specify a range.
+# End time: 21:28:11 on Apr 24,2024, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# ** Error: /pkgs/mentor/questa/2019.2_1/questasim/linux_x86_64/vlog failed.
+# Error in macro ./run.do line 13
+# /pkgs/mentor/questa/2019.2_1/questasim/linux_x86_64/vlog failed.
+#     while executing
+# "vlog -lint fifo_tb.sv +acc -sv"
