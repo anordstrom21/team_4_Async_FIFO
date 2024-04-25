@@ -19,8 +19,8 @@ onbreak {resume}
 log /* -r
 run -all
 
-coverage save cascaded_ece593_alu.ucdb
-vcover report cascaded_ece593_alu.ucdb
-vcover report cascaded_ece593_alu.ucdb -cvg -details
+coverage save async_fifo.ucdb
+vcover report async_fifo.ucdb
+vcover report async_fifo.ucdb -cvg -details
 
 quit
