@@ -14,61 +14,61 @@
 # //
 do run.do
 # QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
-# Start time: 19:13:54 on Apr 24,2024
+# Start time: 19:59:50 on Apr 24,2024
 # vlog -reportprogress 300 -lint fifo_top.sv "+acc" -sv 
 # -- Compiling module fifo_top
 # 
 # Top level modules:
 # 	fifo_top
-# End time: 19:13:55 on Apr 24,2024, Elapsed time: 0:00:01
+# End time: 19:59:50 on Apr 24,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
-# Start time: 19:13:55 on Apr 24,2024
+# Start time: 19:59:50 on Apr 24,2024
 # vlog -reportprogress 300 -lint fifo_memory.sv "+acc" -sv 
 # -- Compiling module fifo_memory
 # 
 # Top level modules:
 # 	fifo_memory
-# End time: 19:13:55 on Apr 24,2024, Elapsed time: 0:00:00
+# End time: 19:59:50 on Apr 24,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
-# Start time: 19:13:55 on Apr 24,2024
+# Start time: 19:59:51 on Apr 24,2024
 # vlog -reportprogress 300 -lint read_pointer.sv "+acc" -sv 
 # -- Compiling module read_pointer
 # 
 # Top level modules:
 # 	read_pointer
-# End time: 19:13:55 on Apr 24,2024, Elapsed time: 0:00:00
+# End time: 19:59:51 on Apr 24,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
-# Start time: 19:13:55 on Apr 24,2024
+# Start time: 19:59:51 on Apr 24,2024
 # vlog -reportprogress 300 -lint write_pointer.sv "+acc" -sv 
 # -- Compiling module write_pointer
 # 
 # Top level modules:
 # 	write_pointer
-# End time: 19:13:55 on Apr 24,2024, Elapsed time: 0:00:00
+# End time: 19:59:51 on Apr 24,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
-# Start time: 19:13:55 on Apr 24,2024
+# Start time: 19:59:51 on Apr 24,2024
 # vlog -reportprogress 300 -lint sync.sv "+acc" -sv 
 # -- Compiling module sync
 # 
 # Top level modules:
 # 	sync
-# End time: 19:13:56 on Apr 24,2024, Elapsed time: 0:00:01
+# End time: 19:59:51 on Apr 24,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
-# Start time: 19:13:56 on Apr 24,2024
+# Start time: 19:59:51 on Apr 24,2024
 # vlog -reportprogress 300 -lint fifo_tb.sv "+acc" -sv 
 # -- Compiling module top
 # 
 # Top level modules:
 # 	top
-# End time: 19:13:56 on Apr 24,2024, Elapsed time: 0:00:00
+# End time: 19:59:52 on Apr 24,2024, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vopt 2019.2_1 Compiler 2019.05 May 13 2019
-# Start time: 19:13:56 on Apr 24,2024
+# Start time: 19:59:52 on Apr 24,2024
 # vopt -reportprogress 300 top -o top_optimized "+acc" "+cover=sbfec+fifo_top(rtl)." 
 # 
 # Top level modules:
@@ -89,10 +89,10 @@ do run.do
 # -- Optimizing module read_pointer(fast)
 # -- Optimizing module sync(fast)
 # Optimized design name is top_optimized
-# End time: 19:13:57 on Apr 24,2024, Elapsed time: 0:00:01
+# End time: 19:59:53 on Apr 24,2024, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # vsim top_optimized -coverage 
-# Start time: 19:13:57 on Apr 24,2024
+# Start time: 19:59:53 on Apr 24,2024
 # Loading sv_std.std
 # Loading work.top(fast)
 # Loading work.fifo_top(fast)
@@ -353,8 +353,8 @@ do run.do
 # 1
 # Break in Module top at fifo_tb.sv line 61
 # QuestaSim-64 vcover 2019.2_1 Coverage Utility 2019.05 May 13 2019
-# Start time: 19:14:07 on Apr 24,2024
-# vcover report cascaded_ece593_alu.ucdb 
+# Start time: 20:00:03 on Apr 24,2024
+# vcover report async_fifo.ucdb 
 # Coverage Report Summary Data by instance
 # 
 # =================================================================================
@@ -429,11 +429,11 @@ do run.do
 # 
 # Total Coverage By Instance (filtered view): 90.00%
 # 
-# End time: 19:14:07 on Apr 24,2024, Elapsed time: 0:00:00
+# End time: 20:00:03 on Apr 24,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vcover 2019.2_1 Coverage Utility 2019.05 May 13 2019
-# Start time: 19:14:07 on Apr 24,2024
-# vcover report cascaded_ece593_alu.ucdb -cvg -details 
+# Start time: 20:00:03 on Apr 24,2024
+# vcover report async_fifo.ucdb -cvg -details 
 # Coverage Report by instance with details
 # 
 # =================================================================================
@@ -556,8 +556,8 @@ do run.do
 # 
 # Total Coverage By Instance (filtered view): 100.00%
 # 
-# End time: 19:14:07 on Apr 24,2024, Elapsed time: 0:00:00
+# End time: 20:00:03 on Apr 24,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 add wave -position insertpoint sim:/top/*
-# End time: 19:33:57 on Apr 24,2024, Elapsed time: 0:20:00
-# Errors: 30, Warnings: 0
+# End time: 20:14:09 on Apr 24,2024, Elapsed time: 0:14:16
+# Errors: 32, Warnings: 0

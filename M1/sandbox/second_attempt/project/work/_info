@@ -11,7 +11,7 @@ cModel Technology
 Z0 d/home/amaso/common/Documents/ECE593/final_project/team_4_Async_FIFO/M1/sandbox/second_attempt/project
 vfifo_memory
 Z1 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
-Z2 !s110 1714011235
+Z2 !s110 1714013990
 !i10b 1
 !s100 `]nFLRE>P8gXR1j0Wec^]2
 !s11b `4WgbhjJb1:L5ebfIWoli2
@@ -27,7 +27,7 @@ Z5 OL;L;2019.2_1;69
 r1
 !s85 0
 31
-Z6 !s108 1714011235.000000
+Z6 !s108 1714013990.000000
 !s107 fifo_memory.sv|
 !s90 -reportprogress|300|-lint|fifo_memory.sv|+acc|-sv|
 !i113 0
@@ -35,7 +35,7 @@ Z7 o-lint +acc -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
 Z8 tCvgOpt 0
 vfifo_top
 R1
-!s110 1714011234
+R2
 !i10b 1
 !s100 =FA9iXQ>TklhC0DPLPn<a1
 !s11b VJaRB4WO7@143ebmEkH1l0
@@ -51,7 +51,7 @@ R5
 r1
 !s85 0
 31
-!s108 1714011234.000000
+R6
 !s107 fifo_top.sv|
 !s90 -reportprogress|300|-lint|fifo_top.sv|+acc|-sv|
 !i113 0
@@ -59,7 +59,7 @@ R7
 R8
 vread_pointer
 R1
-R2
+Z9 !s110 1714013991
 !i10b 1
 !s100 _UMno>OeNhA[JQaV:EB3`2
 !s11b UAl>B^1`fafR3:8h=H3183
@@ -75,7 +75,7 @@ R5
 r1
 !s85 0
 31
-R6
+Z10 !s108 1714013991.000000
 !s107 read_pointer.sv|
 !s90 -reportprogress|300|-lint|read_pointer.sv|+acc|-sv|
 !i113 0
@@ -83,15 +83,15 @@ R7
 R8
 vsync
 R1
-R2
+R9
 !i10b 1
-!s100 R;Azo`gFLXF;LbDm0TSOE1
-!s11b kP0>]i<5`S9U@NGX3Qi_h0
-I2dF31d0FDN7QC15XaalEA2
+!s100 fc:3:F@A66_i65:^20WZE2
+!s11b k=k8PdI>ohMNLCLD8RioJ0
+I9O4j`FKi3zOBIFzc;[_l13
 R3
 S1
 R0
-R4
+w1714013969
 8sync.sv
 Fsync.sv
 L0 1
@@ -99,7 +99,7 @@ R5
 r1
 !s85 0
 31
-R6
+R10
 !s107 sync.sv|
 !s90 -reportprogress|300|-lint|sync.sv|+acc|-sv|
 !i113 0
@@ -107,7 +107,7 @@ R7
 R8
 vtop
 R1
-Z9 !s110 1714011236
+Z11 !s110 1714013992
 !i10b 1
 !s100 nEIU8<hzLYMiF60S<3f`83
 !s11b Qj_S=h3[AlX6UE3MzRVC?2
@@ -123,15 +123,15 @@ R5
 r1
 !s85 0
 31
-!s108 1714011236.000000
+R10
 !s107 fifo_tb.sv|
 !s90 -reportprogress|300|-lint|fifo_tb.sv|+acc|-sv|
 !i113 0
 R7
 R8
 Ttop_optimized
-R9
-VEOY6G0fI5:B[CbX1W>chk3
+R11
+Vo?kgW;mFMRh?jL9jP3[Ob0
 04 3 4 work top fast 0
 o+acc +cover=sbfec+fifo_top(rtl).
 R8
@@ -139,7 +139,7 @@ ntop_optimized
 OL;O;2019.2_1;69
 vwrite_pointer
 R1
-R2
+R9
 !i10b 1
 !s100 BiKzYX[eQLD:Vz48GOZjF2
 !s11b 16[<Uf>?SAZGh;XVcn_`E2
@@ -155,7 +155,7 @@ R5
 r1
 !s85 0
 31
-R6
+R10
 !s107 write_pointer.sv|
 !s90 -reportprogress|300|-lint|write_pointer.sv|+acc|-sv|
 !i113 0
