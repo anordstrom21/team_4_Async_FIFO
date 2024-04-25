@@ -82,8 +82,8 @@ module top;
 
   always @(posedge clk_rd) begin
     if (rd_en && !empty) begin
-      if (data_out !== memory[read_ptr[ADDR_WIDTH-1:0]]) begin
-        $display("Mismatch at %d: expected %h, got %h", read_ptr, memory[read_ptr[ADDR_WIDTH-1:0]], data_out);
+      if (data_out !== memory[read_ptr[ADDR_WIDTH-1:0]-1]) begin
+        $display("Mismatch at %d: expected %h, got %h", read_ptr, memory[read_ptr[ADDR_WIDTH-1:0]-1], data_out);
       end
       read_ptr++;
     end

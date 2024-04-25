@@ -14,59 +14,580 @@
 # //
 do run.do
 # QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
-# Start time: 21:28:09 on Apr 24,2024
+# Start time: 22:04:14 on Apr 24,2024
 # vlog -reportprogress 300 -lint fifo_top.sv "+acc" -sv 
 # -- Compiling module fifo_top
 # 
 # Top level modules:
 # 	fifo_top
-# End time: 21:28:10 on Apr 24,2024, Elapsed time: 0:00:01
+# End time: 22:04:14 on Apr 24,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
-# Start time: 21:28:10 on Apr 24,2024
+# Start time: 22:04:14 on Apr 24,2024
 # vlog -reportprogress 300 -lint fifo_memory.sv "+acc" -sv 
 # -- Compiling module fifo_memory
 # 
 # Top level modules:
 # 	fifo_memory
-# End time: 21:28:10 on Apr 24,2024, Elapsed time: 0:00:00
+# End time: 22:04:14 on Apr 24,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
-# Start time: 21:28:10 on Apr 24,2024
+# Start time: 22:04:14 on Apr 24,2024
 # vlog -reportprogress 300 -lint read_pointer.sv "+acc" -sv 
 # -- Compiling module read_pointer
 # 
 # Top level modules:
 # 	read_pointer
-# End time: 21:28:10 on Apr 24,2024, Elapsed time: 0:00:00
+# End time: 22:04:14 on Apr 24,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
-# Start time: 21:28:10 on Apr 24,2024
+# Start time: 22:04:15 on Apr 24,2024
 # vlog -reportprogress 300 -lint write_pointer.sv "+acc" -sv 
 # -- Compiling module write_pointer
 # 
 # Top level modules:
 # 	write_pointer
-# End time: 21:28:10 on Apr 24,2024, Elapsed time: 0:00:00
+# End time: 22:04:15 on Apr 24,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
-# Start time: 21:28:10 on Apr 24,2024
+# Start time: 22:04:15 on Apr 24,2024
 # vlog -reportprogress 300 -lint sync.sv "+acc" -sv 
 # -- Compiling module sync
 # 
 # Top level modules:
 # 	sync
-# End time: 21:28:10 on Apr 24,2024, Elapsed time: 0:00:00
+# End time: 22:04:15 on Apr 24,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
-# Start time: 21:28:11 on Apr 24,2024
+# Start time: 22:04:15 on Apr 24,2024
 # vlog -reportprogress 300 -lint fifo_tb.sv "+acc" -sv 
 # -- Compiling module top
-# ** Error (suppressible): fifo_tb.sv(74): (vlog-13169) Packed dimension must specify a range.
-# End time: 21:28:11 on Apr 24,2024, Elapsed time: 0:00:00
-# Errors: 1, Warnings: 0
-# ** Error: /pkgs/mentor/questa/2019.2_1/questasim/linux_x86_64/vlog failed.
-# Error in macro ./run.do line 13
-# /pkgs/mentor/questa/2019.2_1/questasim/linux_x86_64/vlog failed.
-#     while executing
-# "vlog -lint fifo_tb.sv +acc -sv"
+# 
+# Top level modules:
+# 	top
+# End time: 22:04:15 on Apr 24,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vopt 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 22:04:15 on Apr 24,2024
+# vopt -reportprogress 300 top -o top_optimized "+acc" "+cover=sbfec+fifo_top(rtl)." 
+# 
+# Top level modules:
+# 	top
+# 
+# Analyzing design...
+# -- Loading module top
+# -- Loading module fifo_top
+# -- Loading module fifo_memory
+# -- Loading module write_pointer
+# -- Loading module read_pointer
+# -- Loading module sync
+# Optimizing 6 design-units (inlining 0/7 module instances):
+# -- Optimizing module top(fast)
+# -- Optimizing module fifo_top(fast)
+# -- Optimizing module write_pointer(fast)
+# -- Optimizing module read_pointer(fast)
+# -- Optimizing module fifo_memory(fast)
+# -- Optimizing module sync(fast)
+# Optimized design name is top_optimized
+# End time: 22:04:16 on Apr 24,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vsim top_optimized -coverage 
+# Start time: 22:04:16 on Apr 24,2024
+# Loading sv_std.std
+# Loading work.top(fast)
+# Loading work.fifo_top(fast)
+# Loading work.fifo_memory(fast)
+# Loading work.write_pointer(fast)
+# Loading work.read_pointer(fast)
+# Loading work.sync(fast)
+# 1
+# Mismatch at   5: expected 12, got f9
+# Mismatch at   6: expected ce, got 12
+# Mismatch at   7: expected 65, got ce
+# Mismatch at  10: expected 0a, got d5
+# Mismatch at  11: expected 4f, got 0a
+# Mismatch at  12: expected 7e, got 4f
+# Mismatch at  13: expected d9, got 7e
+# Mismatch at  14: expected b7, got d9
+# Mismatch at  15: expected 5b, got b7
+# Mismatch at  16: expected d0, got 5b
+# Mismatch at  17: expected 96, got d0
+# Mismatch at  18: expected 12, got 96
+# Mismatch at  19: expected 85, got 12
+# Mismatch at  20: expected 58, got 85
+# Mismatch at  21: expected b3, got 58
+# Mismatch at  22: expected f7, got b3
+# Mismatch at  23: expected 5a, got f7
+# Mismatch at  24: expected da, got 5a
+# Mismatch at  25: expected df, got da
+# Mismatch at  26: expected d0, got df
+# Mismatch at  27: expected 4e, got d0
+# Mismatch at  28: expected b6, got 4e
+# Mismatch at  29: expected 4d, got b6
+# Mismatch at  30: expected 76, got 4d
+# Mismatch at  31: expected 88, got 76
+# Mismatch at  32: expected 1c, got 88
+# Mismatch at  33: expected b9, got 1c
+# Mismatch at  34: expected c0, got b9
+# Mismatch at  35: expected 61, got c0
+# Mismatch at  36: expected 86, got 61
+# Mismatch at  37: expected c5, got 86
+# Mismatch at  38: expected b6, got c5
+# Mismatch at  39: expected fb, got b6
+# Mismatch at  40: expected c9, got fb
+# Mismatch at  41: expected ae, got c9
+# Mismatch at  44: expected d8, got 5b
+# Mismatch at  45: expected 5b, got a1
+# Mismatch at  46: expected a1, got 1f
+# Mismatch at  47: expected c8, got a7
+# Mismatch at  48: expected 1f, got 49
+# Mismatch at  49: expected ed, got 51
+# Mismatch at  50: expected ad, got fa
+# Mismatch at  51: expected a7, got 7c
+# Mismatch at  52: expected 49, got f0
+# Mismatch at  53: expected 51, got 17
+# Mismatch at  54: expected fa, got 86
+# Mismatch at  55: expected 7c, got 8d
+# Mismatch at  56: expected f0, got 4b
+# Mismatch at  57: expected 17, got fd
+# Mismatch at  58: expected 86, got 03
+# Mismatch at  59: expected 8d, got b1
+# Mismatch at  60: expected 4b, got f8
+# Mismatch at  61: expected fd, got 84
+# Mismatch at  62: expected 03, got 84
+# Mismatch at  63: expected b1, got 3d
+# Mismatch at  64: expected xx, got 47
+# Mismatch at  65: expected 84, got 47
+# Mismatch at  66: expected 84, got 11
+# Mismatch at  67: expected a2, got df
+# Mismatch at  68: expected 3d, got 1c
+# Mismatch at  69: expected 47, got 1c
+# Mismatch at  70: expected 77, got 2a
+# Mismatch at  71: expected f8, got bb
+# Mismatch at  72: expected bc, got 51
+# Mismatch at  73: expected 69, got 4a
+# Mismatch at  74: expected c2, got 01
+# Mismatch at  75: expected 24, got c2
+# Mismatch at  76: expected b9, got c2
+# Mismatch at  77: expected f1, got af
+# Mismatch at  78: expected 35, got ee
+# Mismatch at  79: expected 2f, got 81
+# Mismatch at  80: expected 4b, got e2
+# Mismatch at  81: expected 6e, got 4a
+# Mismatch at  82: expected 37, got 13
+# Mismatch at  83: expected ce, got b7
+# Mismatch at  84: expected 5c, got e5
+# Mismatch at  85: expected 8f, got 41
+# Mismatch at  86: expected ab, got cd
+# Mismatch at  87: expected 7c, got dc
+# Mismatch at  88: expected c9, got c8
+# Mismatch at  89: expected 70, got 73
+# Mismatch at  90: expected 04, got 15
+# Mismatch at  91: expected 61, got 15
+# Mismatch at  92: expected d3, got 29
+# Mismatch at  93: expected e9, got 7f
+# Mismatch at  94: expected df, got 7f
+# Mismatch at  95: expected 9f, got 31
+# Mismatch at  96: expected 29, got 31
+# Mismatch at  97: expected 7f, got 5d
+# Mismatch at  98: expected 31, got 3a
+# Mismatch at  99: expected 5d, got 56
+# Mismatch at 100: expected 69, got 56
+# Mismatch at 101: expected 3a, got da
+# Mismatch at 102: expected 56, got da
+# Mismatch at 103: expected da, got 51
+# Mismatch at 106: expected a7, got 00
+# Mismatch at 107: expected 00, got 5f
+# Mismatch at 108: expected 5f, got 25
+# Mismatch at 109: expected 25, got 27
+# Mismatch at 111: expected 16, got 55
+# Mismatch at 112: expected 55, got 82
+# Mismatch at 113: expected cd, got ac
+# Mismatch at 114: expected 82, got f1
+# Mismatch at 115: expected ac, got f1
+# Mismatch at 116: expected f1, got 31
+# Mismatch at 117: expected 31, got e3
+# Mismatch at 118: expected e3, got c2
+# Mismatch at 119: expected c2, got 05
+# Mismatch at 120: expected 05, got 6b
+# Mismatch at 121: expected 6b, got 4f
+# Mismatch at 122: expected 4f, got 54
+# Mismatch at 123: expected 54, got b8
+# Mismatch at 124: expected 6a, got 35
+# Mismatch at 125: expected a8, got 79
+# Mismatch at 126: expected b8, got c9
+# Mismatch at 127: expected 35, got 1b
+# Mismatch at   0: expected xx, got 84
+# Mismatch at   1: expected c9, got b3
+# Mismatch at   2: expected 73, got cc
+# Mismatch at   3: expected 1b, got ca
+# Mismatch at   4: expected 84, got ca
+# Mismatch at   5: expected b3, got 76
+# Mismatch at   6: expected cc, got b4
+# Mismatch at   7: expected ca, got 45
+# Mismatch at   8: expected 76, got dd
+# Mismatch at   9: expected b4, got b3
+# Mismatch at  10: expected 45, got e1
+# Mismatch at  11: expected dd, got 74
+# Mismatch at  12: expected b3, got fa
+# Mismatch at  13: expected e1, got a6
+# Mismatch at  14: expected 74, got ed
+# Mismatch at  15: expected fa, got 21
+# Mismatch at  16: expected a6, got 3e
+# Mismatch at  17: expected ed, got 3d
+# Mismatch at  18: expected 21, got dc
+# Mismatch at  19: expected 3e, got cd
+# Mismatch at  20: expected 3d, got 13
+# Mismatch at  21: expected dc, got c1
+# Mismatch at  22: expected cd, got ad
+# Mismatch at  23: expected 13, got ad
+# Mismatch at  24: expected c1, got 25
+# Mismatch at  25: expected ad, got e0
+# Mismatch at  26: expected 25, got a1
+# Mismatch at  27: expected e0, got eb
+# Mismatch at  28: expected a1, got 05
+# Mismatch at  29: expected eb, got 98
+# Mismatch at  30: expected 9c, got 83
+# Mismatch at  31: expected 05, got 81
+# Mismatch at  32: expected 98, got 36
+# Mismatch at  33: expected 83, got c4
+# Mismatch at  34: expected 81, got be
+# Mismatch at  35: expected 36, got d7
+# Mismatch at  36: expected c4, got 96
+# Mismatch at  37: expected ac, got 3d
+# Mismatch at  38: expected be, got df
+# Mismatch at  39: expected b4, got c0
+# Mismatch at  40: expected d7, got 18
+# Mismatch at  41: expected 96, got 7d
+# Mismatch at  42: expected 3d, got 0a
+# Mismatch at  43: expected df, got c5
+# Mismatch at  44: expected c0, got ca
+# Mismatch at  45: expected 18, got dd
+# Mismatch at  46: expected 7d, got dd
+# Mismatch at  47: expected 0a, got 26
+# Mismatch at  48: expected c5, got f2
+# Mismatch at  49: expected ca, got 04
+# Mismatch at  50: expected dd, got 3b
+# Mismatch at  51: expected 26, got cb
+# Mismatch at  52: expected f2, got e3
+# Mismatch at  53: expected 04, got e3
+# Mismatch at  54: expected 3b, got 14
+# Mismatch at  55: expected cb, got ce
+# Mismatch at  56: expected e3, got 5e
+# Mismatch at  57: expected 7d, got 19
+# Mismatch at  58: expected 4c, got 19
+# Mismatch at  59: expected da, got 17
+# Mismatch at  60: expected 17, got af
+# Mismatch at  61: expected f0, got af
+# Mismatch at  62: expected 03, got 19
+# Mismatch at  63: expected ed, got b3
+# Mismatch at  64: expected xx, got 7e
+# Mismatch at  65: expected 19, got c2
+# Mismatch at  66: expected b3, got fd
+# Mismatch at  67: expected 30, got 59
+# Mismatch at  68: expected 0c, got 69
+# Mismatch at  69: expected 7e, got cd
+# Mismatch at  70: expected aa, got 58
+# Mismatch at  71: expected c2, got ad
+# Mismatch at  72: expected fd, got ad
+# Mismatch at  73: expected 59, got 0d
+# Mismatch at  74: expected 69, got 0d
+# Mismatch at  75: expected d9, got b1
+# Mismatch at  76: expected cd, got 30
+# Mismatch at  77: expected 58, got 76
+# Mismatch at  78: expected ad, got 6a
+# Mismatch at  79: expected 0d, got 6c
+# Mismatch at  80: expected b1, got 56
+# Mismatch at  81: expected 30, got f1
+# Mismatch at  82: expected e3, got ea
+# Mismatch at  83: expected 5d, got db
+# Mismatch at  84: expected 76, got db
+# Mismatch at  85: expected 6a, got e8
+# Mismatch at  86: expected 6c, got 3c
+# Mismatch at  87: expected 56, got 15
+# Mismatch at  88: expected f1, got 15
+# Mismatch at  89: expected ea, got b5
+# Mismatch at  90: expected db, got d3
+# Mismatch at  91: expected d8, got d3
+# Mismatch at  92: expected e8, got 69
+# Mismatch at  93: expected 3c, got c1
+# Mismatch at  94: expected 15, got c9
+# Mismatch at  95: expected 2a, got 33
+# Mismatch at  96: expected b5, got a4
+# Mismatch at  97: expected d3, got 40
+# Mismatch at  98: expected a8, got 9c
+# Mismatch at  99: expected 69, got 0c
+# Mismatch at 100: expected c1, got cf
+# Mismatch at 101: expected f8, got 72
+# Mismatch at 102: expected c9, got b5
+# Mismatch at 103: expected 33, got 9b
+# Mismatch at 104: expected a4, got 94
+# Mismatch at 105: expected 40, got 75
+# Mismatch at 106: expected 4d, got 72
+# Mismatch at 107: expected 9c, got ca
+# Mismatch at 108: expected 0c, got 4f
+# Mismatch at 109: expected cf, got 4f
+# Mismatch at 110: expected 72, got 94
+# Mismatch at 111: expected 89, got 0b
+# Mismatch at 112: expected b5, got 2a
+# Mismatch at 113: expected 9b, got 43
+# Mismatch at 114: expected 49, got 28
+# Mismatch at 115: expected 94, got 2e
+# Mismatch at 116: expected 75, got d9
+# Mismatch at 117: expected 72, got 63
+# Mismatch at 118: expected ca, got 41
+# Mismatch at 119: expected 4f, got b3
+# Mismatch at 120: expected 94, got 3f
+# Mismatch at 121: expected 0b, got 92
+# Mismatch at 122: expected 2a, got 0a
+# Mismatch at 123: expected 43, got d9
+# Mismatch at 124: expected 85, got 1b
+# Mismatch at 125: expected 28, got 35
+# Mismatch at 126: expected 2e, got 56
+# Mismatch at 127: expected d9, got ea
+# Mismatch at   0: expected xx, got ea
+# Mismatch at   1: expected 41, got 53
+# Mismatch at   2: expected 94, got 21
+# Mismatch at   3: expected b3, got 23
+# Mismatch at   4: expected 3f, got b2
+# Mismatch at   5: expected 92, got b2
+# Mismatch at   6: expected 0a, got 1d
+# Mismatch at   7: expected d9, got 1d
+# Mismatch at   8: expected 1b, got 13
+# Mismatch at   9: expected c8, got 13
+# Mismatch at  10: expected 35, got 50
+# Mismatch at  11: expected 56, got e2
+# Mismatch at  12: expected ea, got e2
+# Mismatch at  13: expected 53, got 1e
+# Mismatch at  14: expected 21, got 45
+# Mismatch at  15: expected 23, got d7
+# Mismatch at  16: expected b2, got a3
+# Mismatch at  17: expected 1d, got 40
+# Mismatch at  18: expected 13, got 1a
+# Mismatch at  19: expected 50, got a2
+# Mismatch at  20: expected e2, got f4
+# Mismatch at  21: expected 1e, got 77
+# Mismatch at  22: expected 45, got ef
+# Mismatch at  23: expected 53, got db
+# Mismatch at  24: expected ea, got 25
+# Mismatch at  25: expected 12, got 38
+# Mismatch at  26: expected b4, got dc
+# Mismatch at  27: expected 8f, got a2
+# Mismatch at  28: expected ad, got 08
+# Mismatch at  29: expected 1f, got 75
+# Mismatch at  30: expected d4, got 83
+# Mismatch at  31: expected b2, got d5
+# Mismatch at  32: expected 6a, got 16
+# Mismatch at  33: expected 79, got cc
+# ** Note: $finish    : fifo_tb.sv(61)
+#    Time: 12234 ns  Iteration: 1  Instance: /top
+# 1
+# Break in Module top at fifo_tb.sv line 61
+# QuestaSim-64 vcover 2019.2_1 Coverage Utility 2019.05 May 13 2019
+# Start time: 22:04:25 on Apr 24,2024
+# vcover report async_fifo.ucdb 
+# Coverage Report Summary Data by instance
+# 
+# =================================================================================
+# === Instance: /top/dut/mem_inst
+# === Design Unit: work.fifo_memory
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         4         4         0   100.00%
+#     Statements                       4         4         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/dut/write_ptr
+# === Design Unit: work.write_pointer
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         3         3         0   100.00%
+#     Conditions                       2         1         1    50.00%
+#     Expressions                      2         2         0   100.00%
+#     Statements                       6         6         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/dut/read_ptr
+# === Design Unit: work.read_pointer
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         3         3         0   100.00%
+#     Conditions                       2         1         1    50.00%
+#     Expressions                      2         2         0   100.00%
+#     Statements                       6         6         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/dut/sync_w2r
+# === Design Unit: work.sync
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         2         2         0   100.00%
+#     Statements                       7         7         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/dut/sync_r2w
+# === Design Unit: work.sync
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         2         2         0   100.00%
+#     Statements                       7         7         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/dut
+# === Design Unit: work.fifo_top
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Expressions                      8         8         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top
+# === Design Unit: work.top
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Covergroups                      1        na        na   100.00%
+#         Coverpoints/Crosses          4        na        na        na
+#             Covergroup Bins          8         8         0   100.00%
+# 
+# 
+# TOTAL COVERGROUP COVERAGE: 100.00%  COVERGROUP TYPES: 1
+# 
+# Total Coverage By Instance (filtered view): 90.00%
+# 
+# End time: 22:04:25 on Apr 24,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcover 2019.2_1 Coverage Utility 2019.05 May 13 2019
+# Start time: 22:04:25 on Apr 24,2024
+# vcover report async_fifo.ucdb -cvg -details 
+# Coverage Report by instance with details
+# 
+# =================================================================================
+# === Instance: /top
+# === Design Unit: work.top
+# =================================================================================
+# 
+# Covergroup Coverage:
+#     Covergroups                      1        na        na   100.00%
+#         Coverpoints/Crosses          4        na        na        na
+#             Covergroup Bins          8         8         0   100.00%
+# ----------------------------------------------------------------------------------------------------------
+# Covergroup                                             Metric       Goal       Bins    Status               
+#                                                                                                          
+# ----------------------------------------------------------------------------------------------------------
+#  TYPE /top/cg_fifo                                    100.00%        100          -    Covered              
+#     covered/total bins:                                     8          8          -                      
+#     missing/total bins:                                     0          8          -                      
+#     % Hit:                                            100.00%        100          -                      
+#     Coverpoint wr_en                                  100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#     Coverpoint rd_en                                  100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#     Coverpoint full                                   100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#     Coverpoint empty                                  100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#  Covergroup instance \/top/cg                         100.00%        100          -    Covered              
+#     covered/total bins:                                     8          8          -                      
+#     missing/total bins:                                     0          8          -                      
+#     % Hit:                                            100.00%        100          -                      
+#     Coverpoint wr_en                                  100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin auto[0]                                       533          1          -    Covered              
+#         bin auto[1]                                       486          1          -    Covered              
+#     Coverpoint rd_en                                  100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin auto[0]                                       502          1          -    Covered              
+#         bin auto[1]                                       517          1          -    Covered              
+#     Coverpoint full                                   100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin auto[0]                                      1004          1          -    Covered              
+#         bin auto[1]                                        15          1          -    Covered              
+#     Coverpoint empty                                  100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin auto[0]                                      1000          1          -    Covered              
+#         bin auto[1]                                        19          1          -    Covered              
+# 
+# COVERGROUP COVERAGE:
+# ----------------------------------------------------------------------------------------------------------
+# Covergroup                                             Metric       Goal       Bins    Status               
+#                                                                                                          
+# ----------------------------------------------------------------------------------------------------------
+#  TYPE /top/cg_fifo                                    100.00%        100          -    Covered              
+#     covered/total bins:                                     8          8          -                      
+#     missing/total bins:                                     0          8          -                      
+#     % Hit:                                            100.00%        100          -                      
+#     Coverpoint wr_en                                  100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#     Coverpoint rd_en                                  100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#     Coverpoint full                                   100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#     Coverpoint empty                                  100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#  Covergroup instance \/top/cg                         100.00%        100          -    Covered              
+#     covered/total bins:                                     8          8          -                      
+#     missing/total bins:                                     0          8          -                      
+#     % Hit:                                            100.00%        100          -                      
+#     Coverpoint wr_en                                  100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin auto[0]                                       533          1          -    Covered              
+#         bin auto[1]                                       486          1          -    Covered              
+#     Coverpoint rd_en                                  100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin auto[0]                                       502          1          -    Covered              
+#         bin auto[1]                                       517          1          -    Covered              
+#     Coverpoint full                                   100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin auto[0]                                      1004          1          -    Covered              
+#         bin auto[1]                                        15          1          -    Covered              
+#     Coverpoint empty                                  100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin auto[0]                                      1000          1          -    Covered              
+#         bin auto[1]                                        19          1          -    Covered              
+# 
+# TOTAL COVERGROUP COVERAGE: 100.00%  COVERGROUP TYPES: 1
+# 
+# Total Coverage By Instance (filtered view): 100.00%
+# 
+# End time: 22:04:25 on Apr 24,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 22:06:05 on Apr 24,2024, Elapsed time: 0:01:49
+# Errors: 0, Warnings: 0
