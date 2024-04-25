@@ -9,7 +9,6 @@ module sync #(
     logic [ADDR_WIDTH:0] buffer;
     logic [ADDR_WIDTH:0] buffer2;
     logic [ADDR_WIDTH:0] buffer3;
-    logic [ADDR_WIDTH:0] buffer4;
 
     always_ff @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
@@ -17,13 +16,11 @@ module sync #(
             buffer <= 0;
             buffer2 <= 0;
             buffer3 <= 0;
-            buffer4 <= 0;
         end else begin
             buffer <= data_in;
             buffer2 <= buffer;
             buffer3 <= buffer2;
             buffer4 <= buffer3;
-            data_out <= buffer4;
         end
     end
 
