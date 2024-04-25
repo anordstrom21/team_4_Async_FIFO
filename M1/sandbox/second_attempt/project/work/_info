@@ -11,7 +11,7 @@ cModel Technology
 Z0 d/home/amaso/common/Documents/ECE593/final_project/team_4_Async_FIFO/M1/sandbox/second_attempt/project
 vfifo_memory
 Z1 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
-Z2 !s110 1714022005
+Z2 !s110 1714023364
 !i10b 1
 !s100 `]nFLRE>P8gXR1j0Wec^]2
 !s11b `4WgbhjJb1:L5ebfIWoli2
@@ -27,7 +27,7 @@ Z4 OL;L;2019.2_1;69
 r1
 !s85 0
 31
-Z5 !s108 1714022005.000000
+Z5 !s108 1714023364.000000
 !s107 fifo_memory.sv|
 !s90 -reportprogress|300|-lint|fifo_memory.sv|+acc|-sv|
 !i113 0
@@ -51,7 +51,7 @@ R4
 r1
 !s85 0
 31
-R5
+!s108 1714023363.000000
 !s107 fifo_top.sv|
 !s90 -reportprogress|300|-lint|fifo_top.sv|+acc|-sv|
 !i113 0
@@ -59,7 +59,7 @@ R6
 R7
 vread_pointer
 R1
-Z8 !s110 1714022006
+R2
 !i10b 1
 !s100 bO[kF_Fl7JNP7UNP[N3n;3
 !s11b S^>=_kl;Y;K06lcj;5?h00
@@ -75,71 +75,15 @@ R4
 r1
 !s85 0
 31
-Z9 !s108 1714022006.000000
+R5
 !s107 read_pointer.sv|
 !s90 -reportprogress|300|-lint|read_pointer.sv|+acc|-sv|
 !i113 0
 R6
 R7
-vsync
-R1
-R8
-!i10b 1
-!s100 fR6fcSWPk:7nB;JNeZi253
-!s11b <WlmVFHVDWCCkV4;MP_E_2
-IWi9dYLeCXU3<KdH_RGHz32
-R3
-S1
-R0
-w1714021950
-8sync.sv
-Fsync.sv
-L0 1
-R4
-r1
-!s85 0
-31
-R9
-!s107 sync.sv|
-!s90 -reportprogress|300|-lint|sync.sv|+acc|-sv|
-!i113 0
-R6
-R7
-vtop
-R1
-R8
-!i10b 1
-!s100 fa?AVR88b:bIn_DmbZ?>j2
-!s11b :_0dgJf>L^_=o0f9g98VP2
-IjWV3@PV@cT=Gc0kQ_XOFg1
-R3
-S1
-R0
-w1714021390
-8fifo_tb.sv
-Ffifo_tb.sv
-L0 1
-R4
-r1
-!s85 0
-31
-R9
-!s107 fifo_tb.sv|
-!s90 -reportprogress|300|-lint|fifo_tb.sv|+acc|-sv|
-!i113 0
-R6
-R7
-Ttop_optimized
-!s110 1714022007
-VzidI2QIcgIGMJ3dAPbglR2
-04 3 4 work top fast 0
-o+acc +cover=sbfec+fifo_top(rtl).
-R7
-ntop_optimized
-OL;O;2019.2_1;69
 vwrite_pointer
 R1
-R8
+R2
 !i10b 1
 !s100 c8h@boSmnGnNY@HJ@dnXZ3
 !s11b 16[<Uf>?SAZGh;XVcn_`E2
@@ -155,7 +99,7 @@ R4
 r1
 !s85 0
 31
-R9
+R5
 !s107 write_pointer.sv|
 !s90 -reportprogress|300|-lint|write_pointer.sv|+acc|-sv|
 !i113 0
