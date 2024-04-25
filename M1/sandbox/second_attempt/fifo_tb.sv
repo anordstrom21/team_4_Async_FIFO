@@ -1,4 +1,4 @@
-module fifo_tb;
+module top;
 
   // Parameters for FIFO configuration
   parameter DATA_WIDTH = 8, ADDR_WIDTH = 6;
@@ -31,10 +31,13 @@ module fifo_tb;
   always #(CYCLE_TIME_WR/2) clk_wr = ~clk_wr;
   always #(CYCLE_TIME_RD/2) clk_rd = ~clk_rd;
 
-  // Reset Generation
+  // Reset Generation and Initializing Clocks
   initial begin
+	clk_wr = '0;
+	clk_rd = '0;
+  
     rst_n = 1'b0;
-    #100;
+    repeat (1) @(negedge clk_wr);
     rst_n = 1'b1;
   end
 
