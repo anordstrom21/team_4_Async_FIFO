@@ -47,7 +47,7 @@ module fifo_top #(
     );
 
     // Synchronization from write to read domain
-    sync #(.ADDR_WIDTH(ADDR_WIDTH + 1)) sync_w2r (
+    sync #(.ADDR_WIDTH(ADDR_WIDTH)) sync_w2r (
         .clk(clk_rd),
         .rst_n(rst_n),
         .data_in(wptr),
@@ -55,7 +55,7 @@ module fifo_top #(
     );
 
     // Synchronization from read to write domain
-    sync #(.ADDR_WIDTH(ADDR_WIDTH + 1)) sync_r2w (
+    sync #(.ADDR_WIDTH(ADDR_WIDTH)) sync_r2w (
         .clk(clk_wr),
         .rst_n(rst_n),
         .data_in(rptr),

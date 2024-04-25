@@ -16,7 +16,7 @@ module read_pointer #(
     end
 
     always_ff @(posedge clk) begin
-        empty <= (rptr == rq2_wptr);
+        empty <= (rptr[ADDR_WIDTH-1:0] == rq2_wptr[ADDR_WIDTH-1:0]) && (rptr[ADDR_WIDTH] == rq2_wptr[ADDR_WIDTH]);
     end
 
     assign raddr = rptr[ADDR_WIDTH-1:0];

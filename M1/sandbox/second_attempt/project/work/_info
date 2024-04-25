@@ -11,7 +11,7 @@ cModel Technology
 Z0 d/home/amaso/common/Documents/ECE593/final_project/team_4_Async_FIFO/M1/sandbox/second_attempt/project
 vfifo_memory
 Z1 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
-Z2 !s110 1714015048
+Z2 !s110 1714017693
 !i10b 1
 !s100 `]nFLRE>P8gXR1j0Wec^]2
 !s11b `4WgbhjJb1:L5ebfIWoli2
@@ -27,7 +27,7 @@ Z5 OL;L;2019.2_1;69
 r1
 !s85 0
 31
-Z6 !s108 1714015048.000000
+Z6 !s108 1714017693.000000
 !s107 fifo_memory.sv|
 !s90 -reportprogress|300|-lint|fifo_memory.sv|+acc|-sv|
 !i113 0
@@ -51,7 +51,7 @@ R5
 r1
 !s85 0
 31
-R6
+!s108 1714017692.000000
 !s107 fifo_top.sv|
 !s90 -reportprogress|300|-lint|fifo_top.sv|+acc|-sv|
 !i113 0
@@ -59,15 +59,15 @@ R7
 R8
 vread_pointer
 R1
-Z9 !s110 1714015049
+R2
 !i10b 1
-!s100 _UMno>OeNhA[JQaV:EB3`2
-!s11b UAl>B^1`fafR3:8h=H3183
-I>3UcbgY=k:i5NGd]S?f690
+!s100 bO[kF_Fl7JNP7UNP[N3n;3
+!s11b S^>=_kl;Y;K06lcj;5?h00
+Ii]AK>XVG`9D?057Q;?QKC3
 R3
 S1
 R0
-R4
+w1714017670
 8read_pointer.sv
 Fread_pointer.sv
 L0 1
@@ -83,7 +83,7 @@ R7
 R8
 vsync
 R1
-R9
+R2
 !i10b 1
 !s100 o_HQn:`HG2Q`]NQU7^TkQ1
 !s11b ?PW?YRo;>O^`2j?`SjC9m3
@@ -91,7 +91,7 @@ I5HfYSQ@7`z92InYLcX:MR1
 R3
 S1
 R0
-w1714015005
+w1714015445
 8sync.sv
 Fsync.sv
 L0 1
@@ -99,7 +99,7 @@ R5
 r1
 !s85 0
 31
-Z10 !s108 1714015049.000000
+R6
 !s107 sync.sv|
 !s90 -reportprogress|300|-lint|sync.sv|+acc|-sv|
 !i113 0
@@ -107,15 +107,15 @@ R7
 R8
 vtop
 R1
-R9
+R2
 !i10b 1
-!s100 nEIU8<hzLYMiF60S<3f`83
-!s11b Qj_S=h3[AlX6UE3MzRVC?2
-IZAiW]C=_jRK`AGAMOdRj@3
+!s100 lU88`1i_GghRSVXhZGeMX0
+!s11b OadEN92dI35h_=z>_8[kz3
+Il8h7>XPH5J3TJFDW=kQFa2
 R3
 S1
 R0
-w1714011217
+w1714015762
 8fifo_tb.sv
 Ffifo_tb.sv
 L0 1
@@ -123,15 +123,15 @@ R5
 r1
 !s85 0
 31
-R10
+R6
 !s107 fifo_tb.sv|
 !s90 -reportprogress|300|-lint|fifo_tb.sv|+acc|-sv|
 !i113 0
 R7
 R8
 Ttop_optimized
-!s110 1714015050
-V7?fd4[Pl2eeAdJiPi4_<I0
+!s110 1714017694
+V8jPd58R35:<nOn9c@zfX:3
 04 3 4 work top fast 0
 o+acc +cover=sbfec+fifo_top(rtl).
 R8
@@ -139,15 +139,15 @@ ntop_optimized
 OL;O;2019.2_1;69
 vwrite_pointer
 R1
-R9
+R2
 !i10b 1
-!s100 BiKzYX[eQLD:Vz48GOZjF2
+!s100 c8h@boSmnGnNY@HJ@dnXZ3
 !s11b 16[<Uf>?SAZGh;XVcn_`E2
-I@I@>H<cO`iM_=F95@kPo92
+Im:CO[Rg806_[4a@;9;II60
 R3
 S1
 R0
-R4
+w1714017672
 8write_pointer.sv
 Fwrite_pointer.sv
 L0 1
@@ -155,7 +155,7 @@ R5
 r1
 !s85 0
 31
-R10
+R6
 !s107 write_pointer.sv|
 !s90 -reportprogress|300|-lint|write_pointer.sv|+acc|-sv|
 !i113 0

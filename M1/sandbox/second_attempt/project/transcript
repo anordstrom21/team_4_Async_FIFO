@@ -14,61 +14,61 @@
 # //
 do run.do
 # QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
-# Start time: 20:17:28 on Apr 24,2024
+# Start time: 21:01:32 on Apr 24,2024
 # vlog -reportprogress 300 -lint fifo_top.sv "+acc" -sv 
 # -- Compiling module fifo_top
 # 
 # Top level modules:
 # 	fifo_top
-# End time: 20:17:28 on Apr 24,2024, Elapsed time: 0:00:00
+# End time: 21:01:33 on Apr 24,2024, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
-# Start time: 20:17:28 on Apr 24,2024
+# Start time: 21:01:33 on Apr 24,2024
 # vlog -reportprogress 300 -lint fifo_memory.sv "+acc" -sv 
 # -- Compiling module fifo_memory
 # 
 # Top level modules:
 # 	fifo_memory
-# End time: 20:17:28 on Apr 24,2024, Elapsed time: 0:00:00
+# End time: 21:01:33 on Apr 24,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
-# Start time: 20:17:28 on Apr 24,2024
+# Start time: 21:01:33 on Apr 24,2024
 # vlog -reportprogress 300 -lint read_pointer.sv "+acc" -sv 
 # -- Compiling module read_pointer
 # 
 # Top level modules:
 # 	read_pointer
-# End time: 20:17:29 on Apr 24,2024, Elapsed time: 0:00:01
+# End time: 21:01:33 on Apr 24,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
-# Start time: 20:17:29 on Apr 24,2024
+# Start time: 21:01:33 on Apr 24,2024
 # vlog -reportprogress 300 -lint write_pointer.sv "+acc" -sv 
 # -- Compiling module write_pointer
 # 
 # Top level modules:
 # 	write_pointer
-# End time: 20:17:29 on Apr 24,2024, Elapsed time: 0:00:00
+# End time: 21:01:33 on Apr 24,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
-# Start time: 20:17:29 on Apr 24,2024
+# Start time: 21:01:33 on Apr 24,2024
 # vlog -reportprogress 300 -lint sync.sv "+acc" -sv 
 # -- Compiling module sync
 # 
 # Top level modules:
 # 	sync
-# End time: 20:17:29 on Apr 24,2024, Elapsed time: 0:00:00
+# End time: 21:01:33 on Apr 24,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
-# Start time: 20:17:29 on Apr 24,2024
+# Start time: 21:01:33 on Apr 24,2024
 # vlog -reportprogress 300 -lint fifo_tb.sv "+acc" -sv 
 # -- Compiling module top
 # 
 # Top level modules:
 # 	top
-# End time: 20:17:29 on Apr 24,2024, Elapsed time: 0:00:00
+# End time: 21:01:33 on Apr 24,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vopt 2019.2_1 Compiler 2019.05 May 13 2019
-# Start time: 20:17:29 on Apr 24,2024
+# Start time: 21:01:34 on Apr 24,2024
 # vopt -reportprogress 300 top -o top_optimized "+acc" "+cover=sbfec+fifo_top(rtl)." 
 # 
 # Top level modules:
@@ -85,14 +85,14 @@ do run.do
 # -- Optimizing module top(fast)
 # -- Optimizing module fifo_top(fast)
 # -- Optimizing module write_pointer(fast)
-# -- Optimizing module fifo_memory(fast)
 # -- Optimizing module read_pointer(fast)
+# -- Optimizing module fifo_memory(fast)
 # -- Optimizing module sync(fast)
 # Optimized design name is top_optimized
-# End time: 20:17:30 on Apr 24,2024, Elapsed time: 0:00:01
+# End time: 21:01:34 on Apr 24,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vsim top_optimized -coverage 
-# Start time: 20:17:30 on Apr 24,2024
+# Start time: 21:01:34 on Apr 24,2024
 # Loading sv_std.std
 # Loading work.top(fast)
 # Loading work.fifo_top(fast)
@@ -101,284 +101,294 @@ do run.do
 # Loading work.read_pointer(fast)
 # Loading work.sync(fast)
 # 1
+# ** Error: Unable to lock WLF file "vsim.wlf". Retrying 1 times, errno 11
+# ** Error: Unable to lock WLF file "vsim.wlf". Retrying 2 times, errno 11
+# ** Error: Unable to lock WLF file "vsim.wlf". Retrying 3 times, errno 11
+# ** Error: Cannot lock WLF file: "vsim.wlf"
+#           errno 11: Resource temporarily unavailable.
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: amaso  Hostname: auto.ece.pdx.edu  ProcessID: 20739
+#           Attempting to use alternate WLF file "./wlftSeydNz".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftSeydNz
 # Mismatch at           0: expected 8d, got xx
 # Mismatch at           1: expected 01, got 8d
 # Mismatch at           2: expected 3d, got 01
 # Mismatch at           3: expected f9, got 3d
-# Mismatch at           4: expected 12, got f9
+# Mismatch at           4: expected f9, got f9
 # Mismatch at           5: expected ce, got f9
 # Mismatch at           6: expected 65, got 12
-# Mismatch at           7: expected 80, got ce
+# Mismatch at           7: expected 65, got ce
 # Mismatch at           8: expected d5, got 80
-# Mismatch at           9: expected 0a, got d5
+# Mismatch at           9: expected d5, got d5
 # Mismatch at          10: expected 4f, got d5
-# Mismatch at          11: expected 7e, got 0a
+# Mismatch at          11: expected 4f, got 0a
 # Mismatch at          12: expected d9, got 4f
-# Mismatch at          13: expected b7, got 7e
+# Mismatch at          13: expected d9, got 7e
 # Mismatch at          14: expected 5b, got d9
-# Mismatch at          15: expected d0, got b7
-# Mismatch at          16: expected 96, got 5b
-# Mismatch at          17: expected 12, got d0
-# Mismatch at          18: expected 85, got 96
+# Mismatch at          15: expected 5b, got b7
+# Mismatch at          16: expected d0, got 5b
+# Mismatch at          17: expected 96, got d0
+# Mismatch at          18: expected 12, got 96
 # Mismatch at          19: expected 58, got 12
 # Mismatch at          20: expected b3, got 85
-# Mismatch at          21: expected f7, got 58
-# Mismatch at          22: expected 5a, got b3
-# Mismatch at          23: expected da, got f7
-# Mismatch at          24: expected df, got 5a
-# Mismatch at          25: expected d0, got da
-# Mismatch at          26: expected 4e, got df
-# Mismatch at          27: expected b6, got d0
-# Mismatch at          28: expected 4d, got 4e
-# Mismatch at          29: expected 76, got b6
-# Mismatch at          30: expected 88, got 4d
-# Mismatch at          31: expected 1c, got 76
-# Mismatch at          32: expected b9, got 88
-# Mismatch at          33: expected c0, got 1c
-# Mismatch at          34: expected 61, got b9
-# Mismatch at          35: expected 86, got c0
-# Mismatch at          36: expected c5, got 61
-# Mismatch at          37: expected b6, got 86
-# Mismatch at          38: expected fb, got c5
-# Mismatch at          39: expected c9, got b6
-# Mismatch at          40: expected ae, got fb
-# Mismatch at          41: expected 28, got c9
-# Mismatch at          42: expected c2, got 28
-# Mismatch at          43: expected d8, got c2
-# Mismatch at          46: expected c8, got 1f
-# Mismatch at          47: expected 1f, got a7
-# Mismatch at          48: expected ed, got 49
-# Mismatch at          49: expected ad, got 51
-# Mismatch at          50: expected a7, got fa
-# Mismatch at          51: expected 49, got 7c
-# Mismatch at          52: expected 51, got f0
-# Mismatch at          53: expected fa, got 17
-# Mismatch at          54: expected 7c, got 86
-# Mismatch at          55: expected f0, got 8d
-# Mismatch at          56: expected 17, got 4b
-# Mismatch at          57: expected 86, got fd
-# Mismatch at          58: expected 8d, got 03
-# Mismatch at          59: expected 4b, got b1
-# Mismatch at          60: expected fd, got f8
-# Mismatch at          61: expected 03, got 84
-# Mismatch at          62: expected b1, got 84
-# Mismatch at          63: expected f8, got 3d
-# Mismatch at          64: expected 84, got 47
-# Mismatch at          65: expected 84, got 47
-# Mismatch at          66: expected a2, got 11
-# Mismatch at          67: expected 3d, got df
-# Mismatch at          68: expected 47, got 1c
-# Mismatch at          69: expected 11, got 1c
-# Mismatch at          70: expected df, got 2a
-# Mismatch at          71: expected bc, got bb
-# Mismatch at          72: expected 69, got 51
-# Mismatch at          73: expected c2, got 4a
-# Mismatch at          74: expected 24, got 01
-# Mismatch at          75: expected b9, got c2
-# Mismatch at          76: expected f1, got c2
-# Mismatch at          77: expected 35, got af
-# Mismatch at          78: expected 2f, got ee
-# Mismatch at          79: expected ee, got 81
-# Mismatch at          80: expected 81, got e2
-# Mismatch at          81: expected 37, got 4a
-# Mismatch at          82: expected ce, got 13
-# Mismatch at          83: expected 5c, got b7
-# Mismatch at          84: expected 8f, got e5
-# Mismatch at          85: expected ab, got 41
-# Mismatch at          86: expected 7c, got cd
-# Mismatch at          87: expected c9, got dc
-# Mismatch at          88: expected 70, got c8
-# Mismatch at          89: expected 04, got 73
-# Mismatch at          90: expected 61, got 15
-# Mismatch at          91: expected d3, got 15
-# Mismatch at          92: expected e9, got 29
-# Mismatch at          93: expected df, got 7f
-# Mismatch at          94: expected 9f, got 7f
-# Mismatch at          95: expected 29, got 31
-# Mismatch at          96: expected 7f, got 31
-# Mismatch at          97: expected 31, got 5d
-# Mismatch at          98: expected 5d, got 3a
-# Mismatch at          99: expected 69, got 56
-# Mismatch at         100: expected 3a, got 56
-# Mismatch at         101: expected 56, got da
-# Mismatch at         104: expected 7e, got 51
-# Mismatch at         105: expected a7, got 7e
-# Mismatch at         110: expected 16, got 27
-# Mismatch at         112: expected cd, got 82
-# Mismatch at         113: expected 82, got ac
-# Mismatch at         114: expected ac, got f1
-# Mismatch at         123: expected 6a, got b8
-# Mismatch at         124: expected a8, got 35
-# Mismatch at         125: expected b8, got 79
-# Mismatch at         126: expected 35, got c9
-# Mismatch at         127: expected 79, got 1b
-# Mismatch at         128: expected c9, got 84
-# Mismatch at         129: expected 73, got b3
-# Mismatch at         130: expected 1b, got cc
-# Mismatch at         131: expected 84, got ca
-# Mismatch at         132: expected b3, got ca
-# Mismatch at         133: expected cc, got 76
-# Mismatch at         134: expected ca, got b4
-# Mismatch at         135: expected 76, got 45
-# Mismatch at         136: expected b4, got dd
-# Mismatch at         137: expected 45, got b3
-# Mismatch at         138: expected dd, got e1
-# Mismatch at         139: expected b3, got 74
-# Mismatch at         140: expected e1, got fa
-# Mismatch at         141: expected 74, got a6
-# Mismatch at         142: expected fa, got ed
-# Mismatch at         143: expected a6, got 21
-# Mismatch at         144: expected ed, got 3e
-# Mismatch at         145: expected 21, got 3d
-# Mismatch at         146: expected 3e, got dc
-# Mismatch at         147: expected 3d, got cd
-# Mismatch at         148: expected dc, got 13
-# Mismatch at         149: expected cd, got c1
-# Mismatch at         150: expected 13, got ad
-# Mismatch at         151: expected c1, got ad
-# Mismatch at         152: expected ad, got 25
-# Mismatch at         153: expected 25, got e0
-# Mismatch at         154: expected e0, got a1
-# Mismatch at         155: expected a1, got eb
-# Mismatch at         156: expected eb, got 05
-# Mismatch at         157: expected 9c, got 98
-# Mismatch at         158: expected 05, got 83
-# Mismatch at         159: expected 98, got 81
-# Mismatch at         160: expected 83, got 36
-# Mismatch at         161: expected 81, got c4
-# Mismatch at         162: expected 36, got be
-# Mismatch at         163: expected c4, got d7
-# Mismatch at         164: expected ac, got 96
-# Mismatch at         165: expected be, got 3d
-# Mismatch at         166: expected b4, got df
-# Mismatch at         167: expected d7, got c0
-# Mismatch at         168: expected 96, got 18
-# Mismatch at         169: expected 3d, got 7d
-# Mismatch at         170: expected df, got 0a
-# Mismatch at         171: expected c0, got c5
-# Mismatch at         172: expected 18, got ca
-# Mismatch at         173: expected 7d, got dd
-# Mismatch at         174: expected 0a, got dd
-# Mismatch at         175: expected c5, got 26
-# Mismatch at         176: expected ca, got f2
-# Mismatch at         177: expected dd, got 04
-# Mismatch at         178: expected 26, got 3b
-# Mismatch at         179: expected f2, got cb
-# Mismatch at         180: expected 04, got e3
-# Mismatch at         181: expected 3b, got e3
-# Mismatch at         182: expected cb, got 14
-# Mismatch at         183: expected e3, got ce
-# Mismatch at         184: expected 14, got 5e
-# Mismatch at         185: expected 4c, got 19
-# Mismatch at         186: expected da, got 19
-# Mismatch at         188: expected f0, got af
-# Mismatch at         189: expected 03, got af
-# Mismatch at         190: expected ed, got 19
-# Mismatch at         191: expected aa, got b3
-# Mismatch at         192: expected 19, got 7e
-# Mismatch at         193: expected b3, got c2
-# Mismatch at         194: expected 30, got fd
-# Mismatch at         195: expected 0c, got 59
-# Mismatch at         196: expected 7e, got 69
-# Mismatch at         197: expected aa, got cd
-# Mismatch at         198: expected c2, got 58
-# Mismatch at         199: expected fd, got ad
-# Mismatch at         200: expected 59, got ad
-# Mismatch at         201: expected 69, got 0d
-# Mismatch at         202: expected d9, got 0d
-# Mismatch at         203: expected cd, got b1
-# Mismatch at         204: expected 58, got 30
-# Mismatch at         205: expected ad, got 76
-# Mismatch at         206: expected 0d, got 6a
-# Mismatch at         207: expected b1, got 6c
-# Mismatch at         208: expected 30, got 56
-# Mismatch at         209: expected e3, got f1
-# Mismatch at         210: expected 5d, got ea
-# Mismatch at         211: expected 76, got db
-# Mismatch at         212: expected 6a, got db
-# Mismatch at         213: expected 6c, got e8
-# Mismatch at         214: expected 56, got 3c
-# Mismatch at         215: expected f1, got 15
-# Mismatch at         216: expected ea, got 15
-# Mismatch at         217: expected db, got b5
-# Mismatch at         218: expected d8, got d3
-# Mismatch at         219: expected e8, got d3
-# Mismatch at         220: expected 3c, got 69
-# Mismatch at         221: expected 15, got c1
-# Mismatch at         222: expected 2a, got c9
-# Mismatch at         223: expected b5, got 33
-# Mismatch at         224: expected d3, got a4
-# Mismatch at         225: expected a8, got 40
-# Mismatch at         226: expected 69, got 9c
-# Mismatch at         227: expected c1, got 0c
-# Mismatch at         228: expected f8, got cf
-# Mismatch at         229: expected c9, got 72
-# Mismatch at         230: expected 33, got b5
-# Mismatch at         231: expected a4, got 9b
-# Mismatch at         232: expected 40, got 94
-# Mismatch at         233: expected 4d, got 75
-# Mismatch at         234: expected 9c, got 72
-# Mismatch at         235: expected 0c, got ca
-# Mismatch at         236: expected cf, got 4f
-# Mismatch at         237: expected 72, got 4f
-# Mismatch at         238: expected 89, got 94
-# Mismatch at         239: expected b5, got 0b
-# Mismatch at         240: expected 9b, got 2a
-# Mismatch at         241: expected 49, got 43
-# Mismatch at         242: expected 94, got 28
-# Mismatch at         243: expected 75, got 2e
-# Mismatch at         244: expected 72, got d9
-# Mismatch at         245: expected ca, got 63
-# Mismatch at         246: expected 4f, got 41
-# Mismatch at         247: expected 94, got b3
-# Mismatch at         248: expected 0b, got 3f
-# Mismatch at         249: expected 2a, got 92
-# Mismatch at         250: expected 43, got 0a
-# Mismatch at         251: expected 85, got d9
-# Mismatch at         252: expected 28, got 1b
-# Mismatch at         253: expected 2e, got 35
-# Mismatch at         254: expected d9, got 56
-# Mismatch at         255: expected 63, got ea
-# Mismatch at         256: expected 41, got ea
-# Mismatch at         257: expected 94, got 53
-# Mismatch at         258: expected b3, got 21
-# Mismatch at         259: expected 3f, got 23
-# Mismatch at         260: expected 92, got b2
-# Mismatch at         261: expected 0a, got b2
-# Mismatch at         262: expected d9, got 1d
-# Mismatch at         263: expected 1b, got 1d
-# Mismatch at         264: expected c8, got 13
-# Mismatch at         265: expected 35, got 13
-# Mismatch at         266: expected 56, got 50
-# Mismatch at         267: expected ea, got e2
-# Mismatch at         268: expected 53, got e2
-# Mismatch at         269: expected 21, got 1e
-# Mismatch at         270: expected 23, got 45
-# Mismatch at         271: expected b2, got d7
-# Mismatch at         272: expected 1d, got a3
-# Mismatch at         273: expected 13, got 40
-# Mismatch at         274: expected 50, got 1a
-# Mismatch at         275: expected e2, got a2
-# Mismatch at         276: expected 1e, got f4
-# Mismatch at         277: expected 45, got 77
-# Mismatch at         278: expected e2, got ef
-# Mismatch at         279: expected ea, got db
-# Mismatch at         280: expected 12, got 25
-# Mismatch at         281: expected b4, got 38
-# Mismatch at         282: expected 8f, got dc
-# Mismatch at         283: expected ad, got a2
-# Mismatch at         284: expected 1f, got 08
-# Mismatch at         285: expected d4, got 75
-# Mismatch at         286: expected b2, got 83
-# Mismatch at         287: expected 6a, got d5
-# Mismatch at         288: expected 79, got 16
-# Mismatch at         289: expected db, got cc
+# Mismatch at          21: expected b3, got 85
+# Mismatch at          22: expected 5a, got 58
+# Mismatch at          23: expected 5a, got b3
+# Mismatch at          24: expected df, got f7
+# Mismatch at          25: expected df, got 5a
+# Mismatch at          26: expected 4e, got da
+# Mismatch at          27: expected b6, got df
+# Mismatch at          28: expected 4d, got d0
+# Mismatch at          29: expected 76, got 4e
+# Mismatch at          30: expected 76, got b6
+# Mismatch at          31: expected 88, got 4d
+# Mismatch at          32: expected 1c, got 76
+# Mismatch at          33: expected c0, got 88
+# Mismatch at          34: expected c0, got 1c
+# Mismatch at          35: expected 86, got b9
+# Mismatch at          36: expected c5, got c0
+# Mismatch at          37: expected c5, got 61
+# Mismatch at          38: expected fb, got 86
+# Mismatch at          39: expected fb, got 86
+# Mismatch at          40: expected ae, got c5
+# Mismatch at          41: expected 28, got b6
+# Mismatch at          42: expected 28, got fb
+# Mismatch at          43: expected c2, got c9
+# Mismatch at          44: expected 5b, got 28
+# Mismatch at          45: expected 5b, got c2
+# Mismatch at          46: expected c8, got 5b
+# Mismatch at          47: expected c8, got a1
+# Mismatch at          48: expected ed, got 1f
+# Mismatch at          49: expected ad, got a7
+# Mismatch at          50: expected a7, got 49
+# Mismatch at          51: expected 49, got 51
+# Mismatch at          52: expected 51, got fa
+# Mismatch at          53: expected 51, got 7c
+# Mismatch at          54: expected 7c, got f0
+# Mismatch at          55: expected f0, got 17
+# Mismatch at          66: expected a2, got 3d
+# Mismatch at          67: expected 3d, got 47
+# Mismatch at          72: expected 1c, got 1c
+# Mismatch at          73: expected bb, got 2a
+# Mismatch at          74: expected 51, got bb
+# Mismatch at          75: expected 51, got 51
+# Mismatch at          76: expected 01, got 4a
+# Mismatch at          77: expected 01, got 4a
+# Mismatch at          78: expected c2, got 01
+# Mismatch at          79: expected af, got c2
+# Mismatch at          80: expected 81, got c2
+# Mismatch at          81: expected f0, got af
+# Mismatch at          82: expected f0, got ee
+# Mismatch at          83: expected e2, got 81
+# Mismatch at          84: expected 13, got e2
+# Mismatch at          85: expected b7, got 4a
+# Mismatch at          86: expected 71, got 13
+# Mismatch at          87: expected e5, got b7
+# Mismatch at          88: expected 41, got e5
+# Mismatch at          89: expected 41, got 41
+# Mismatch at          90: expected dc, got cd
+# Mismatch at          91: expected dc, got dc
+# Mismatch at          92: expected 73, got c8
+# Mismatch at          93: expected 73, got 73
+# Mismatch at          94: expected 15, got 15
+# Mismatch at          95: expected 9f, got 15
+# Mismatch at          96: expected 29, got 29
+# Mismatch at          97: expected 7f, got 7f
+# Mismatch at          98: expected 5d, got 7f
+# Mismatch at          99: expected 69, got 31
+# Mismatch at         100: expected 69, got 31
+# Mismatch at         101: expected 3a, got 5d
+# Mismatch at         102: expected da, got 3a
+# Mismatch at         103: expected da, got 56
+# Mismatch at         104: expected 7e, got 56
+# Mismatch at         105: expected 7e, got da
+# Mismatch at         106: expected a7, got da
+# Mismatch at         107: expected 5f, got 51
+# Mismatch at         108: expected 5f, got 51
+# Mismatch at         109: expected 25, got 7e
+# Mismatch at         110: expected 16, got 00
+# Mismatch at         111: expected 16, got 5f
+# Mismatch at         112: expected cd, got 25
+# Mismatch at         113: expected cd, got 27
+# Mismatch at         114: expected ac, got 27
+# Mismatch at         115: expected ac, got 27
+# Mismatch at         116: expected 31, got 55
+# Mismatch at         117: expected e3, got 82
+# Mismatch at         118: expected e3, got ac
+# Mismatch at         119: expected c2, got f1
+# Mismatch at         120: expected 05, got f1
+# Mismatch at         121: expected 4f, got 31
+# Mismatch at         122: expected 54, got e3
+# Mismatch at         123: expected 54, got c2
+# Mismatch at         124: expected a8, got 05
+# Mismatch at         125: expected b8, got 6b
+# Mismatch at         126: expected 35, got 4f
+# Mismatch at         127: expected 79, got 54
+# Mismatch at         128: expected c9, got b8
+# Mismatch at         129: expected 73, got 35
+# Mismatch at         130: expected 73, got 35
+# Mismatch at         131: expected 1b, got 79
+# Mismatch at         132: expected b3, got c9
+# Mismatch at         133: expected cc, got 1b
+# Mismatch at         134: expected cc, got 84
+# Mismatch at         135: expected ca, got b3
+# Mismatch at         136: expected 76, got cc
+# Mismatch at         137: expected 45, got ca
+# Mismatch at         138: expected 45, got ca
+# Mismatch at         139: expected dd, got 76
+# Mismatch at         140: expected b3, got b4
+# Mismatch at         141: expected e1, got 45
+# Mismatch at         142: expected 74, got dd
+# Mismatch at         143: expected fa, got b3
+# Mismatch at         144: expected ed, got e1
+# Mismatch at         145: expected ed, got 74
+# Mismatch at         146: expected 21, got fa
+# Mismatch at         147: expected 3d, got a6
+# Mismatch at         148: expected dc, got ed
+# Mismatch at         149: expected cd, got 21
+# Mismatch at         150: expected 13, got 3e
+# Mismatch at         151: expected 13, got 3d
+# Mismatch at         152: expected c1, got dc
+# Mismatch at         153: expected ad, got cd
+# Mismatch at         154: expected 25, got 13
+# Mismatch at         155: expected e0, got c1
+# Mismatch at         156: expected a1, got ad
+# Mismatch at         157: expected 9c, got ad
+# Mismatch at         158: expected 05, got 25
+# Mismatch at         159: expected 98, got e0
+# Mismatch at         160: expected 98, got a1
+# Mismatch at         161: expected 83, got eb
+# Mismatch at         162: expected 36, got 05
+# Mismatch at         163: expected c4, got 98
+# Mismatch at         164: expected c4, got 83
+# Mismatch at         165: expected be, got 81
+# Mismatch at         166: expected be, got 36
+# Mismatch at         167: expected d7, got c4
+# Mismatch at         168: expected 96, got be
+# Mismatch at         169: expected 3d, got d7
+# Mismatch at         170: expected 3d, got 96
+# Mismatch at         171: expected c0, got 3d
+# Mismatch at         172: expected 18, got df
+# Mismatch at         173: expected 18, got c0
+# Mismatch at         174: expected 7d, got 18
+# Mismatch at         175: expected 0a, got 7d
+# Mismatch at         176: expected c5, got 0a
+# Mismatch at         177: expected ca, got c5
+# Mismatch at         178: expected 26, got ca
+# Mismatch at         179: expected 26, got dd
+# Mismatch at         180: expected 04, got dd
+# Mismatch at         181: expected 04, got 26
+# Mismatch at         182: expected cb, got f2
+# Mismatch at         183: expected cb, got f2
+# Mismatch at         184: expected 14, got 04
+# Mismatch at         185: expected 14, got 3b
+# Mismatch at         186: expected ce, got cb
+# Mismatch at         187: expected 19, got e3
+# Mismatch at         188: expected 6f, got e3
+# Mismatch at         189: expected 6f, got 14
+# Mismatch at         190: expected af, got ce
+# Mismatch at         191: expected c8, got 5e
+# Mismatch at         192: expected 3e, got 19
+# Mismatch at         193: expected 3e, got 19
+# Mismatch at         194: expected a0, got 17
+# Mismatch at         195: expected 59, got af
+# Mismatch at         196: expected 59, got af
+# Mismatch at         197: expected aa, got 19
+# Mismatch at         198: expected c2, got 19
+# Mismatch at         199: expected fd, got b3
+# Mismatch at         200: expected 59, got 7e
+# Mismatch at         201: expected 69, got c2
+# Mismatch at         202: expected 69, got fd
+# Mismatch at         203: expected cd, got 59
+# Mismatch at         204: expected 58, got 69
+# Mismatch at         205: expected ad, got cd
+# Mismatch at         206: expected ad, got 58
+# Mismatch at         207: expected 0d, got ad
+# Mismatch at         208: expected b1, got ad
+# Mismatch at         209: expected e3, got 0d
+# Mismatch at         210: expected e3, got 0d
+# Mismatch at         211: expected 76, got b1
+# Mismatch at         212: expected 76, got 30
+# Mismatch at         213: expected 6c, got 76
+# Mismatch at         214: expected 56, got 6a
+# Mismatch at         215: expected 56, got 6a
+# Mismatch at         216: expected ea, got 6c
+# Mismatch at         217: expected db, got 56
+# Mismatch at         218: expected db, got f1
+# Mismatch at         219: expected d8, got ea
+# Mismatch at         220: expected e8, got db
+# Mismatch at         221: expected 15, got db
+# Mismatch at         222: expected 2a, got e8
+# Mismatch at         223: expected 2a, got 3c
+# Mismatch at         224: expected b5, got 15
+# Mismatch at         225: expected a8, got 15
+# Mismatch at         226: expected 69, got b5
+# Mismatch at         227: expected 69, got d3
+# Mismatch at         228: expected f8, got d3
+# Mismatch at         229: expected c9, got 69
+# Mismatch at         230: expected c9, got c1
+# Mismatch at         231: expected a4, got c9
+# Mismatch at         232: expected 40, got 33
+# Mismatch at         233: expected 4d, got 33
+# Mismatch at         234: expected 4d, got a4
+# Mismatch at         235: expected 0c, got 40
+# Mismatch at         236: expected cf, got 9c
+# Mismatch at         237: expected cf, got 0c
+# Mismatch at         238: expected 72, got cf
+# Mismatch at         239: expected 89, got 72
+# Mismatch at         240: expected 9b, got b5
+# Mismatch at         241: expected 49, got 9b
+# Mismatch at         247: expected 4f, got 4f
+# Mismatch at         248: expected 0b, got 94
+# Mismatch at         249: expected 0b, got 0b
+# Mismatch at         250: expected 2a, got 2a
+# Mismatch at         251: expected 43, got 43
+# Mismatch at         255: expected 63, got d9
+# Mismatch at         256: expected 63, got 63
+# Mismatch at         257: expected 41, got 41
+# Mismatch at         264: expected c8, got 35
+# Mismatch at         265: expected 35, got 56
+# Mismatch at         268: expected ea, got ea
+# Mismatch at         269: expected 53, got 53
+# Mismatch at         270: expected 21, got 21
+# Mismatch at         271: expected b2, got 23
+# Mismatch at         272: expected b2, got b2
+# Mismatch at         273: expected 13, got b2
+# Mismatch at         274: expected 13, got 1d
+# Mismatch at         275: expected e2, got 1d
+# Mismatch at         276: expected e2, got 13
+# Mismatch at         277: expected 1e, got 13
+# Mismatch at         278: expected 45, got 50
+# Mismatch at         279: expected e2, got e2
+# Mismatch at         280: expected d7, got e2
+# Mismatch at         281: expected a3, got 1e
+# Mismatch at         282: expected 1a, got 45
+# Mismatch at         283: expected a2, got d7
+# Mismatch at         284: expected f4, got a3
+# Mismatch at         285: expected 8e, got 40
+# Mismatch at         286: expected 77, got 1a
+# Mismatch at         287: expected 77, got a2
+# Mismatch at         288: expected 79, got f4
+# Mismatch at         289: expected db, got 77
+# Mismatch at         290: expected 25, got ef
+# Mismatch at         291: expected 38, got db
+# Mismatch at         292: expected 38, got 25
+# Mismatch at         293: expected dc, got 38
+# Mismatch at         294: expected 08, got dc
+# Mismatch at         295: expected 08, got a2
+# Mismatch at         296: expected 75, got 08
+# Mismatch at         297: expected 83, got 75
+# Mismatch at         298: expected d5, got 83
+# Mismatch at         299: expected 16, got d5
+# Mismatch at         300: expected cc, got 16
+# Mismatch at         301: expected 2c, got cc
 # ** Note: $finish    : fifo_tb.sv(61)
 #    Time: 12234 ns  Iteration: 1  Instance: /top
 # 1
 # Break in Module top at fifo_tb.sv line 61
 # QuestaSim-64 vcover 2019.2_1 Coverage Utility 2019.05 May 13 2019
-# Start time: 20:17:38 on Apr 24,2024
+# Start time: 21:01:49 on Apr 24,2024
 # vcover report async_fifo.ucdb 
 # Coverage Report Summary Data by instance
 # 
@@ -410,7 +420,7 @@ do run.do
 #     ----------------              ----      ----    ------  --------
 #     Branches                         3         3         0   100.00%
 #     Conditions                       2         1         1    50.00%
-#     Expressions                      1         1         0   100.00%
+#     Expressions                      2         2         0   100.00%
 #     Statements                       6         6         0   100.00%
 # 
 # =================================================================================
@@ -454,10 +464,10 @@ do run.do
 # 
 # Total Coverage By Instance (filtered view): 90.00%
 # 
-# End time: 20:17:39 on Apr 24,2024, Elapsed time: 0:00:01
+# End time: 21:01:49 on Apr 24,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vcover 2019.2_1 Coverage Utility 2019.05 May 13 2019
-# Start time: 20:17:39 on Apr 24,2024
+# Start time: 21:01:49 on Apr 24,2024
 # vcover report async_fifo.ucdb -cvg -details 
 # Coverage Report by instance with details
 # 
@@ -581,7 +591,8 @@ do run.do
 # 
 # Total Coverage By Instance (filtered view): 100.00%
 # 
-# End time: 20:17:39 on Apr 24,2024, Elapsed time: 0:00:00
+# End time: 21:01:49 on Apr 24,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# End time: 20:18:07 on Apr 24,2024, Elapsed time: 0:00:37
-# Errors: 0, Warnings: 0
+add wave -position insertpoint sim:/top/*
+# End time: 21:13:11 on Apr 24,2024, Elapsed time: 0:11:37
+# Errors: 51, Warnings: 2
