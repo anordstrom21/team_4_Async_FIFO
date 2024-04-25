@@ -71,7 +71,7 @@ module top;
 
   // Scoreboard for checking data integrity
   logic [DATA_WIDTH-1:0] memory [0:(1<<ADDR_WIDTH)-1];
-  integer write_ptr = 0, read_ptr = 0;
+  logic [ADDR_WIDTH] write_ptr = 0, read_ptr = 0;
 
   always @(posedge clk_wr) begin
     if (wr_en && !full) begin

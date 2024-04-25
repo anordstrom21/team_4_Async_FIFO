@@ -2,8 +2,8 @@ module sync #(
     parameter ADDR_WIDTH = 6
 )(
     input  logic             clk, rst_n,
-    input  logic [ADDR_WIDTH-1:0] data_in,
-    output logic [ADDR_WIDTH-1:0] data_out
+    input  logic [ADDR_WIDTH:0] data_in,
+    output logic [ADDR_WIDTH:0] data_out
 );
 
     logic [ADDR_WIDTH:0] buffer;
