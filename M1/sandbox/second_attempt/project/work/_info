@@ -11,7 +11,7 @@ cModel Technology
 Z0 d/home/amaso/common/Documents/ECE593/final_project/team_4_Async_FIFO/M1/sandbox/second_attempt/project
 vfifo_memory
 Z1 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
-Z2 !s110 1714021454
+Z2 !s110 1714021868
 !i10b 1
 !s100 `]nFLRE>P8gXR1j0Wec^]2
 !s11b `4WgbhjJb1:L5ebfIWoli2
@@ -27,7 +27,7 @@ Z4 OL;L;2019.2_1;69
 r1
 !s85 0
 31
-Z5 !s108 1714021454.000000
+Z5 !s108 1714021868.000000
 !s107 fifo_memory.sv|
 !s90 -reportprogress|300|-lint|fifo_memory.sv|+acc|-sv|
 !i113 0
@@ -83,7 +83,7 @@ R6
 R7
 vsync
 R1
-Z8 !s110 1714021455
+Z8 !s110 1714021869
 !i10b 1
 !s100 DE:P_gZ9L4<HWeZSjHX0K3
 !s11b RT19<9>zeViRP:eD]0A4R1
@@ -99,7 +99,7 @@ R4
 r1
 !s85 0
 31
-Z9 !s108 1714021455.000000
+Z9 !s108 1714021869.000000
 !s107 sync.sv|
 !s90 -reportprogress|300|-lint|sync.sv|+acc|-sv|
 !i113 0
@@ -130,8 +130,8 @@ R9
 R6
 R7
 Ttop_optimized
-!s110 1714021456
-VKb3AXXIQd9C:68ID>VUUH0
+!s110 1714021870
+V`[mmPAW_U3UF3jk:bTOMZ1
 04 3 4 work top fast 0
 o+acc +cover=sbfec+fifo_top(rtl).
 R7
@@ -155,7 +155,7 @@ R4
 r1
 !s85 0
 31
-R9
+R5
 !s107 write_pointer.sv|
 !s90 -reportprogress|300|-lint|write_pointer.sv|+acc|-sv|
 !i113 0

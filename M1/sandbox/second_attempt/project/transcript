@@ -14,61 +14,61 @@
 # //
 do run.do
 # QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
-# Start time: 22:04:14 on Apr 24,2024
+# Start time: 22:11:08 on Apr 24,2024
 # vlog -reportprogress 300 -lint fifo_top.sv "+acc" -sv 
 # -- Compiling module fifo_top
 # 
 # Top level modules:
 # 	fifo_top
-# End time: 22:04:14 on Apr 24,2024, Elapsed time: 0:00:00
+# End time: 22:11:08 on Apr 24,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
-# Start time: 22:04:14 on Apr 24,2024
+# Start time: 22:11:08 on Apr 24,2024
 # vlog -reportprogress 300 -lint fifo_memory.sv "+acc" -sv 
 # -- Compiling module fifo_memory
 # 
 # Top level modules:
 # 	fifo_memory
-# End time: 22:04:14 on Apr 24,2024, Elapsed time: 0:00:00
+# End time: 22:11:08 on Apr 24,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
-# Start time: 22:04:14 on Apr 24,2024
+# Start time: 22:11:08 on Apr 24,2024
 # vlog -reportprogress 300 -lint read_pointer.sv "+acc" -sv 
 # -- Compiling module read_pointer
 # 
 # Top level modules:
 # 	read_pointer
-# End time: 22:04:14 on Apr 24,2024, Elapsed time: 0:00:00
+# End time: 22:11:08 on Apr 24,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
-# Start time: 22:04:15 on Apr 24,2024
+# Start time: 22:11:08 on Apr 24,2024
 # vlog -reportprogress 300 -lint write_pointer.sv "+acc" -sv 
 # -- Compiling module write_pointer
 # 
 # Top level modules:
 # 	write_pointer
-# End time: 22:04:15 on Apr 24,2024, Elapsed time: 0:00:00
+# End time: 22:11:09 on Apr 24,2024, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
-# Start time: 22:04:15 on Apr 24,2024
+# Start time: 22:11:09 on Apr 24,2024
 # vlog -reportprogress 300 -lint sync.sv "+acc" -sv 
 # -- Compiling module sync
 # 
 # Top level modules:
 # 	sync
-# End time: 22:04:15 on Apr 24,2024, Elapsed time: 0:00:00
+# End time: 22:11:09 on Apr 24,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
-# Start time: 22:04:15 on Apr 24,2024
+# Start time: 22:11:09 on Apr 24,2024
 # vlog -reportprogress 300 -lint fifo_tb.sv "+acc" -sv 
 # -- Compiling module top
 # 
 # Top level modules:
 # 	top
-# End time: 22:04:15 on Apr 24,2024, Elapsed time: 0:00:00
+# End time: 22:11:09 on Apr 24,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vopt 2019.2_1 Compiler 2019.05 May 13 2019
-# Start time: 22:04:15 on Apr 24,2024
+# Start time: 22:11:09 on Apr 24,2024
 # vopt -reportprogress 300 top -o top_optimized "+acc" "+cover=sbfec+fifo_top(rtl)." 
 # 
 # Top level modules:
@@ -89,10 +89,10 @@ do run.do
 # -- Optimizing module fifo_memory(fast)
 # -- Optimizing module sync(fast)
 # Optimized design name is top_optimized
-# End time: 22:04:16 on Apr 24,2024, Elapsed time: 0:00:01
+# End time: 22:11:10 on Apr 24,2024, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # vsim top_optimized -coverage 
-# Start time: 22:04:16 on Apr 24,2024
+# Start time: 22:11:10 on Apr 24,2024
 # Loading sv_std.std
 # Loading work.top(fast)
 # Loading work.fifo_top(fast)
@@ -384,7 +384,7 @@ do run.do
 # 1
 # Break in Module top at fifo_tb.sv line 61
 # QuestaSim-64 vcover 2019.2_1 Coverage Utility 2019.05 May 13 2019
-# Start time: 22:04:25 on Apr 24,2024
+# Start time: 22:11:19 on Apr 24,2024
 # vcover report async_fifo.ucdb 
 # Coverage Report Summary Data by instance
 # 
@@ -460,10 +460,10 @@ do run.do
 # 
 # Total Coverage By Instance (filtered view): 90.00%
 # 
-# End time: 22:04:25 on Apr 24,2024, Elapsed time: 0:00:00
+# End time: 22:11:19 on Apr 24,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vcover 2019.2_1 Coverage Utility 2019.05 May 13 2019
-# Start time: 22:04:25 on Apr 24,2024
+# Start time: 22:11:19 on Apr 24,2024
 # vcover report async_fifo.ucdb -cvg -details 
 # Coverage Report by instance with details
 # 
@@ -587,7 +587,7 @@ do run.do
 # 
 # Total Coverage By Instance (filtered view): 100.00%
 # 
-# End time: 22:04:25 on Apr 24,2024, Elapsed time: 0:00:00
+# End time: 22:11:19 on Apr 24,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# End time: 22:06:05 on Apr 24,2024, Elapsed time: 0:01:49
+# End time: 22:11:56 on Apr 24,2024, Elapsed time: 0:00:46
 # Errors: 0, Warnings: 0
