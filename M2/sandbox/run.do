@@ -17,6 +17,11 @@ vsim top_optimized -coverage
 set NoQuitOnFinish 1
 onbreak {resume}
 log /* -r
+
+#adding waves
+add wave -position insertpoint sim:/top/*
+add wave -position insertpoint sim:/top/dut/*
+
 run -all
 
 coverage save async_fifo.ucdb
