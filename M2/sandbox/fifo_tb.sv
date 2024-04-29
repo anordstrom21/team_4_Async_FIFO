@@ -48,6 +48,8 @@ module top;
 
   // Tester - Single burst read and write
   initial begin
+    write_ptr = '0;
+    read_ptr = '0;
     wr_en = 1'b0;
     rd_en = 1'b0;
     repeat (10) @(posedge clk_wr);
@@ -61,6 +63,7 @@ module top;
       @(negedge clk_wr)
       data_in = getdata();
     end
+    repeat (50) @(posedge clk_rd);
     wr_en = 1'b0;
     rd_en = 1'b0;
     repeat (10) @(posedge clk_rd);
@@ -98,7 +101,9 @@ Trying simpler, burst style testbench to help with debug
     coverpoint empty;
   endgroup
 
-  // Scoreboard for checking data integrity
+  // Scoreboard
+  // NOTE: 1<<ADDR_WIDTH = 2 to the power of ADDR_WIDTH
+  // NOTE: Recently working with macros employing similar syntax
   logic [DATA_WIDTH-1:0] memory [0:(1<<ADDR_WIDTH)-1];
   logic [ADDR_WIDTH:0] write_ptr, read_ptr;
 
