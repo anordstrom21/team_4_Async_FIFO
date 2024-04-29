@@ -45,30 +45,28 @@ module top;
     return $random;
   endfunction
 
-  // Tester - Reciever/Read
-  initial begin
-    rd_en = 0;
-    repeat (10) @(posedge clk_rd);
-    rd_en = 1;
-    repeat (120) begin
-      @(negedge clk_rd)
-    end
-    repeat (20) @(posedge clk_rd);
-    $finish;
-  end
 
-  // Tester - Sender/Write
+  // Tester - Single burst read and write
   initial begin
-    wr_en = 0;
-    repeat (5) @(posedge clk_wr);
-    wr_en = 1;
+    wr_en = 1'b0;
+    rd_en = 1'b0;
+    repeat (10) @(posedge clk_wr);
+    wr_en = 1'b1;
+    repeat (10) begin
+      @(negedge clk_wr)
+      data_in = getdata();
+    end
+    rd_en = 1'b1;
     repeat (120) begin
       @(negedge clk_wr)
       data_in = getdata();
     end
-    repeat (10) @(posedge clk_wr);
-    // $finish;     // Sender will finish first so Receiver will call $finish
+    wr_en = 1'b0;
+    rd_en = 1'b0;
+    repeat (10) @(posedge clk_rd);
+    $finish;
   end
+
 
 /* Truly random testing is proving difficult to confirm accuracy of result
 Trying simpler, burst style testbench to help with debug
