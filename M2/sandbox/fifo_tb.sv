@@ -33,9 +33,8 @@ module top;
 
   // Reset Generation and Initializing Clocks
   initial begin
-	clk_wr = '0;
-	clk_rd = '0;
-  
+	  clk_wr = '0;
+	  clk_rd = '0;
     rst_n = 1'b0;
     @(negedge clk_wr);
     rst_n = 1'b1;
@@ -45,6 +44,34 @@ module top;
   function [DATA_WIDTH-1:0] getdata();
     return $random;
   endfunction
+
+  // Tester - Reciever/Read
+  initial begin
+    rd_en = 0;
+    repeat (10) @(posedge clk_rd);
+    rd_en = 1;
+    repeat (120) begin
+      @(negedge clk_rd)
+    end
+    repeat (20) @(posedge clk_rd);
+    $finish;
+  end
+
+  // Tester - Sender/Write
+  initial begin
+    wr_en = 0;
+    repeat (5) @(posedge clk_wr);
+    wr_en = 1;
+    repeat (120) begin
+      @(negedge clk_wr)
+      data_in = getdata();
+    end
+    repeat (10) @(posedge clk_wr);
+    // $finish;     // Sender will finish first so Receiver will call $finish
+  end
+
+/* Truly random testing is proving difficult to confirm accuracy of result
+Trying simpler, burst style testbench to help with debug
 
   // Test Process
   initial begin
@@ -63,6 +90,7 @@ module top;
     repeat (10) @(posedge clk_wr);
     $finish;
   end
+*/
 
   // Coverage and Scoreboard
   covergroup cg_fifo with function sample(bit wr_en, bit rd_en, bit full, bit empty);
@@ -74,7 +102,7 @@ module top;
 
   // Scoreboard for checking data integrity
   logic [DATA_WIDTH-1:0] memory [0:(1<<ADDR_WIDTH)-1];
-  logic [ADDR_WIDTH:0] write_ptr = 0, read_ptr = 0;
+  logic [ADDR_WIDTH:0] write_ptr, read_ptr;
 
   always @(posedge clk_wr) begin
     if (wr_en && !full) begin
