@@ -31,6 +31,13 @@ module top;
   always #(CYCLE_TIME_WR/2) clk_wr = ~clk_wr;
   always #(CYCLE_TIME_RD/2) clk_rd = ~clk_rd;
 
+  // Scoreboard
+  // NOTE: 1<<ADDR_WIDTH = 2 to the power of ADDR_WIDTH
+  // NOTE: Recently working with macros employing similar syntax
+  logic [DATA_WIDTH-1:0] memory [0:(1<<ADDR_WIDTH)-1];
+  logic [ADDR_WIDTH:0] write_ptr, read_ptr;
+
+
   // Reset Generation and Initializing Clocks
   initial begin
 	  clk_wr = '0;
@@ -100,12 +107,6 @@ Trying simpler, burst style testbench to help with debug
     coverpoint full;
     coverpoint empty;
   endgroup
-
-  // Scoreboard
-  // NOTE: 1<<ADDR_WIDTH = 2 to the power of ADDR_WIDTH
-  // NOTE: Recently working with macros employing similar syntax
-  logic [DATA_WIDTH-1:0] memory [0:(1<<ADDR_WIDTH)-1];
-  logic [ADDR_WIDTH:0] write_ptr, read_ptr;
 
   always @(posedge clk_wr) begin
     if (wr_en && !full) begin
