@@ -60,16 +60,22 @@ module top;
     wr_en = 1'b0;
     rd_en = 1'b0;
     repeat (10) @(posedge clk_wr);
+    
+    // Grab data, set write enable and write for 10 write cylces
+    @(negedge clk_wr)
+    data_in = getdata();
     wr_en = 1'b1;
-    repeat (10) begin
+    repeat (9) begin
       @(negedge clk_wr)
       data_in = getdata();
     end
+    // After 10 cycles enable read and continue for 110 remaining writes in burst
     rd_en = 1'b1;
-    repeat (120) begin
+    repeat (110) begin
       @(negedge clk_wr)
       data_in = getdata();
     end
+    // Wait for all reads to complete
     repeat (150) @(posedge clk_rd);
     wr_en = 1'b0;
     rd_en = 1'b0;
@@ -110,15 +116,15 @@ Trying simpler, burst style testbench to help with debug
 
   always @(posedge clk_wr) begin
     if (wr_en && !full) begin
-      memory[write_addr[ADDR_WIDTH-1:0]] = data_in;
+      memory[write_addr] = data_in;
       write_addr++;
     end
   end
 
   always @(posedge clk_rd) begin
     if (rd_en && !empty) begin
-      if (data_out !== memory[read_addr[ADDR_WIDTH-1:0]-1]) begin
-        $display("Mismatch at %d: expected %h, got %h", read_addr, memory[read_addr[ADDR_WIDTH-1:0]-1], data_out);
+      if (data_out !== memory[read_addr]) begin
+        $display("Mismatch at address %d: expected %h, got %h", read_addr, memory[read_addr], data_out);
       end
       read_addr++;
     end
