@@ -35,7 +35,7 @@ module top;
   // NOTE: 1<<ADDR_WIDTH = 2 to the power of ADDR_WIDTH
   // NOTE: Recently working with macros employing similar syntax
   logic [DATA_WIDTH-1:0] memory [0:(1<<ADDR_WIDTH)-1];
-  logic [ADDR_WIDTH:0] write_ptr, read_ptr;
+  logic [ADDR_WIDTH-1:0] write_addr, read_addr;
 
 
   // Reset Generation and Initializing Clocks
@@ -55,8 +55,8 @@ module top;
 
   // Tester - Single burst read and write
   initial begin
-    write_ptr = '0;
-    read_ptr = '0;
+    write_addr = '0;
+    read_addr = '0;
     wr_en = 1'b0;
     rd_en = 1'b0;
     repeat (10) @(posedge clk_wr);
@@ -70,7 +70,7 @@ module top;
       @(negedge clk_wr)
       data_in = getdata();
     end
-    repeat (50) @(posedge clk_rd);
+    repeat (150) @(posedge clk_rd);
     wr_en = 1'b0;
     rd_en = 1'b0;
     repeat (10) @(posedge clk_rd);
@@ -110,17 +110,17 @@ Trying simpler, burst style testbench to help with debug
 
   always @(posedge clk_wr) begin
     if (wr_en && !full) begin
-      memory[write_ptr[ADDR_WIDTH-1:0]] = data_in;
-      write_ptr++;
+      memory[write_addr[ADDR_WIDTH-1:0]] = data_in;
+      write_addr++;
     end
   end
 
   always @(posedge clk_rd) begin
     if (rd_en && !empty) begin
-      if (data_out !== memory[read_ptr[ADDR_WIDTH-1:0]-1]) begin
-        $display("Mismatch at %d: expected %h, got %h", read_ptr, memory[read_ptr[ADDR_WIDTH-1:0]-1], data_out);
+      if (data_out !== memory[read_addr[ADDR_WIDTH-1:0]-1]) begin
+        $display("Mismatch at %d: expected %h, got %h", read_addr, memory[read_addr[ADDR_WIDTH-1:0]-1], data_out);
       end
-      read_ptr++;
+      read_addr++;
     end
   end
 
