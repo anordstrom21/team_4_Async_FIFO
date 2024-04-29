@@ -123,8 +123,8 @@ Trying simpler, burst style testbench to help with debug
 
   always @(posedge clk_rd) begin
     if (rd_en && !empty) begin
-      if (data_out !== memory[read_addr]) begin
-        $display("Mismatch at address %d: expected %h, got %h", read_addr, memory[read_addr], data_out);
+      if (data_out != memory[read_addr-1]) begin
+        $display("Mismatch at address %d: expected %h, got %h", read_addr, memory[read_addr-1], data_out);
       end
       read_addr++;
     end
