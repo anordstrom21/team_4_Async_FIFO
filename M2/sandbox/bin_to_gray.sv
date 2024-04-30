@@ -1,5 +1,12 @@
+/*
+*   This parameterized system verilog module 
+*   converts a vector from binary to gray 
+*   code encoding.
+*
+*   Alexander Maso
+*/
+
 module bin_to_gray #(
-    parameter DATA_WIDTH = 8,
     parameter ADDR_WIDTH = 6
 )(
     input logic     [ADDR_WIDTH:0] binary,
