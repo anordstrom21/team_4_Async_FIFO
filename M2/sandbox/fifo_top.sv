@@ -88,11 +88,7 @@ module fifo_top #(
         .data_out(gray_rq2_rptr)
     );
        
-       
-       
-       
-       
-       
+endmodule      
        
        
        
