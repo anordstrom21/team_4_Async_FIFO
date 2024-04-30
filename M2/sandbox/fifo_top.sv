@@ -62,8 +62,8 @@ module fifo_top #(
 
     // Gray code to binary conversion in the read domain
     gray_to_bin #(.ADDR_WIDTH(ADDR_WIDTH)) g2b_rptr (
-        .gray(gray_rq2_rptr),
-        .binary(rq2_rptr)
+        .gray(gray_wq2_rptr),
+        .binary(wq2_rptr)
     );
 
     // Gray code to binary conversion in the write domain
@@ -85,7 +85,7 @@ module fifo_top #(
         .clk(clk_wr),
         .rst_n(rst_n),
         .data_in(gray_rptr),
-        .data_out(gray_rq2_rptr)
+        .data_out(gray_wq2_rptr)
     );
        
 endmodule      

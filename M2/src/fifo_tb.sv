@@ -121,7 +121,7 @@ module top;
   end
 
   always @(posedge clk_rd) begin
-    if ($past(rd_en) && !empty) begin
+    if (rd_en && !empty) begin
       if (data_out != memory[read_addr-1]) begin
         $error("Mismatch at read address %d and write address %d Output expected: %h, received: %h", read_addr, write_addr, memory[read_addr-1], data_out);
       end

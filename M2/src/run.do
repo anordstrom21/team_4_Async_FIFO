@@ -11,6 +11,8 @@ vlog -lint read_pointer.sv +acc -sv
 vlog -lint write_pointer.sv +acc -sv
 vlog -lint sync.sv +acc -sv
 vlog -lint fifo_tb.sv +acc -sv
+vlog -lint gray_to_bin.sv +acc -sv
+vlog -lint bin_to_gray.sv +acc -sv
 
 vopt top -o top_optimized  +acc +cover=sbfec+fifo_top(rtl).
 vsim top_optimized -coverage
