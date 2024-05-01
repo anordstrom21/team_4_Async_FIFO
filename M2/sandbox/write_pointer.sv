@@ -25,7 +25,7 @@ module write_pointer #(
         end
     end
 
-    assign waddr = wptr[ADDR_WIDTH-1:0];
+    assign waddr = binary_wptr[ADDR_WIDTH-1:0];
     assign binary_wptr_next = binary_wptr + (inc & ~full);
     assign gray_wptr_next = (binary_wptr_next>>1) ^ binary_wptr_next;
 
