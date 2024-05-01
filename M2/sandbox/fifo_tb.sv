@@ -52,7 +52,7 @@ module top;
     return $random;
   endfunction
 
-/*
+
   // Tester - Single burst read and write
   initial begin
     write_addr = '0;
@@ -75,15 +75,15 @@ module top;
       @(negedge clk_wr)
       data_in = getdata();
     end
+    wr_en = 1'b0;
     // Wait for all reads to complete
     repeat (150) @(posedge clk_rd);
-    wr_en = 1'b0;
     rd_en = 1'b0;
     repeat (10) @(posedge clk_rd);
-    $finish;
+    $stop;
   end
-*/
 
+/*
 // Truly random testing is proving difficult to confirm accuracy of result
   // Test Process
   initial begin
@@ -102,8 +102,9 @@ module top;
       @(posedge clk_rd);
     end
     repeat (10) @(posedge clk_wr);
-    $finish;
+    $stop;
   end
+*/
 
   // Coverage and Scoreboard
   covergroup cg_fifo with function sample(bit wr_en, bit rd_en, bit full, bit empty);
