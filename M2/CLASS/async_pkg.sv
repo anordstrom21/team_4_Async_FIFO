@@ -7,6 +7,6 @@ package Asynchronous_FIFO_pkg;
 	'include "coverage.svh"
 	'include "tester.svh"
 	'include "scoreboard.svh"
-	'include "fifo_tb.svh"
+	'include "testbench.svh"
 	
 endpackage 
