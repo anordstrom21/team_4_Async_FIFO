@@ -1,7 +1,7 @@
-class scoreboard
+class coverage;
 	
 	// Instantiating the interface
-	virtual Asynchronous_FIFO_bfm;
+	virtual Asynchronous_FIFO_bfm bfm;
 	
 	// Coverage
 	covergroup cg_fifo with function sample(bit wr_en, bit rd_en, bit full, bit empty);
@@ -20,7 +20,11 @@ class scoreboard
 	task execute();
 		forever begin
 			@(negedge bfm.clk_wr);
-			cg.sample(bfm.wr_en, bfm.rd_en, bfm.full, bfm.empty);
+			wr_en = bfm.wr_en;
+			rd_en = bfm.rd_en;
+			full = bfm.full_en;
+			empty = bfm.empty_en;
+			cg_fifo.sample(wr_en, rd_en, full, empty);
 		end
 	endtask
 
