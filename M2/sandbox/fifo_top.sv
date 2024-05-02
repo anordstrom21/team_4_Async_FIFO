@@ -10,9 +10,7 @@ module fifo_top #(
 );
     logic [ADDR_WIDTH-1:0] waddr, raddr;
     logic [ADDR_WIDTH:0] wptr, rptr;
-    logic [ADDR_WIDTH:0] gray_wptr, gray_rptr;
     logic [ADDR_WIDTH:0] wq2_rptr, rq2_wptr;
-    logic [ADDR_WIDTH:0] gray_wq2_rptr, gray_rq2_wptr;
 
     // Memory
     fifo_memory #(.DATA_WIDTH(DATA_WIDTH), .ADDR_WIDTH(ADDR_WIDTH)) mem_inst (
@@ -26,7 +24,7 @@ module fifo_top #(
         .rd_en(rd_en & ~empty)
     );
 
-    // Write Pointer Logic
+    // Write Pointer and Full Flag Logic
     write_pointer #(.ADDR_WIDTH(ADDR_WIDTH)) write_ptr (
         .clk(clk_wr),
         .rst_n(rst_n),
@@ -37,7 +35,7 @@ module fifo_top #(
         .full(full)
     );
 
-    // Read Pointer Logic
+    // Read Pointer and Empty Flag Logic
     read_pointer #(.ADDR_WIDTH(ADDR_WIDTH)) read_ptr (
         .clk(clk_rd),
         .rst_n(rst_n),
