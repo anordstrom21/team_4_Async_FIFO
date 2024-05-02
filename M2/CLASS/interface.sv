@@ -36,7 +36,7 @@ interface Asynchronous_FIFO_bfm;
 	initial begin
 		rst_n = 1'b0;
 		@(negedge clk_wr);
-			rst_n = 1'b1;
+		rst_n = 1'b1;
 	end
 
 
