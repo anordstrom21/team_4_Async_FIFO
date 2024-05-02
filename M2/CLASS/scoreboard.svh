@@ -1,7 +1,7 @@
-class scoreboard
+class scoreboard;
 	
 	// Instantiating the interface
-	virtual Asynchronous_FIFO_bfm;
+	virtual Asynchronous_FIFO_bfm bfm;
 	
 	function new (virtual Asynchronous_FIFO_bfm b);
 		bfm = b;
