@@ -14,8 +14,8 @@ class tester;
 	endfunction
 	
 	task execute();
-		write_addr = '0;
-		read_addr = '0;
+		bfm.write_addr = '0;
+		bfm.read_addr = '0;
 		bfm.wr_en = 1'b0;
 		bfm.rd_en = 1'b0;
 		repeat (10) @(posedge bfm.clk_wr);
