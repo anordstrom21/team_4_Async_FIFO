@@ -1,7 +1,7 @@
 class tester;
 
 	// Instantiating the interface
-	virtual Asynchronous_FIFO_bfm bfm();
+	virtual Asynchronous_FIFO_bfm bfm;
 	
 	function new (virtual Asynchronous_FIFO_bfm b);
 		bfm = b;
@@ -19,8 +19,21 @@ class tester;
 		bfm.wr_en = 1'b0;
 		bfm.rd_en = 1'b0;
 		repeat (10) @(posedge bfm.clk_wr);
+		repeat (1000) begin
+			bfm.data_in = getdata();
+			@(negedge bfm.clk_wr)
+			bfm.wr_en = $random;
+			@(negedge bfm.clk_rd)
+			bfm.rd_en = $random;
+			@(posedge bfm.clk_wr)
+			@(posedge bfm.clk_rd)
+		end
+		repeat (10) @(posedge bfm.clk.wr);
+		$stop;
+	endtask
+endclass
 
-		// Grab data, set write enable and write for 10 write cylces
+/*		// Grab data, set write enable and write for 10 write cylces
 		@(negedge bfm.clk_wr)
 		bfm.data_in = getdata();
 		bfm.wr_en = 1'b1;
@@ -40,6 +53,4 @@ class tester;
 		bfm.rd_en = 1'b0;
 		repeat (10) @(posedge bfm.clk_rd);
 		$finish;
-	endtask
-
-endclass
+*/
