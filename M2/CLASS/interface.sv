@@ -21,6 +21,12 @@ interface Asynchronous_FIFO_bfm;
 	logic [ADDR_WIDTH:0] wq2_rptr;
 	logic [ADDR_WIDTH:0] rq2_wptr;
 
+	// Scoreboard
+  	// NOTE: 1<<ADDR_WIDTH = 2 to the power of ADDR_WIDTH
+  	// NOTE: Recently working with macros employing similar syntax
+  	logic [DATA_WIDTH-1:0] memory [0:(1<<ADDR_WIDTH)-1];
+  	logic [ADDR_WIDTH-1:0] write_addr, read_addr;
+
 	// Initializing Clocks and Clock generator for Write and Read domains
 	initial begin
 		clk_wr = '0;
