@@ -52,7 +52,7 @@ module top;
     return $random;
   endfunction
 
-
+/*
   // Tester - Single burst read and write
   initial begin
     write_addr = '0;
@@ -82,8 +82,8 @@ module top;
     repeat (10) @(posedge clk_rd);
     $stop;
   end
+*/
 
-/*
 // Truly random testing is proving difficult to confirm accuracy of result
   // Test Process
   initial begin
@@ -104,7 +104,7 @@ module top;
     repeat (10) @(posedge clk_wr);
     $stop;
   end
-*/
+
 
   // Coverage and Scoreboard
   covergroup cg_fifo with function sample(bit wr_en, bit rd_en, bit full, bit empty);
@@ -123,8 +123,8 @@ module top;
 
   always @(posedge clk_rd) begin
     if (rd_en && !empty) begin
-      if (data_out != memory[read_addr-1]) begin
-        $error("Mismatch at read address %d and write address %d Output expected: %h, received: %h", read_addr, write_addr, memory[read_addr-1], data_out);
+      if ($sampled(data_out != memory[$past(read_addr, 1, clk_rd)])) begin
+        $error("Mismatch at read address %d ...  Output expected: %h, received: %h", $past(read_addr, 1, clk_rd), $sampled(memory[$past(read_addr, 1, clk_rd)]), data_out);
       end
       read_addr++;
     end
