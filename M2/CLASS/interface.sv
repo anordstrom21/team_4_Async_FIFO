@@ -23,7 +23,6 @@ interface Asynchronous_FIFO_bfm;
 
 	// Scoreboard
   	// NOTE: 1<<ADDR_WIDTH = 2 to the power of ADDR_WIDTH
-  	// NOTE: Recently working with macros employing similar syntax
   	logic [DATA_WIDTH-1:0] memory [0:(1<<ADDR_WIDTH)-1];
   	logic [ADDR_WIDTH-1:0] write_addr, read_addr;
 
