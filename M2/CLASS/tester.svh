@@ -13,7 +13,7 @@ class tester;
 		return $random;
 	endfunction
 	
-	task execute();
+/*	task execute();
 		bfm.write_addr = '0;
 		bfm.read_addr = '0;
 		bfm.wr_en = 1'b0;
@@ -28,12 +28,12 @@ class tester;
 			@(posedge bfm.clk_wr)
 			@(posedge bfm.clk_rd)
 		end
-		repeat (10) @(posedge bfm.clk.wr);
+		repeat (10) @(posedge bfm.clk_wr);
 		$stop;
 	endtask
-endclass
-
-/*		// Grab data, set write enable and write for 10 write cylces
+*/
+	task execute();
+		// Grab data, set write enable and write for 10 write cylces
 		@(negedge bfm.clk_wr)
 		bfm.data_in = getdata();
 		bfm.wr_en = 1'b1;
@@ -41,16 +41,19 @@ endclass
 			@(negedge bfm.clk_wr)
 			bfm.data_in = getdata();
 		end
+		
 		// After 10 cycles enable read and continue for 110 remaining writes in burst
 		bfm.rd_en = 1'b1;
 		repeat (110) begin
 			@(negedge bfm.clk_wr)
 			bfm.data_in = getdata();
 		end
+		bfm.wr_en = 1'b0;
+		
 		// Wait for all reads to complete
 		repeat (150) @(posedge bfm.clk_rd);
-		bfm.wr_en = 1'b0;
 		bfm.rd_en = 1'b0;
 		repeat (10) @(posedge bfm.clk_rd);
 		$finish;
-*/
+	endtask
+endclass
