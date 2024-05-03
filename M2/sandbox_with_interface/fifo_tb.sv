@@ -66,15 +66,18 @@ module top;
       @(negedge bfm_ext.clk_wr)
       bfm_ext.data_in = getdata();
     end
+
     // After 10 cycles enable read and continue for 110 remaining writes in burst
     bfm_ext.rd_en = 1'b1;
     repeat (110) begin
       @(negedge bfm_ext.clk_wr)
       bfm_ext.data_in = getdata();
     end
+    
+    // After 120 cycles of wr_clk -> Deassert wr_en
+    bfm_ext.wr_en = 1'b0;
     // Wait for all reads to complete
     repeat (150) @(posedge bfm_ext.clk_rd);
-    bfm_ext.wr_en = 1'b0;
     bfm_ext.rd_en = 1'b0;
     repeat (10) @(posedge bfm_ext.clk_rd);
     $finish;
