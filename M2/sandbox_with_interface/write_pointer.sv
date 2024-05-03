@@ -8,31 +8,18 @@ module write_pointer #(
     output logic                    full
 );
 
-    logic   [ADDR_WIDTH:0]  binary_wptr;
-    logic   [ADDR_WIDTH:0]  binary_wptr_next, gray_wptr_next;
-    logic                   full_next;
-
     always_ff @(posedge clk or negedge rst_n) begin
-        if (!rst_n) begin
+        if (!rst_n)
             wptr <= 0;
-            binary_wptr <= 0;
-            full <= 0;
-        end
-        else begin 
-            wptr <= gray_wptr_next;
-            binary_wptr <= binary_wptr_next;
-            full <= full_next;
-        end
+        else if (inc && !full)
+            wptr <= wptr + 1;
     end
 
-    assign waddr = binary_wptr[ADDR_WIDTH-1:0];
-    assign binary_wptr_next = binary_wptr + (inc & ~full);
-    assign gray_wptr_next = (binary_wptr_next>>1) ^ binary_wptr_next;
+    always_ff @(posedge clk) begin
+        full <= (wptr[ADDR_WIDTH-1:0] == wq2_rptr[ADDR_WIDTH-1:0]) && (wptr[ADDR_WIDTH] != wq2_rptr[ADDR_WIDTH]);
+    end
 
-    assign full_next =  ((gray_wptr_next[ADDR_WIDTH-2:0] == wq2_rptr[ADDR_WIDTH-2:0]) &&
-                        (gray_wptr_next[ADDR_WIDTH-1:0] != wq2_rptr[ADDR_WIDTH-1:0]) && 
-                        (gray_wptr_next[ADDR_WIDTH] != wq2_rptr[ADDR_WIDTH]));
-
+    assign waddr = wptr[ADDR_WIDTH-1:0];
     
 endmodule
 
