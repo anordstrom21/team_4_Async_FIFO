@@ -79,16 +79,11 @@ module top;
     // Wait for all reads to complete
     repeat (150) @(posedge bfm_ext.clk_rd);
     bfm_ext.rd_en = 1'b0;
-    repeat (10) @(posedge bfm_ext.clk_rd);
-    $finish;
-  end
+    repeat (50) @(posedge bfm_ext.clk_rd);
 
-
-/* Truly random testing is proving difficult to confirm accuracy of result
-Trying simpler, burst style testbench to help with debug
-
-  // Test Process
-  initial begin
+    // Reset TB FIFO and then preform 1000 cycle fully randomized test 
+    write_addr = '0;
+    read_addr = '0;
     bfm_ext.wr_en = 0;
     bfm_ext.rd_en = 0;
     repeat (10) @(posedge bfm_ext.clk_wr);
@@ -101,10 +96,10 @@ Trying simpler, burst style testbench to help with debug
       @(posedge bfm_ext.clk_wr);
       @(posedge bfm_ext.clk_rd);
     end
-    repeat (10) @(posedge bfm_ext.clk_wr);
-    $finish;
+    repeat (50) @(posedge bfm_ext.clk_wr);
+    $stop();
+
   end
-*/
 
   // Coverage and Scoreboard
   covergroup cg_fifo with function sample(bit wr_en, bit rd_en, bit full, bit empty);
@@ -123,8 +118,8 @@ Trying simpler, burst style testbench to help with debug
 
   always @(posedge bfm_ext.clk_rd) begin
     if (bfm_ext.rd_en && !bfm_ext.empty) begin
-      if (bfm_ext.data_out != memory[read_addr-1]) begin
-        $display("Mismatch at address %d: expected %h, got %h", read_addr, memory[read_addr-1], bfm_ext.data_out);
+      if ($sampled(bfm_ext.data_out != memory[$past(read_addr, 1, bfm_ext.clk_rd)])) begin
+        $display("Mismatch at address %d: expected %h, got %h", read_addr, memory[$past(read_addr, 1, bfm_ext.clk_rd)], bfm_ext.data_out);
       end
       read_addr++;
     end
