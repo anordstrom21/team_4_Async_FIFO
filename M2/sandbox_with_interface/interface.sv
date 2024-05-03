@@ -2,8 +2,9 @@
 Interface for the Asynchronous FIFO
 */
 
-interface Asynchronous_FIFO_bfm #(parameter DATA_WIDTH = 8, parameter ADDR_WIDTH = 6);
+interface Asynchronous_FIFO_bfm_ext #(parameter DATA_WIDTH = 8, parameter ADDR_WIDTH = 6);
 
+//External FIFO signals
 logic clk_wr; 
 logic clk_rd; 
 logic rst_n;
@@ -13,12 +14,26 @@ logic [DATA_WIDTH-1:0] data_in;
 logic [DATA_WIDTH-1:0] data_out;
 logic full;
 logic empty;
+
+endinterface
+
+
+
+interface Asynchronous_FIFO_bfm_int #(parameter DATA_WIDTH = 8, parameter ADDR_WIDTH = 6);
+
+//Internal FIFO signals
 logic [ADDR_WIDTH:0] wptr;
 logic [ADDR_WIDTH:0] rptr;
 logic [ADDR_WIDTH-1:0] waddr;
 logic [ADDR_WIDTH-1:0] raddr;
 logic [ADDR_WIDTH:0] wq2_rptr;
 logic [ADDR_WIDTH:0] rq2_wptr;
+
+
+endinterface
+
+
+
 
 //Modports aren't really necessary here
 /*
@@ -61,4 +76,3 @@ modport wr2rd_signals(	input clk_rd,
 
 
 
-endinterface

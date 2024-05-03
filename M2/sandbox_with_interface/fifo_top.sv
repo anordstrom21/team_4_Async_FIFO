@@ -8,58 +8,64 @@ module fifo_top #(
     output logic [DATA_WIDTH-1:0]  data_out,
     output logic                   full, empty
 );
-	//Instantiating the interface
-	Asynchronous_FIFO_bfm bfm();
+
+	//Importing interface of signals internal to the FIFO
+	Asynchronous_FIFO_bfm_int bfm_int();
 
     // Memory
     fifo_memory #(.DATA_WIDTH(DATA_WIDTH), .ADDR_WIDTH(ADDR_WIDTH)) mem_inst (
-        .clk_wr(bfm.clk_wr),
-        .clk_rd(bfm.clk_rd),
-        .waddr(bfm.waddr),
-        .raddr(bfm.raddr),
-        .data_in(bfm.data_in),
-        .data_out(bfm.data_out),
-        .wr_en(bfm.wr_en & ~bfm.full),
-        .rd_en(bfm.rd_en & ~bfm.empty)
+        .clk_wr(clk_wr),
+        .clk_rd(clk_rd),
+        .waddr(bfm_int.waddr),
+        .raddr(bfm_int.raddr),
+        .data_in(data_in),
+        .data_out(data_out),
+        .wr_en(wr_en & ~full),
+        .rd_en(rd_en & ~empty)
     );
 
-    // Write Pointer Logic
+    // Write Pointer and Full Flag Logic
     write_pointer #(.ADDR_WIDTH(ADDR_WIDTH)) write_ptr (
-        .clk(bfm.clk_wr),
-        .rst_n(bfm.rst_n),
-        .inc(bfm.wr_en & ~bfm.full),
-        .wptr(bfm.wptr),
-        .waddr(bfm.waddr),
-        .wq2_rptr(bfm.wq2_rptr),
-        .full(bfm.full)
+        .clk(clk_wr),
+        .rst_n(rst_n),
+        .inc(wr_en),
+        .wptr(bfm_int.wptr),
+        .waddr(bfm_int.waddr),
+        .wq2_rptr(bfm_int.wq2_rptr),
+        .full(full)
     );
 
-    // Read Pointer Logic
+    // Read Pointer and Empty Flag Logic
     read_pointer #(.ADDR_WIDTH(ADDR_WIDTH)) read_ptr (
-        .clk(bfm.clk_rd),
-        .rst_n(bfm.rst_n),
-        .inc(bfm.rd_en & ~bfm.empty),
-        .rptr(bfm.rptr),
-        .raddr(bfm.raddr),
-        .rq2_wptr(bfm.rq2_wptr),
-        .empty(bfm.empty)
+        .clk(clk_rd),
+        .rst_n(rst_n),
+        .inc(rd_en),
+        .rptr(bfm_int.rptr),
+        .raddr(bfm_int.raddr),
+        .rq2_wptr(bfm_int.rq2_wptr),
+        .empty(empty)
     );
 
     // Synchronization from write to read domain
     sync #(.ADDR_WIDTH(ADDR_WIDTH)) sync_w2r (
-        .clk(bfm.clk_rd),
-        .rst_n(bfm.rst_n),
-        .data_in(bfm.wptr),
-        .data_out(bfm.rq2_wptr)
+        .clk(clk_rd),
+        .rst_n(rst_n),
+        .data_in(bfm_int.wptr),
+        .data_out(bfm_int.rq2_wptr)
     );
 
     // Synchronization from read to write domain
     sync #(.ADDR_WIDTH(ADDR_WIDTH)) sync_r2w (
-        .clk(bfm.clk_wr),
-        .rst_n(bfm.rst_n),
-        .data_in(bfm.rptr),
-        .data_out(bfm.wq2_rptr)
+        .clk(clk_wr),
+        .rst_n(rst_n),
+        .data_in(bfm_int.rptr),
+        .data_out(bfm_int.wq2_rptr)
     );
-
-endmodule
-
+       
+endmodule      
+       
+       
+       
+       
+       
+       
