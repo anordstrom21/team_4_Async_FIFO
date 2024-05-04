@@ -1,13 +1,13 @@
 class testbench;
 
 	// Instantiating the interface
-	virtual Asynchronous_FIFO_bfm bfm;
+	virtual Asynchronous_FIFO_bfm_ext bfm;
 	
 	tester tester_h;
 	coverage coverage_h;
 	scoreboard scoreboard_h;
-	
-	function new (virtual Asynchronous_FIFO_bfm b);
+
+	function new (virtual Asynchronous_FIFO_bfm_ext b);
 		bfm = b;
 	endfunction
 	

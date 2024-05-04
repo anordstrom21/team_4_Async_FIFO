@@ -20,11 +20,11 @@ class coverage;
 	task execute();
 		forever begin
 			@(negedge bfm.clk_wr);
-			wr_en = bfm.wr_en;
+			/*wr_en = bfm.wr_en;
 			rd_en = bfm.rd_en;
 			full = bfm.full_en;
-			empty = bfm.empty_en;
-			cg_fifo.sample(wr_en, rd_en, full, empty);
+			empty = bfm.empty_en;*/
+			cg_fifo.sample(bfm.wr_en, bfm.rd_en, bfm.full, bfm.empty);
 		end
 	endtask
 
