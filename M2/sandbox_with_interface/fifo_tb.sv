@@ -58,29 +58,33 @@ module top;
     bfm_ext.rd_en = 1'b0;
     repeat (10) @(posedge bfm_ext.clk_wr);
     
-    // Grab data, set write enable and write for 10 write cylces
-    @(negedge bfm_ext.clk_wr)
-    bfm_ext.data_in = getdata();
-    bfm_ext.wr_en = 1'b1;
-    repeat (9) begin
+    // Run through 25 randomized 120 word bursts. 
+    repeat (25) begin
+      // Grab data, set write enable and write for 10 write cylces
       @(negedge bfm_ext.clk_wr)
       bfm_ext.data_in = getdata();
-    end
+      bfm_ext.wr_en = 1'b1;
+      repeat (9) begin
+        @(negedge bfm_ext.clk_wr)
+        bfm_ext.data_in = getdata();
+      end
 
-    // After 10 cycles enable read and continue for 110 remaining writes in burst
-    bfm_ext.rd_en = 1'b1;
-    repeat (110) begin
-      @(negedge bfm_ext.clk_wr)
-      bfm_ext.data_in = getdata();
-    end
+      // After 10 cycles enable read and continue for 110 remaining writes in burst
+      bfm_ext.rd_en = 1'b1;
+      repeat (110) begin
+        @(negedge bfm_ext.clk_wr)
+        bfm_ext.data_in = getdata();
+      end
     
-    // After 120 cycles of wr_clk -> Deassert wr_en
-    bfm_ext.wr_en = 1'b0;
-    // Wait for all reads to complete
-    repeat (150) @(posedge bfm_ext.clk_rd);
-    bfm_ext.rd_en = 1'b0;
-    repeat (50) @(posedge bfm_ext.clk_rd);
+      // After 120 cycles of wr_clk -> Deassert wr_en
+      bfm_ext.wr_en = 1'b0;
+      // Wait for all reads to complete
+      repeat (150) @(posedge bfm_ext.clk_rd);
+      bfm_ext.rd_en = 1'b0;
+      repeat (50) @(posedge bfm_ext.clk_rd);
+    end
 
+/*
     // Reset TB FIFO and then preform 1000 cycle fully randomized test 
     write_addr = '0;
     read_addr = '0;
@@ -97,8 +101,9 @@ module top;
       @(posedge bfm_ext.clk_rd);
     end
     repeat (50) @(posedge bfm_ext.clk_wr);
-    $stop();
+*/
 
+  $stop();
   end
 
   // Coverage and Scoreboard
