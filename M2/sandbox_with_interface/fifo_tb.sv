@@ -119,7 +119,10 @@ module top;
   always @(posedge bfm_ext.clk_rd) begin
     if (bfm_ext.rd_en && !bfm_ext.empty) begin
       if ($sampled(bfm_ext.data_out != memory[$past(read_addr, 1, bfm_ext.clk_rd)])) begin
-        $display("Mismatch at address %d: expected %h, got %h", read_addr, memory[$past(read_addr, 1, bfm_ext.clk_rd)], bfm_ext.data_out);
+        $error("Mismatch at address %d: expected %h, got %h", read_addr, memory[$past(read_addr, 1, bfm_ext.clk_rd)], bfm_ext.data_out);
+      end
+      else begin
+        $display("Match at address %d: expected %h, got %h", read_addr, memory[$past(read_addr, 1, bfm_ext.clk_rd)], bfm_ext.data_out);
       end
       read_addr++;
     end

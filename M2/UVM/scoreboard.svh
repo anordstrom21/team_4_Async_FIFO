@@ -33,6 +33,5 @@ class scoreboard;
     		end
 		end
 
-
 	endtask
 endclass
