@@ -5,6 +5,7 @@ class testbench;
 	
 	`include "coverage.svh"
 	`include "tester.svh"
+	//1include "scoreboard.svh"
 	
 	tester tester_h;
 	coverage coverage_h;
