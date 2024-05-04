@@ -31,7 +31,7 @@ class scoreboard;
       			end
       		read_addr++;
     		end
-
+		end
 
 	endtask
 endclass
