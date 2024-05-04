@@ -10,8 +10,8 @@ vlog -lint fifo_memory.sv +acc -sv
 vlog -lint read_pointer.sv +acc -sv
 vlog -lint write_pointer.sv +acc -sv
 vlog -lint sync.sv +acc -sv
-vlog -lint interface.sv +acc -sv
 vlog -lint async_pkg.sv +acc -sv
+vlog -lint interface.sv +acc -sv
 
 # Top module
 vlog -lint top.sv +acc -sv
