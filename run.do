@@ -20,7 +20,7 @@ onbreak {resume}
 log /* -r
 
 #adding waves
-add wave -position insertpoint sim:/top/*
+#add wave -position insertpoint sim:/top/*
 add wave -position insertpoint sim:/top/dut/*
 
 run -all
