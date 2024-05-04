@@ -1,0 +1,213 @@
+m255
+K4
+z2
+!s11f vlog 2019.2_1 2019.05, May 13 2019
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/amaso/common/Documents/ECE593/final_project/team_4_Async_FIFO/M2/sandbox_with_interface
+YAsynchronous_FIFO_bfm_ext
+Z1 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z2 !s110 1714801836
+!i10b 1
+!s100 F9IQD=kJKji9TBgYjMYTK2
+!s11b J3^M:BZ^GKSK9X`]?IWjz3
+IgI67IV3OhYJmOBAH=XIVH0
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+S1
+R0
+Z4 w1714709385
+Z5 8interface.sv
+Z6 Finterface.sv
+L0 5
+Z7 OL;L;2019.2_1;69
+r1
+!s85 0
+31
+Z8 !s108 1714801836.000000
+Z9 !s107 interface.sv|
+Z10 !s90 -reportprogress|300|-lint|interface.sv|+acc|-sv|
+!i113 0
+Z11 o-lint +acc -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z12 tCvgOpt 0
+n@asynchronous_@f@i@f@o_bfm_ext
+YAsynchronous_FIFO_bfm_int
+R1
+R2
+!i10b 1
+!s100 FBhFMYPDP>2F_JO2zdNZ80
+!s11b ^DhkTaSOMCAl4>=f=oCD]0
+IoZeR:bYVfX@;7c357ZJ8?3
+R3
+S1
+R0
+R4
+R5
+R6
+L0 22
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 0
+R11
+R12
+n@asynchronous_@f@i@f@o_bfm_int
+vfifo_memory
+R1
+R2
+!i10b 1
+!s100 `]nFLRE>P8gXR1j0Wec^]2
+!s11b `4WgbhjJb1:L5ebfIWoli2
+ITbA>8=?ainC1B]eEeVTm20
+R3
+S1
+R0
+Z13 w1714535949
+8fifo_memory.sv
+Ffifo_memory.sv
+L0 1
+R7
+r1
+!s85 0
+31
+R8
+!s107 fifo_memory.sv|
+!s90 -reportprogress|300|-lint|fifo_memory.sv|+acc|-sv|
+!i113 0
+R11
+R12
+vfifo_top
+R1
+R2
+!i10b 1
+!s100 LaChmfBSg4SAL;nXWZKV11
+!s11b m<6a6W20ZYzinmmeN;Q1C0
+IE]OZYKcWk];E3>AZZYlQJ3
+R3
+S1
+R0
+R4
+8fifo_top.sv
+Ffifo_top.sv
+L0 1
+R7
+r1
+!s85 0
+31
+R8
+!s107 fifo_top.sv|
+!s90 -reportprogress|300|-lint|fifo_top.sv|+acc|-sv|
+!i113 0
+R11
+R12
+vread_pointer
+R1
+R2
+!i10b 1
+!s100 fLf0g:aa;@YWb7h21>okM2
+!s11b 4C97b>E^d`>Dl3G?DA9l81
+In3BSa7MT@fQJdY;037XbH1
+R3
+S1
+R0
+Z14 w1714710028
+8read_pointer.sv
+Fread_pointer.sv
+L0 1
+R7
+r1
+!s85 0
+31
+R8
+!s107 read_pointer.sv|
+!s90 -reportprogress|300|-lint|read_pointer.sv|+acc|-sv|
+!i113 0
+R11
+R12
+vsync
+R1
+R2
+!i10b 1
+!s100 P;6<M59X8:nEiM>1[MR8b0
+!s11b Ei1I;bCjNELSo5LQ@6QR=1
+I>i6P8GGj@2KodmX8GFQ<G2
+R3
+S1
+R0
+R13
+8sync.sv
+Fsync.sv
+L0 1
+R7
+r1
+!s85 0
+31
+R8
+!s107 sync.sv|
+!s90 -reportprogress|300|-lint|sync.sv|+acc|-sv|
+!i113 0
+R11
+R12
+vtop
+R1
+R2
+!i10b 1
+!s100 QUYN4TSnNB[kTAEAaM]Vh3
+!s11b 7TzGh2PVhhSbDdj0_G8:@0
+I>;OC=o^gSK==3cAZmj<MB0
+R3
+S1
+R0
+w1714801813
+8fifo_tb.sv
+Ffifo_tb.sv
+L0 1
+R7
+r1
+!s85 0
+31
+R8
+!s107 fifo_tb.sv|
+!s90 -reportprogress|300|-lint|fifo_tb.sv|+acc|-sv|
+!i113 0
+R11
+R12
+Ttop_optimized
+!s110 1714801837
+VTS1@;UKOHjhFP1lZbW2e:0
+04 3 4 work top fast 0
+o+acc +cover=sbfec+fifo_top(rtl).
+R12
+ntop_optimized
+OL;O;2019.2_1;69
+vwrite_pointer
+R1
+R2
+!i10b 1
+!s100 099Z2U@L@WWA]TncMQVKa0
+!s11b Hzg^6kYTico]=@>XdX8;l3
+IMU7?nMNzEL@=EcOcWG0PU0
+R3
+S1
+R0
+R14
+8write_pointer.sv
+Fwrite_pointer.sv
+L0 1
+R7
+r1
+!s85 0
+31
+R8
+!s107 write_pointer.sv|
+!s90 -reportprogress|300|-lint|write_pointer.sv|+acc|-sv|
+!i113 0
+R11
+R12

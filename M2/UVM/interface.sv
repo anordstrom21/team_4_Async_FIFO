@@ -2,10 +2,7 @@
 Interface for the Asynchronous FIFO
 */
 
-interface Asynchronous_FIFO_bfm_ext;
-
-//Importing package with parameter definitions
-import Asynchronous_FIFO_pkg::*;
+interface Asynchronous_FIFO_bfm_ext #(parameter DATA_WIDTH = 8, parameter ADDR_WIDTH = 6);
 
 //External FIFO signals
 logic clk_wr; 
@@ -18,33 +15,11 @@ logic [DATA_WIDTH-1:0] data_out;
 logic full;
 logic empty;
 
-//Generating both free running clocks
-initial
-begin
-	clk_rd = '0;
-	clk_wr = '0;
-	forever
-	begin
-		#(CYCLE_TIME_WR/2) clk_wr = ~clk_wr;
-		#(CYCLE_TIME_RD/2) clk_rd = ~clk_rd;
-	end
-end
-
-//Task to reset the FIFO
-task reset_FIFO();
-    rst_n = '0;
-    @(negedge clk_wr);
-    rst_n = '1;
-endtask
-
 endinterface
 
 
 
-interface Asynchronous_FIFO_bfm_int;
-
-//Importing package with parameter definitions
-import Asynchronous_FIFO_pkg::*;
+interface Asynchronous_FIFO_bfm_int #(parameter DATA_WIDTH = 8, parameter ADDR_WIDTH = 6);
 
 //Internal FIFO signals
 logic [ADDR_WIDTH:0] wptr;

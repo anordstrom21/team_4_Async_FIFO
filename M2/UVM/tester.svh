@@ -1,5 +1,9 @@
 class tester;
 
+	parameter DATA_WIDTH = 8, ADDR_WIDTH = 6;
+	parameter CYCLE_TIME_WR = 12.5;  // 80 MHz
+	parameter CYCLE_TIME_RD = 20;    // 50 MHz
+
 	// Instantiating the interface
 	virtual Asynchronous_FIFO_bfm_ext bfm;
 	
@@ -35,10 +39,6 @@ class tester;
 	task execute();
 		//Call the task to reset the FIFO (located in the interface)
 		bfm.reset_FIFO();
-		
-		//Initialize wr_en and rd_en
-		bfm_ext.wr_en = '0;
-		bfm_ext.rd_en = '0;
 		
 		// Grab data, set write enable and write for 10 write cylces
 		@(negedge bfm.clk_wr)
