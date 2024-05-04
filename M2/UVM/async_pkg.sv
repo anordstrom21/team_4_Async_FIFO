@@ -4,9 +4,9 @@ package Asynchronous_FIFO_pkg;
 	parameter CYCLE_TIME_WR = 12.5;  // 80 MHz
 	parameter CYCLE_TIME_RD = 20;    // 50 MHz
 	
-	'include "coverage.svh"
-	'include "tester.svh"
-	'include "scoreboard.svh"
-	'include "testbench.svh"
+	`include "coverage.svh"
+	`include "tester.svh"
+	`include "scoreboard.svh"
+	`include "testbench.svh"
 	
 endpackage 
