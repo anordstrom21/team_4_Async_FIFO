@@ -16,11 +16,12 @@ vsim top_optimized -coverage
 set NoQuitOnFinish 1
 onbreak {resume}
 log /* -r
+
 #adding waves
-add wave -position insertpoint sim:/top/*
-add wave -position insertpoint sim:/top/memory
-add wave -position insertpoint sim:/top/dut/*
-add wave -position insertpoint sim:/top/dut/mem_inst/mem
+#add wave -position insertpoint sim:/top/*
+#add wave -position insertpoint sim:/top/memory
+#add wave -position insertpoint sim:/top/dut/*
+#add wave -position insertpoint sim:/top/dut/mem_inst/mem
 #add wave -position insertpoint sim:/top/bfm_ext/*
 
 run -all
