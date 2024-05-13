@@ -2,7 +2,7 @@
 Interface for the Asynchronous FIFO
 */
 
-interface Asynchronous_FIFO_bfm_ext #(parameter DATA_WIDTH = 8, parameter ADDR_WIDTH = 6);
+interface fifo_bfm #(parameter DATA_WIDTH = 8, parameter ADDR_WIDTH = 6);
 
 //External FIFO signals
 logic clk_wr; 
@@ -15,10 +15,20 @@ logic [DATA_WIDTH-1:0] data_out;
 logic full;
 logic empty;
 
+task reset_fifo();
+	bfm.clk_wr = '0;
+	bfm.clk_rd = '0;
+    bfm.rst_n = 1'b0;
+    @(negedge bfm.clk_wr);
+    bfm.rst_n = 1'b1;
+endtask
+
+
+
 endinterface
 
 
-
+/*
 interface Asynchronous_FIFO_bfm_int #(parameter DATA_WIDTH = 8, parameter ADDR_WIDTH = 6);
 
 //Internal FIFO signals
@@ -31,7 +41,7 @@ logic [ADDR_WIDTH:0] rq2_wptr;
 
 
 endinterface
-
+*/
 
 
 

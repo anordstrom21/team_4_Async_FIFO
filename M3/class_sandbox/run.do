@@ -19,20 +19,22 @@ vlog -lint testbench.svh +acc -sv
 vlog -lint tester.svh +acc -sv
 vlog -lint scoreboard.svh +acc -sv
 
-vopt top -o top_optimized  +acc +cover=sbfec+fifo_top(rtl).
-vsim top_optimized -coverage
+vsim -coverage top -voptargs="+cover=sbfec"
 
 #adding waves
-add wave -position insertpoint sim:/top/*
-add wave -position insertpoint sim:/top/dut/*
+#add wave -position insertpoint sim:/top/*
+#add wave -position insertpoint sim:/top/dut/*
 
-set NoQuitOnFinish 1
-onbreak {resume}
-log /* -r
+#set NoQuitOnFinish 1
+#onbreak {resume}
+#log /* -r
 
 run -all
+
+coverage report -codeAll
+
 
 #coverage save async_fifo.ucdb
 #vcover report async_fifo.ucdb
 #vcover report async_fifo.ucdb -cvg -details
-quit
+#quit

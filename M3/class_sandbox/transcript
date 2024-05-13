@@ -1,0 +1,707 @@
+# //  Questa Sim-64
+# //  Version 2019.2_1 linux_x86_64 May 13 2019
+# //
+# //  Copyright 1991-2019 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+do run.do
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:19:56 on May 10,2024
+# vlog -reportprogress 300 -lint dut/fifo_top.sv "+acc" -sv 
+# -- Compiling module fifo_top
+# 
+# Top level modules:
+# 	fifo_top
+# End time: 15:19:56 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:19:56 on May 10,2024
+# vlog -reportprogress 300 -lint dut/fifo_memory.sv "+acc" -sv 
+# -- Compiling module fifo_memory
+# 
+# Top level modules:
+# 	fifo_memory
+# End time: 15:19:56 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:19:57 on May 10,2024
+# vlog -reportprogress 300 -lint dut/read_pointer.sv "+acc" -sv 
+# -- Compiling module read_pointer
+# 
+# Top level modules:
+# 	read_pointer
+# End time: 15:19:57 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:19:57 on May 10,2024
+# vlog -reportprogress 300 -lint dut/write_pointer.sv "+acc" -sv 
+# -- Compiling module write_pointer
+# 
+# Top level modules:
+# 	write_pointer
+# End time: 15:19:57 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:19:57 on May 10,2024
+# vlog -reportprogress 300 -lint dut/sync.sv "+acc" -sv 
+# -- Compiling module sync
+# 
+# Top level modules:
+# 	sync
+# End time: 15:19:57 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:19:57 on May 10,2024
+# vlog -reportprogress 300 -lint fifo_pkg.sv "+acc" -sv 
+# -- Compiling package fifo_pkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 15:19:57 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:19:57 on May 10,2024
+# vlog -reportprogress 300 -lint fifo_bfm.sv "+acc" -sv 
+# -- Compiling interface Asynchronous_FIFO_bfm_ext
+# -- Compiling interface Asynchronous_FIFO_bfm_int
+# 
+# Top level modules:
+# 	--none--
+# End time: 15:19:58 on May 10,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:19:58 on May 10,2024
+# vlog -reportprogress 300 -lint top.sv "+acc" -sv 
+# -- Compiling module top
+# -- Importing package fifo_pkg
+# 
+# Top level modules:
+# 	top
+# End time: 15:19:58 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:19:58 on May 10,2024
+# vlog -reportprogress 300 -lint testbench.svh "+acc" -sv 
+# -- Compiling package testbench_svh_unit
+# 
+# Top level modules:
+# 	--none--
+# End time: 15:19:58 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:19:58 on May 10,2024
+# vlog -reportprogress 300 -lint tester.svh "+acc" -sv 
+# -- Compiling package tester_svh_unit
+# 
+# Top level modules:
+# 	--none--
+# End time: 15:19:58 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:19:58 on May 10,2024
+# vlog -reportprogress 300 -lint scoreboard.svh "+acc" -sv 
+# -- Compiling package scoreboard_svh_unit
+# 
+# Top level modules:
+# 	--none--
+# End time: 15:19:59 on May 10,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vopt 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:19:59 on May 10,2024
+# vopt -reportprogress 300 top -o top_optimized "+acc" "+cover=sbfec+fifo_top(rtl)." 
+# 
+# Top level modules:
+# 	top
+# 
+# Analyzing design...
+# -- Loading module top
+# -- Importing package fifo_pkg
+# ** Error: top.sv(7): Module 'fifo_bfm' is not defined.
+# -- Loading module fifo_top
+# -- Loading module fifo_memory
+# -- Loading module write_pointer
+# -- Loading module read_pointer
+# -- Loading module sync
+# Optimization failed
+# End time: 15:19:59 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# ** Error: /pkgs/mentor/questa/2019.2_1/questasim/linux_x86_64/vopt failed.
+# Error in macro ./run.do line 22
+# Return status = 2
+#     (procedure "compile" line 1)
+#     invoked from within
+# "compile NoFilter vopt top -o top_optimized +acc +cover=sbfec+fifo_top(rtl)."
+#     ("eval" body line 1)
+#     invoked from within
+# "eval compile NoFilter vopt $args"
+#     (procedure "vopt" line 9)
+#     invoked from within
+# "vopt top -o top_optimized  +acc +cover=sbfec+fifo_top(rtl)."
+do run.do
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:29:18 on May 10,2024
+# vlog -reportprogress 300 -lint dut/fifo_top.sv "+acc" -sv 
+# -- Compiling module fifo_top
+# 
+# Top level modules:
+# 	fifo_top
+# End time: 15:29:18 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:29:18 on May 10,2024
+# vlog -reportprogress 300 -lint dut/fifo_memory.sv "+acc" -sv 
+# -- Compiling module fifo_memory
+# 
+# Top level modules:
+# 	fifo_memory
+# End time: 15:29:18 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:29:18 on May 10,2024
+# vlog -reportprogress 300 -lint dut/read_pointer.sv "+acc" -sv 
+# -- Compiling module read_pointer
+# 
+# Top level modules:
+# 	read_pointer
+# End time: 15:29:18 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:29:18 on May 10,2024
+# vlog -reportprogress 300 -lint dut/write_pointer.sv "+acc" -sv 
+# -- Compiling module write_pointer
+# 
+# Top level modules:
+# 	write_pointer
+# End time: 15:29:19 on May 10,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:29:19 on May 10,2024
+# vlog -reportprogress 300 -lint dut/sync.sv "+acc" -sv 
+# -- Compiling module sync
+# 
+# Top level modules:
+# 	sync
+# End time: 15:29:19 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:29:19 on May 10,2024
+# vlog -reportprogress 300 -lint fifo_pkg.sv "+acc" -sv 
+# -- Compiling package fifo_pkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 15:29:19 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:29:19 on May 10,2024
+# vlog -reportprogress 300 -lint fifo_bfm.sv "+acc" -sv 
+# -- Compiling interface Asynchronous_FIFO_bfm_ext
+# -- Compiling interface Asynchronous_FIFO_bfm_int
+# 
+# Top level modules:
+# 	--none--
+# End time: 15:29:19 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:29:20 on May 10,2024
+# vlog -reportprogress 300 -lint top.sv "+acc" -sv 
+# -- Compiling module top
+# -- Importing package fifo_pkg
+# 
+# Top level modules:
+# 	top
+# End time: 15:29:20 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:29:20 on May 10,2024
+# vlog -reportprogress 300 -lint testbench.svh "+acc" -sv 
+# -- Compiling package testbench_svh_unit
+# 
+# Top level modules:
+# 	--none--
+# End time: 15:29:20 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:29:20 on May 10,2024
+# vlog -reportprogress 300 -lint tester.svh "+acc" -sv 
+# -- Compiling package tester_svh_unit
+# 
+# Top level modules:
+# 	--none--
+# End time: 15:29:20 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:29:20 on May 10,2024
+# vlog -reportprogress 300 -lint scoreboard.svh "+acc" -sv 
+# -- Compiling package scoreboard_svh_unit
+# 
+# Top level modules:
+# 	--none--
+# End time: 15:29:20 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# ** Warning: (vsim-8689) Ignoring plusarg '+acc'.  Did you mean '-voptargs=+acc'?
+# vsim -coverage top "+acc" "+cover=sbfec+fifo_top(rtl)." 
+# Start time: 15:29:21 on May 10,2024
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Error: top.sv(7): Module 'fifo_bfm' is not defined.
+# Optimization failed
+# Error loading design
+# Error: Error loading design
+#        Pausing macro execution
+# MACRO ./run.do PAUSED at line 25
+do run.do
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:36:30 on May 10,2024
+# vlog -reportprogress 300 -lint dut/fifo_top.sv "+acc" -sv 
+# -- Compiling module fifo_top
+# 
+# Top level modules:
+# 	fifo_top
+# End time: 15:36:30 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:36:30 on May 10,2024
+# vlog -reportprogress 300 -lint dut/fifo_memory.sv "+acc" -sv 
+# -- Compiling module fifo_memory
+# 
+# Top level modules:
+# 	fifo_memory
+# End time: 15:36:30 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:36:30 on May 10,2024
+# vlog -reportprogress 300 -lint dut/read_pointer.sv "+acc" -sv 
+# -- Compiling module read_pointer
+# 
+# Top level modules:
+# 	read_pointer
+# End time: 15:36:31 on May 10,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:36:31 on May 10,2024
+# vlog -reportprogress 300 -lint dut/write_pointer.sv "+acc" -sv 
+# -- Compiling module write_pointer
+# 
+# Top level modules:
+# 	write_pointer
+# End time: 15:36:31 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:36:31 on May 10,2024
+# vlog -reportprogress 300 -lint dut/sync.sv "+acc" -sv 
+# -- Compiling module sync
+# 
+# Top level modules:
+# 	sync
+# End time: 15:36:31 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:36:31 on May 10,2024
+# vlog -reportprogress 300 -lint fifo_pkg.sv "+acc" -sv 
+# -- Compiling package fifo_pkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 15:36:31 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:36:31 on May 10,2024
+# vlog -reportprogress 300 -lint fifo_bfm.sv "+acc" -sv 
+# -- Compiling interface Asynchronous_FIFO_bfm_ext
+# -- Compiling interface Asynchronous_FIFO_bfm_int
+# 
+# Top level modules:
+# 	--none--
+# End time: 15:36:32 on May 10,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:36:32 on May 10,2024
+# vlog -reportprogress 300 -lint top.sv "+acc" -sv 
+# -- Compiling module top
+# -- Importing package fifo_pkg
+# 
+# Top level modules:
+# 	top
+# End time: 15:36:32 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:36:32 on May 10,2024
+# vlog -reportprogress 300 -lint testbench.svh "+acc" -sv 
+# -- Compiling package testbench_svh_unit
+# 
+# Top level modules:
+# 	--none--
+# End time: 15:36:32 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:36:32 on May 10,2024
+# vlog -reportprogress 300 -lint tester.svh "+acc" -sv 
+# -- Compiling package tester_svh_unit
+# 
+# Top level modules:
+# 	--none--
+# End time: 15:36:32 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:36:32 on May 10,2024
+# vlog -reportprogress 300 -lint scoreboard.svh "+acc" -sv 
+# -- Compiling package scoreboard_svh_unit
+# 
+# Top level modules:
+# 	--none--
+# End time: 15:36:33 on May 10,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vsim -coverage top -voptargs=""cover=sbfec"" 
+# Start time: 15:29:21 on May 10,2024
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Error: (vopt-2253) No module name found in command-line argument "cover=sbfec"
+# Error loading design
+# Error: Error loading design
+#        Pausing macro execution
+# MACRO ./run.do PAUSED at line 22
+do run.do
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:37:48 on May 10,2024
+# vlog -reportprogress 300 -lint dut/fifo_top.sv "+acc" -sv 
+# -- Compiling module fifo_top
+# 
+# Top level modules:
+# 	fifo_top
+# End time: 15:37:48 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:37:48 on May 10,2024
+# vlog -reportprogress 300 -lint dut/fifo_memory.sv "+acc" -sv 
+# -- Compiling module fifo_memory
+# 
+# Top level modules:
+# 	fifo_memory
+# End time: 15:37:48 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:37:48 on May 10,2024
+# vlog -reportprogress 300 -lint dut/read_pointer.sv "+acc" -sv 
+# -- Compiling module read_pointer
+# 
+# Top level modules:
+# 	read_pointer
+# End time: 15:37:49 on May 10,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:37:49 on May 10,2024
+# vlog -reportprogress 300 -lint dut/write_pointer.sv "+acc" -sv 
+# -- Compiling module write_pointer
+# 
+# Top level modules:
+# 	write_pointer
+# End time: 15:37:49 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:37:49 on May 10,2024
+# vlog -reportprogress 300 -lint dut/sync.sv "+acc" -sv 
+# -- Compiling module sync
+# 
+# Top level modules:
+# 	sync
+# End time: 15:37:49 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:37:49 on May 10,2024
+# vlog -reportprogress 300 -lint fifo_pkg.sv "+acc" -sv 
+# -- Compiling package fifo_pkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 15:37:49 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:37:49 on May 10,2024
+# vlog -reportprogress 300 -lint fifo_bfm.sv "+acc" -sv 
+# -- Compiling interface Asynchronous_FIFO_bfm_ext
+# -- Compiling interface Asynchronous_FIFO_bfm_int
+# 
+# Top level modules:
+# 	--none--
+# End time: 15:37:49 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:37:50 on May 10,2024
+# vlog -reportprogress 300 -lint top.sv "+acc" -sv 
+# -- Compiling module top
+# -- Importing package fifo_pkg
+# 
+# Top level modules:
+# 	top
+# End time: 15:37:50 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:37:50 on May 10,2024
+# vlog -reportprogress 300 -lint testbench.svh "+acc" -sv 
+# -- Compiling package testbench_svh_unit
+# 
+# Top level modules:
+# 	--none--
+# End time: 15:37:50 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:37:50 on May 10,2024
+# vlog -reportprogress 300 -lint tester.svh "+acc" -sv 
+# -- Compiling package tester_svh_unit
+# 
+# Top level modules:
+# 	--none--
+# End time: 15:37:50 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:37:50 on May 10,2024
+# vlog -reportprogress 300 -lint scoreboard.svh "+acc" -sv 
+# -- Compiling package scoreboard_svh_unit
+# 
+# Top level modules:
+# 	--none--
+# End time: 15:37:50 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -coverage top -voptargs=""+cover=sbfec"" 
+# Start time: 15:29:21 on May 10,2024
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Error: top.sv(7): Module 'fifo_bfm' is not defined.
+# Optimization failed
+# Error loading design
+# Error: Error loading design
+#        Pausing macro execution
+# MACRO ./run.do PAUSED at line 22
+do run.do
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:42:23 on May 10,2024
+# vlog -reportprogress 300 -lint dut/fifo_top.sv "+acc" -sv 
+# -- Compiling module fifo_top
+# 
+# Top level modules:
+# 	fifo_top
+# End time: 15:42:23 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:42:24 on May 10,2024
+# vlog -reportprogress 300 -lint dut/fifo_memory.sv "+acc" -sv 
+# -- Compiling module fifo_memory
+# 
+# Top level modules:
+# 	fifo_memory
+# End time: 15:42:24 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:42:24 on May 10,2024
+# vlog -reportprogress 300 -lint dut/read_pointer.sv "+acc" -sv 
+# -- Compiling module read_pointer
+# 
+# Top level modules:
+# 	read_pointer
+# End time: 15:42:24 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:42:24 on May 10,2024
+# vlog -reportprogress 300 -lint dut/write_pointer.sv "+acc" -sv 
+# -- Compiling module write_pointer
+# 
+# Top level modules:
+# 	write_pointer
+# End time: 15:42:24 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:42:24 on May 10,2024
+# vlog -reportprogress 300 -lint dut/sync.sv "+acc" -sv 
+# -- Compiling module sync
+# 
+# Top level modules:
+# 	sync
+# End time: 15:42:24 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:42:25 on May 10,2024
+# vlog -reportprogress 300 -lint fifo_pkg.sv "+acc" -sv 
+# -- Compiling package fifo_pkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 15:42:25 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:42:25 on May 10,2024
+# vlog -reportprogress 300 -lint fifo_bfm.sv "+acc" -sv 
+# -- Compiling interface fifo_bfm
+# 
+# Top level modules:
+# 	--none--
+# End time: 15:42:25 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:42:25 on May 10,2024
+# vlog -reportprogress 300 -lint top.sv "+acc" -sv 
+# -- Compiling module top
+# -- Importing package fifo_pkg
+# 
+# Top level modules:
+# 	top
+# End time: 15:42:25 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:42:25 on May 10,2024
+# vlog -reportprogress 300 -lint testbench.svh "+acc" -sv 
+# -- Compiling package testbench_svh_unit
+# 
+# Top level modules:
+# 	--none--
+# End time: 15:42:25 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:42:25 on May 10,2024
+# vlog -reportprogress 300 -lint tester.svh "+acc" -sv 
+# -- Compiling package tester_svh_unit
+# 
+# Top level modules:
+# 	--none--
+# End time: 15:42:26 on May 10,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:42:26 on May 10,2024
+# vlog -reportprogress 300 -lint scoreboard.svh "+acc" -sv 
+# -- Compiling package scoreboard_svh_unit
+# 
+# Top level modules:
+# 	--none--
+# End time: 15:42:26 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -coverage top -voptargs=""+cover=sbfec"" 
+# Start time: 15:29:21 on May 10,2024
+# ** Note: (vsim-3812) Design is being optimized...
+# Loading sv_std.std
+# Loading work.fifo_bfm(fast)
+# Loading work.fifo_pkg(fast)
+# Loading work.top(fast)
+# Loading work.fifo_bfm(fast)
+# Loading work.fifo_top(fast)
+# Loading work.fifo_memory(fast)
+# Loading work.write_pointer(fast)
+# Loading work.read_pointer(fast)
+# Loading work.sync(fast)
+# ** Fatal: (vsim-8274) Virtual interface elem. 'reset_fifo' not found in 'fifo_bfm'.
+#    Time: 0 ns  Iteration: 0  Region: /fifo_pkg File: tester.svh Line: 22
+# FATAL ERROR while loading design
+# Error loading design
+# Error: Error loading design
+#        Pausing macro execution
+# MACRO ./run.do PAUSED at line 22
+do run.do
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:51:53 on May 10,2024
+# vlog -reportprogress 300 -lint dut/fifo_top.sv "+acc" -sv 
+# -- Compiling module fifo_top
+# 
+# Top level modules:
+# 	fifo_top
+# End time: 15:51:54 on May 10,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:51:54 on May 10,2024
+# vlog -reportprogress 300 -lint dut/fifo_memory.sv "+acc" -sv 
+# -- Compiling module fifo_memory
+# 
+# Top level modules:
+# 	fifo_memory
+# End time: 15:51:54 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:51:54 on May 10,2024
+# vlog -reportprogress 300 -lint dut/read_pointer.sv "+acc" -sv 
+# -- Compiling module read_pointer
+# 
+# Top level modules:
+# 	read_pointer
+# End time: 15:51:54 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:51:54 on May 10,2024
+# vlog -reportprogress 300 -lint dut/write_pointer.sv "+acc" -sv 
+# -- Compiling module write_pointer
+# 
+# Top level modules:
+# 	write_pointer
+# End time: 15:51:54 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:51:54 on May 10,2024
+# vlog -reportprogress 300 -lint dut/sync.sv "+acc" -sv 
+# -- Compiling module sync
+# 
+# Top level modules:
+# 	sync
+# End time: 15:51:55 on May 10,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:51:55 on May 10,2024
+# vlog -reportprogress 300 -lint fifo_pkg.sv "+acc" -sv 
+# -- Compiling package fifo_pkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 15:51:55 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:51:55 on May 10,2024
+# vlog -reportprogress 300 -lint fifo_bfm.sv "+acc" -sv 
+# -- Compiling interface fifo_bfm
+# 
+# Top level modules:
+# 	--none--
+# End time: 15:51:55 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:51:55 on May 10,2024
+# vlog -reportprogress 300 -lint top.sv "+acc" -sv 
+# -- Compiling module top
+# -- Importing package fifo_pkg
+# 
+# Top level modules:
+# 	top
+# End time: 15:51:55 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:51:56 on May 10,2024
+# vlog -reportprogress 300 -lint testbench.svh "+acc" -sv 
+# -- Compiling package testbench_svh_unit
+# 
+# Top level modules:
+# 	--none--
+# End time: 15:51:56 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:51:56 on May 10,2024
+# vlog -reportprogress 300 -lint tester.svh "+acc" -sv 
+# -- Compiling package tester_svh_unit
+# 
+# Top level modules:
+# 	--none--
+# End time: 15:51:56 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:51:56 on May 10,2024
+# vlog -reportprogress 300 -lint scoreboard.svh "+acc" -sv 
+# -- Compiling package scoreboard_svh_unit
+# 
+# Top level modules:
+# 	--none--
+# End time: 15:51:56 on May 10,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -coverage top -voptargs=""+cover=sbfec"" 
+# Start time: 15:29:21 on May 10,2024
+# ** Note: (vsim-3812) Design is being optimized...
+# End time: 15:51:58 on May 10,2024, Elapsed time: 0:22:37
+# Errors: 4, Warnings: 1

@@ -6,7 +6,7 @@ module fifo_top #(
     input  logic                   wr_en, rd_en,
     input  logic [DATA_WIDTH-1:0]  data_in,
     output logic [DATA_WIDTH-1:0]  data_out,
-    output logic                   full, empty
+    output logic                   full, empty, half
 );
 
 	//Importing interface of signals internal to the FIFO
@@ -21,7 +21,8 @@ module fifo_top #(
         .data_in(data_in),
         .data_out(data_out),
         .wr_en(wr_en & ~full),
-        .rd_en(rd_en & ~empty)
+        .rd_en(rd_en & ~empty),
+        .half(half)
     );
 
     // Write Pointer and Full Flag Logic
@@ -61,7 +62,10 @@ module fifo_top #(
         .data_in(bfm_int.rptr),
         .data_out(bfm_int.wq2_rptr)
     );
-       
+
+
+
+
 endmodule      
        
        

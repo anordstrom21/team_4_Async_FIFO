@@ -21,7 +21,8 @@ module top;
     .data_in(bfm_ext.data_in),
     .data_out(bfm_ext.data_out),
     .full(bfm_ext.full),
-    .empty(bfm_ext.empty)
+    .empty(bfm_ext.empty),
+    .half(bfm_ext.half)
   );
 
   // Clock Generation for Write and Read domains
