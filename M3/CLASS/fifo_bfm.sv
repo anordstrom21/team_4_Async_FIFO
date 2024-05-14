@@ -18,6 +18,14 @@ interface fifo_bfm;
 	logic wr_en, rd_en;
 	logic [DATA_WIDTH-1:0] data_in, data_out;
 	logic full, empty, half;
+	
+	//Internal FIFO signals
+	logic [ADDR_WIDTH:0] wptr;
+	logic [ADDR_WIDTH:0] rptr;
+	logic [ADDR_WIDTH-1:0] waddr;
+	logic [ADDR_WIDTH-1:0] raddr;
+	logic [ADDR_WIDTH:0] wq2_rptr;
+	logic [ADDR_WIDTH:0] rq2_wptr;
 
 	// Clock Generation for Write and Read domains
 	initial begin
