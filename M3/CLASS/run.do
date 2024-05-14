@@ -15,9 +15,9 @@ vlog -lint dut/write_pointer.sv +acc -sv
 vlog -lint dut/sync.sv +acc -sv
  
 # Compile the class based portion of our testbench
-vlog classes/testbench.sv -sv
-vlog classes/tester.sv -sv
-vlog classes/scoreboard.sv -sv
+vlog classes/testbench.sv 
+vlog classes/tester.sv 
+vlog classes/scoreboard.sv 
  
 
 #vsim -c -do "run -all; quit" testbench

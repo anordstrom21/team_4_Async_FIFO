@@ -422,3 +422,270 @@ do run.do
 # /pkgs/mentor/questa/2019.2_1/questasim/linux_x86_64/vlog failed.
 #     while executing
 # "vlog classes/testbench.sv -sv"
+do run.do
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:15:47 on May 14,2024
+# vlog -reportprogress 300 -lint fifo_pkg.sv "+acc" -sv 
+# -- Compiling package fifo_pkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 15:15:47 on May 14,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:15:47 on May 14,2024
+# vlog -reportprogress 300 -lint fifo_bfm.sv "+acc" -sv 
+# -- Compiling interface fifo_bfm
+# -- Importing package fifo_pkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 15:15:47 on May 14,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:15:47 on May 14,2024
+# vlog -reportprogress 300 -lint top.sv "+acc" -sv 
+# -- Compiling module top
+# -- Importing package fifo_pkg
+# 
+# Top level modules:
+# 	top
+# End time: 15:15:47 on May 14,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:15:47 on May 14,2024
+# vlog -reportprogress 300 -lint dut/fifo_top.sv "+acc" -sv 
+# -- Compiling module fifo_top
+# 
+# Top level modules:
+# 	fifo_top
+# End time: 15:15:48 on May 14,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:15:48 on May 14,2024
+# vlog -reportprogress 300 -lint dut/fifo_memory.sv "+acc" -sv 
+# -- Compiling module fifo_memory
+# 
+# Top level modules:
+# 	fifo_memory
+# End time: 15:15:48 on May 14,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:15:48 on May 14,2024
+# vlog -reportprogress 300 -lint dut/read_pointer.sv "+acc" -sv 
+# -- Compiling module read_pointer
+# 
+# Top level modules:
+# 	read_pointer
+# End time: 15:15:48 on May 14,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:15:48 on May 14,2024
+# vlog -reportprogress 300 -lint dut/write_pointer.sv "+acc" -sv 
+# -- Compiling module write_pointer
+# 
+# Top level modules:
+# 	write_pointer
+# End time: 15:15:48 on May 14,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:15:48 on May 14,2024
+# vlog -reportprogress 300 -lint dut/sync.sv "+acc" -sv 
+# -- Compiling module sync
+# 
+# Top level modules:
+# 	sync
+# End time: 15:15:48 on May 14,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:15:48 on May 14,2024
+# vlog -reportprogress 300 classes/testbench.sv 
+# ** Error: classes/testbench.sv(23): Invalid type 'tester'. Please check the type of the variable 'tester_h'.
+# ** Error: classes/testbench.sv(25): Invalid type 'scoreboard'. Please check the type of the variable 'scoreboard_h'.
+# ** Error: classes/testbench.sv(32): (vlog-2730) Undefined variable: 'tester_h'.
+# ** Error: classes/testbench.sv(34): (vlog-2730) Undefined variable: 'scoreboard_h'.
+# End time: 15:15:49 on May 14,2024, Elapsed time: 0:00:01
+# Errors: 4, Warnings: 0
+# ** Error: /pkgs/mentor/questa/2019.2_1/questasim/linux_x86_64/vlog failed.
+# Error in macro ./run.do line 18
+# /pkgs/mentor/questa/2019.2_1/questasim/linux_x86_64/vlog failed.
+#     while executing
+# "vlog classes/testbench.sv "
+do run.do
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:30:23 on May 14,2024
+# vlog -reportprogress 300 -lint fifo_pkg.sv "+acc" -sv 
+# -- Compiling package fifo_pkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 15:30:24 on May 14,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:30:24 on May 14,2024
+# vlog -reportprogress 300 -lint fifo_bfm.sv "+acc" -sv 
+# -- Compiling interface fifo_bfm
+# -- Importing package fifo_pkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 15:30:24 on May 14,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:30:24 on May 14,2024
+# vlog -reportprogress 300 -lint top.sv "+acc" -sv 
+# -- Compiling module top
+# -- Importing package fifo_pkg
+# 
+# Top level modules:
+# 	top
+# End time: 15:30:24 on May 14,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:30:24 on May 14,2024
+# vlog -reportprogress 300 -lint dut/fifo_top.sv "+acc" -sv 
+# -- Compiling module fifo_top
+# 
+# Top level modules:
+# 	fifo_top
+# End time: 15:30:25 on May 14,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:30:25 on May 14,2024
+# vlog -reportprogress 300 -lint dut/fifo_memory.sv "+acc" -sv 
+# -- Compiling module fifo_memory
+# 
+# Top level modules:
+# 	fifo_memory
+# End time: 15:30:25 on May 14,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:30:25 on May 14,2024
+# vlog -reportprogress 300 -lint dut/read_pointer.sv "+acc" -sv 
+# -- Compiling module read_pointer
+# 
+# Top level modules:
+# 	read_pointer
+# End time: 15:30:25 on May 14,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:30:25 on May 14,2024
+# vlog -reportprogress 300 -lint dut/write_pointer.sv "+acc" -sv 
+# -- Compiling module write_pointer
+# 
+# Top level modules:
+# 	write_pointer
+# End time: 15:30:25 on May 14,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:30:25 on May 14,2024
+# vlog -reportprogress 300 -lint dut/sync.sv "+acc" -sv 
+# -- Compiling module sync
+# 
+# Top level modules:
+# 	sync
+# End time: 15:30:25 on May 14,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:30:25 on May 14,2024
+# vlog -reportprogress 300 classes/testbench.sv 
+# ** Error: classes/testbench.sv(23): Invalid type 'tester'. Please check the type of the variable 'tester_h'.
+# ** Error: classes/testbench.sv(25): Invalid type 'scoreboard'. Please check the type of the variable 'scoreboard_h'.
+# ** Error: classes/testbench.sv(32): (vlog-2730) Undefined variable: 'tester_h'.
+# ** Error: classes/testbench.sv(34): (vlog-2730) Undefined variable: 'scoreboard_h'.
+# End time: 15:30:26 on May 14,2024, Elapsed time: 0:00:01
+# Errors: 4, Warnings: 0
+# ** Error: /pkgs/mentor/questa/2019.2_1/questasim/linux_x86_64/vlog failed.
+# Error in macro ./run.do line 18
+# /pkgs/mentor/questa/2019.2_1/questasim/linux_x86_64/vlog failed.
+#     while executing
+# "vlog classes/testbench.sv "
+do run.do
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:55:26 on May 14,2024
+# vlog -reportprogress 300 -lint fifo_pkg.sv "+acc" -sv 
+# -- Compiling package fifo_pkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 15:55:26 on May 14,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:55:26 on May 14,2024
+# vlog -reportprogress 300 -lint fifo_bfm.sv "+acc" -sv 
+# -- Compiling interface fifo_bfm
+# -- Importing package fifo_pkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 15:55:26 on May 14,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:55:27 on May 14,2024
+# vlog -reportprogress 300 -lint top.sv "+acc" -sv 
+# -- Compiling module top
+# -- Importing package fifo_pkg
+# 
+# Top level modules:
+# 	top
+# End time: 15:55:27 on May 14,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:55:27 on May 14,2024
+# vlog -reportprogress 300 -lint dut/fifo_top.sv "+acc" -sv 
+# -- Compiling module fifo_top
+# 
+# Top level modules:
+# 	fifo_top
+# End time: 15:55:27 on May 14,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:55:27 on May 14,2024
+# vlog -reportprogress 300 -lint dut/fifo_memory.sv "+acc" -sv 
+# -- Compiling module fifo_memory
+# 
+# Top level modules:
+# 	fifo_memory
+# End time: 15:55:27 on May 14,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:55:27 on May 14,2024
+# vlog -reportprogress 300 -lint dut/read_pointer.sv "+acc" -sv 
+# -- Compiling module read_pointer
+# 
+# Top level modules:
+# 	read_pointer
+# End time: 15:55:27 on May 14,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:55:27 on May 14,2024
+# vlog -reportprogress 300 -lint dut/write_pointer.sv "+acc" -sv 
+# -- Compiling module write_pointer
+# 
+# Top level modules:
+# 	write_pointer
+# End time: 15:55:27 on May 14,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:55:27 on May 14,2024
+# vlog -reportprogress 300 -lint dut/sync.sv "+acc" -sv 
+# -- Compiling module sync
+# 
+# Top level modules:
+# 	sync
+# End time: 15:55:28 on May 14,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2019.2_1 Compiler 2019.05 May 13 2019
+# Start time: 15:55:28 on May 14,2024
+# vlog -reportprogress 300 classes/testbench.sv 
+# ** Error: classes/testbench.sv(23): Invalid type 'tester'. Please check the type of the variable 'tester_h'.
+# ** Error: classes/testbench.sv(25): Invalid type 'scoreboard'. Please check the type of the variable 'scoreboard_h'.
+# ** Error: classes/testbench.sv(32): (vlog-2730) Undefined variable: 'tester_h'.
+# ** Error: classes/testbench.sv(34): (vlog-2730) Undefined variable: 'scoreboard_h'.
+# End time: 15:55:28 on May 14,2024, Elapsed time: 0:00:00
+# Errors: 4, Warnings: 0
+# ** Error: /pkgs/mentor/questa/2019.2_1/questasim/linux_x86_64/vlog failed.
+# Error in macro ./run.do line 18
+# /pkgs/mentor/questa/2019.2_1/questasim/linux_x86_64/vlog failed.
+#     while executing
+# "vlog classes/testbench.sv "
