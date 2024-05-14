@@ -6,8 +6,8 @@ module fifo_memory #(
     input  logic                      wr_en, rd_en,
     input  logic  [ADDR_WIDTH-1:0]    waddr, raddr,
     input  logic  [DATA_WIDTH-1:0]    data_in,
-    output logic  [DATA_WIDTH-1:0]    data_out
-
+    output logic  [DATA_WIDTH-1:0]    data_out,
+    output logic                      half
 );
 	
     logic [DATA_WIDTH-1:0] mem[2**ADDR_WIDTH-1:0];
@@ -19,5 +19,8 @@ module fifo_memory #(
     always_ff @(posedge clk_rd) begin
         if (rd_en) data_out <= mem[raddr];
     end
+
+    // Half-full/Half-empty logic
+    assign half = (raddr-waddr==32)||(waddr-raddr==32) ? 1'b1 : 1'b0;
 
 endmodule
