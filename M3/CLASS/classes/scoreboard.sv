@@ -35,6 +35,20 @@ class scoreboard;
     int write_ptr = 0;
     int read_ptr = 0;
     int count = 0;
+
+    // If rd_en was asserted last cycle then 
+    // (Essentially the dut's read pointer is slower)
+    logic [DATA_WIDTH-1:0] data_last;
+    logic  rd_en_last;
+
+    task shift();
+        @(posedge bfm.clk_rd) begin
+            if (bfm.rd_en && !bfm.empty) begin
+                data_last <= memory[read_ptr];
+                rd_en_last <= bfm.rd_en;
+            end
+        end
+    endtask : shift
    
     task write(input logic [DATA_WIDTH-1:0] data);
         if (count < DEPTH) begin
@@ -49,12 +63,18 @@ class scoreboard;
     task read_and_check();
         if (count > 0) begin
             logic [DATA_WIDTH-1:0] expected_data = memory[read_ptr];
-            if (bfm.data_out !== expected_data) begin
-                $error("Data mismatch!: expected %h, got %h at read pointer %0d", expected_data, bfm.data_out, read_ptr);
+            // If rd_en wasn't asserted last cycle then read_addr points to data
+            if (!rd_en_last) begin
+                if (bfm.data_out != expected_data) begin
+                    $error("Data mismatch!: expected %h, got %h at read pointer %0d", expected_data, bfm.data_out, read_ptr);
+                end
             end
-            /*else begin
-                $display("Scoreboard: Data out %h, matches expected %h at read pointer %0d", bfm.data_out, expected_data, read_ptr);
-            end*/
+            // If rd_en was asserted last cycle then data will be one cycle behind
+            else begin
+                if (bfm.data_out != data_last) begin
+                    $error("Data mismatch!: expected %h, got %h at read pointer %0d", expected_data, bfm.data_out, read_ptr);
+                end
+            end
             read_ptr = (read_ptr + 1) % DEPTH; //Modulo keeps values in range from 0 to DEPTH-1
             count--;
         end else begin
