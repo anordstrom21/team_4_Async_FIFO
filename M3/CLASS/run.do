@@ -17,4 +17,9 @@ vopt top -o top_optimized  +acc +cover=sbfec+fifo_top(rtl).
  onbreak {resume}
  log /* -r
  run -all
+
+ coverage save async_fifo.ucdb
+ vcover report async_fifo.ucdb
+ vcover report async_fifo.ucdb -cvg -details
+
 #quit 
