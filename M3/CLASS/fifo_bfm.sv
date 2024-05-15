@@ -31,8 +31,10 @@ interface fifo_bfm;
 	initial begin
 		clk_wr = 1'b0;
 		clk_rd = 1'b0;
-		forever #(CYCLE_TIME_WR/2) clk_wr = ~clk_wr;
-		forever #(CYCLE_TIME_RD/2) clk_rd = ~clk_rd;
+		forever begin
+			#(CYCLE_TIME_WR/2) clk_wr = ~clk_wr;
+	 		#(CYCLE_TIME_RD/2) clk_rd = ~clk_rd;
+		end
 	end
 
 
