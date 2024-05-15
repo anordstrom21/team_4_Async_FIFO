@@ -46,29 +46,33 @@ class tester;
   task execute();
       bfm.reset_fifo();
 
-      // Grab data, set write enable and write for 10 write cylces
-      @(negedge bfm.clk_wr)
-      bfm.data_in = get_data();
-      bfm.wr_en = 1'b1;
-      repeat (9) begin
+      // Run through 25, 120 word bursts
+      repeat (25) begin
+
+        // Grab data, set write enable and write for 10 write cylces
         @(negedge bfm.clk_wr)
         bfm.data_in = get_data();
+        bfm.wr_en = 1'b1;
+        repeat (9) begin
+          @(negedge bfm.clk_wr)
+          bfm.data_in = get_data();
+        end
+
+        // After 10 cycles enable read and continue for 110 remaining writes in burst
+        bfm.rd_en = 1'b1;
+        repeat (110) begin
+          @(negedge bfm.clk_wr)
+          bfm.data_in = get_data();
+        end
+    
+        // After 120 cycles of wr_clk -> Deassert wr_en
+        bfm.wr_en = 1'b0;
+        // Wait for all reads to complete
+        repeat (64) @(posedge bfm.clk_rd);
+        bfm.rd_en = 1'b0;
+        repeat (10) @(posedge bfm.clk_rd);
       end
 
-      // After 10 cycles enable read and continue for 110 remaining writes in burst
-      bfm.rd_en = 1'b1;
-      repeat (110) begin
-        @(negedge bfm.clk_wr)
-        bfm.data_in = get_data();
-      end
-    
-      // After 120 cycles of wr_clk -> Deassert wr_en
-      bfm.wr_en = 1'b0;
-      // Wait for all reads to complete
-      repeat (64) @(posedge bfm.clk_rd);
-      bfm.rd_en = 1'b0;
-      repeat (10) @(posedge bfm.clk_rd);
-      
       $stop;
 
    endtask : execute
