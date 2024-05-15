@@ -5,6 +5,7 @@ package fifo_pkg;
 	parameter CYCLE_TIME_RD = 20;    // 50 MHz
 	
 //	`include "coverage.sv"
+	`include "monitor.sv"
 	`include "tester.sv"
 	`include "scoreboard.sv"
 	`include "testbench.sv"

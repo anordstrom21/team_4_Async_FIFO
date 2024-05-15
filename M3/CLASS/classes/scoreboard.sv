@@ -1,9 +1,10 @@
 /*********************************************
 //	Scoreboard Class for the OOP/Class Based 
 //  Testbench for an Asynchronous FIFO Module
+//
 //  Creates virtual bfm and calls constructor
-//  Contains functions, write(), read_and_check()
-//  and execute().  Write() creates a local fifo
+//  Contains functions, write() and read_and_check()
+//  and task execute().  Write() creates a local fifo
 //  and write data_in to the fifo.  Read_and_check()
 //  reads from the local fifo and compares it again
 //  data_out of the bfm.  Execute() runs the write()
@@ -15,7 +16,6 @@
 *********************************************/
 
 class scoreboard;
-    //import fifo_pkg::*;
     
     virtual fifo_bfm bfm;
 

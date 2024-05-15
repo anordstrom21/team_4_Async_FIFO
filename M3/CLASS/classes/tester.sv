@@ -1,11 +1,12 @@
 /*********************************************
 //	Tester Class for the OOP/Class Based 
 //  Testbench for an Asynchronous FIFO Module
+//
 //  Creates virtual bfm and overwrites constructor
 //  Also creates handles for tester, coverage
-//  and scoreboard classes.  Contains functions 
+//  and scoreboard classes.  Contains function 
 //  get_data(), which assigns random data with a 50%
-//  chance of being 0 or max, and execute(), which 
+//  chance of being 0 or max, and task execute(), which 
 //  drives a 120 word write burst and, after 10 write
 //  clocks reads until the FIFO is empty.
 //
@@ -14,8 +15,9 @@
 //	 
 *********************************************/
 class tester;
-  //import fifo_pkg::*;
 
+  parameter DATA_WIDTH = 8;
+  
   virtual fifo_bfm bfm;
 
   function new (virtual fifo_bfm b);
@@ -26,7 +28,7 @@ class tester;
   // Function to create random data to drive at fifo
   // Weighted to make 50% of values 0x00/0xFF
   // TODO: ? protected ? Do I need it? WHat does it do? 
-  protected function logic get_data();
+  protected function logic [DATA_WIDTH-1:0] get_data();
     bit [1:0] zero_ones;
     zero_ones = $random;
     if (zero_ones == 2'b00)
@@ -67,5 +69,7 @@ class tester;
       bfm.rd_en = 1'b0;
       repeat (10) @(posedge bfm.clk_rd);
       
+      $stop;
+
    endtask : execute
 endclass 

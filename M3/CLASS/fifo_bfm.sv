@@ -45,7 +45,7 @@ interface fifo_bfm;
 	    rst_n = 1'b1;
 	    wr_en = 1'b0;
 	    rd_en = 1'b0;
-	endtask
+	endtask : reset_fifo
 
 endinterface
 
