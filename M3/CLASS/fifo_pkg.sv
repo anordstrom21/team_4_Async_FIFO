@@ -5,9 +5,11 @@ package fifo_pkg;
 	parameter CYCLE_TIME_RD = 20;    // 50 MHz
 	
 	`include "coverage.sv"
+	`include "transaction.sv"
+	`include "generator.sv"
 	`include "driver.sv"
 	`include "monitor.sv"
-	`include "tester.sv"
+	//`include "tester.sv"  tester -> generator + driver
 	`include "scoreboard.sv"
 	`include "testbench.sv"
 	

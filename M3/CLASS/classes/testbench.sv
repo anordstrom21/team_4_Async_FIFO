@@ -20,21 +20,24 @@ class testbench;
   virtual fifo_bfm bfm;
 
   tester      tester_h;
-  coverage  coverage_h;
+  coverage    coverage_h;
   scoreboard  scoreboard_h;
   monitor     monitor_h;
   driver      driver_h;
+  generator   generator_h;
 
   function new (virtual fifo_bfm b);
     bfm = b;
   endfunction : new
 
   task execute();
+   
     tester_h    = new(bfm);
     coverage_h   = new(bfm);
     scoreboard_h = new(bfm);
     monitor_h = new(bfm);
     driver_h = new(bfm);
+    generator_h = new(bfm);
 
     fork
       tester_h.execute();
@@ -42,6 +45,7 @@ class testbench;
       scoreboard_h.execute();
       monitor_h.execute();
       driver_h.execute();
+      generator_h.execute();
     join_none
 
    endtask : execute
