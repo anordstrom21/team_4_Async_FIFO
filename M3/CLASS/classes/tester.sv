@@ -15,8 +15,6 @@
 //	 
 *********************************************/
 class tester;
-
-  parameter DATA_WIDTH = 8;
   
   virtual fifo_bfm bfm;
 

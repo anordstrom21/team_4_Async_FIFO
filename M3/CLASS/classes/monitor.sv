@@ -25,7 +25,7 @@ class monitor;
     forever begin
       @(posedge bfm.clk_rd);
       if (bfm.rd_en && !bfm.empty) begin
-        $display("Data:%h  Read from addr:%d", bfm.data_out, address);
+        $display("Read from addr: %d | Data: %h", address, bfm.data_out);
         address++;
       end
     end

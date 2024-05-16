@@ -26,15 +26,9 @@ class scoreboard;
         bfm = b;
     endfunction : new
 
-
-    // Adding this paramters just to check functionality of the environment
-    // FIXME: I believe this should be imported as part of the package but Questa won't allow it
-    parameter DATA_WIDTH = 8;
-    parameter ADDR_WIDTH = 6;
-    parameter DEPTH = 2**ADDR_WIDTH;
-  
     // Local memory, ptrs and count used to check FIFO
-    logic [DATA_WIDTH-1:0] memory[DEPTH-1:0]; 
+    localparam DEPTH = 2**ADDR_WIDTH;
+    logic [DATA_WIDTH-1:0] memory [0:DEPTH-1]; 
     int write_ptr = 0;
     int read_ptr = 0;
     int count = 0;

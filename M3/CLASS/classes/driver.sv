@@ -18,8 +18,6 @@ class driver;
   endfunction
 
   // internal signal to track address
-  // address for write pointer starts two ahead of read pointer 
-  // because of two stage pipeline in sync
   bit [ADDR_WIDTH-1:0]  address = 0;
 
   task execute();
@@ -27,7 +25,7 @@ class driver;
       @(posedge bfm.clk_wr);
       if (bfm.wr_en && !bfm.full) begin
         address++;
-        $display("Data:%h  Written to addr:%d", bfm.data_in, address);
+        $display("Write to addr:  %d | Data: %h", address, bfm.data_in);
       end
     end
   endtask : execute
