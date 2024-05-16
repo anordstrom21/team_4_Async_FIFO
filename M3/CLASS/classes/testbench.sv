@@ -23,6 +23,7 @@ class testbench;
   coverage  coverage_h;
   scoreboard  scoreboard_h;
   monitor     monitor_h;
+  driver      driver_h;
 
   function new (virtual fifo_bfm b);
     bfm = b;
@@ -33,12 +34,14 @@ class testbench;
     coverage_h   = new(bfm);
     scoreboard_h = new(bfm);
     monitor_h = new(bfm);
+    driver_h = new(bfm);
 
     fork
       tester_h.execute();
       coverage_h.execute();
       scoreboard_h.execute();
       monitor_h.execute();
+      driver_h.execute();
     join_none
 
    endtask : execute

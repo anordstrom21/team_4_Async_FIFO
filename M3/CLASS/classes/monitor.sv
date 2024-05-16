@@ -17,12 +17,16 @@ class monitor;
   function new (virtual fifo_bfm b);
     bfm = b;
   endfunction
+
+  // internal signal to track address
+  bit [ADDR_WIDTH-1:0]  address = 0;
   
   task execute();
     forever begin
       @(posedge bfm.clk_rd);
       if (bfm.rd_en && !bfm.empty) begin
-        $display("Data Read: %h", bfm.data_out);
+        $display("Data:%h  Read from addr:%d", bfm.data_out, address);
+        address++;
       end
     end
   endtask : execute

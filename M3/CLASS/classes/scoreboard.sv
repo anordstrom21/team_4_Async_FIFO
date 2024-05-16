@@ -3,12 +3,15 @@
 //  Testbench for an Asynchronous FIFO Module
 //
 //  Creates virtual bfm and calls constructor
-//  Contains functions, write() and read_and_check()
-//  and task execute().  Write() creates a local fifo
-//  and write data_in to the fifo.  Read_and_check()
-//  reads from the local fifo and compares it again
-//  data_out of the bfm.  Execute() runs the write()
-//  and the read_and_check() functions indefinitely
+//  Contains functions shift(), write() and read_and_check()
+//  and task execute().  
+//
+//  @ shift() saves the past value of rd_eb and the data word that
+//  read_ptr points to in the local fifo
+//  @ write() creates a local fifo and writes data_in to the fifo.  
+//  @ read_and_check()reads from the local fifo and compares it 
+//  against data_out of the bfm.  
+//  @ execute() runs the write() and the read_and_check() functions indefinitely
 //
 //
 //	Alexander Maso
@@ -36,7 +39,10 @@ class scoreboard;
     int read_ptr = 0;
     int count = 0;
 
-    // If rd_en was asserted last cycle then 
+    // If rd_en was asserted last cycle then the value 
+    // read_ptr of tester points to the last value on 
+    // bfm.data_out, not the current one.  These signals
+    // stores past value of data_out and rd_en for comparison
     // (Essentially the dut's read pointer is slower)
     logic [DATA_WIDTH-1:0] data_last;
     logic  rd_en_last;

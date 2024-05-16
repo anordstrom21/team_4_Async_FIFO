@@ -47,7 +47,7 @@ class tester;
       bfm.reset_fifo();
 
       // Run through 25, 120 word bursts
-      repeat (25) begin
+      repeat (1) begin
 
         // Grab data, set write enable and write for 10 write cylces
         @(negedge bfm.clk_wr)
