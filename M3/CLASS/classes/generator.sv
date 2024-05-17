@@ -12,13 +12,15 @@
 
 class generator;
 
-  rand transaction tx;
+  transaction tx;
   mailbox gen2driv;
-  int tx_count=1;
+  int tx_count=3;
 
-  function new (mailbox g2d);
+
+ function new (mailbox g2d);
     gen2driv = g2d;
   endfunction
+
 
   task execute();
     $display("Generator started"); 
@@ -26,6 +28,7 @@ class generator;
       tx = new();
       assert(tx.randomize());
       gen2driv.put(tx);
+      $display("generator tx: %h", tx); 
     end
 
   endtask : execute

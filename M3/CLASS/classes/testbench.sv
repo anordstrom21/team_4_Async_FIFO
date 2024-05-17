@@ -27,14 +27,15 @@ class testbench;
   driver      driver_h;
   generator   generator_h;
 
-  function new (virtual fifo_bfm b, mailbox g2d);
+  function new (virtual fifo_bfm b, mailbox gen2driv);
     bfm = b;
-    gen2driv = g2d;
+    this.gen2driv = gen2driv;
   endfunction : new
 
   task execute();
    
 //    tester_h    = new(bfm);
+    gen2driv = new();
     coverage_h   = new(bfm);
     scoreboard_h = new(bfm);
     monitor_h = new(bfm);

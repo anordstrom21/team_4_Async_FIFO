@@ -14,9 +14,9 @@ class driver;
   virtual fifo_bfm bfm;
   mailbox gen2driv;
   
-  function new(virtual fifo_bfm b, mailbox g2d);
+  function new(virtual fifo_bfm b, mailbox gen2driv);
     bfm = b;
-    gen2driv = g2d;
+    this.gen2driv = gen2driv;
   endfunction
 
   // internal signal to track address
@@ -24,9 +24,12 @@ class driver;
 
   task execute();
     bfm.reset_fifo();
-    forever begin
+    repeat(3) begin
       transaction tx;
+      //tx = new();
+      #1;
       gen2driv.get(tx);
+      $display("driver tx: %h", tx);
       @(posedge bfm.clk_wr);
       bfm.data_in <= tx.data_in;
       bfm.wr_en   <= tx.wr_en;
