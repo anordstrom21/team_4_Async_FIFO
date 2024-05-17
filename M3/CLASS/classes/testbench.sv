@@ -9,7 +9,6 @@
 //  all handles above the bfm, then forks and
 //  calls the execute() function for each.
 //
-//  NOTE: Unsure if I need to import the package here
 //
 //	Alexander Maso
 //	 
@@ -19,6 +18,7 @@ class testbench;
   
   virtual fifo_bfm bfm;
   mailbox gen2driv;
+  mailbox mon2scb;
 
   //tester      tester_h;
   coverage    coverage_h;
@@ -27,18 +27,20 @@ class testbench;
   driver      driver_h;
   generator   generator_h;
 
-  function new (virtual fifo_bfm b, mailbox gen2driv);
+  function new (virtual fifo_bfm b, mailbox gen2driv, mailbox mon2scb);
     bfm = b;
     this.gen2driv = gen2driv;
+    this.mon2scb = mon2scb;
   endfunction : new
 
   task execute();
    
 //    tester_h    = new(bfm);
     gen2driv = new();
+    mon2scb = new();
     coverage_h   = new(bfm);
-    scoreboard_h = new(bfm);
-    monitor_h = new(bfm);
+    scoreboard_h = new(bfm, mon2scb);
+    monitor_h = new(bfm, mon2scb);
     driver_h = new(bfm, gen2driv);
     generator_h = new(gen2driv);
 

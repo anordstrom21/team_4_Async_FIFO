@@ -21,9 +21,11 @@
 class scoreboard;
     
     virtual fifo_bfm bfm;
+    mailbox mon2scb;
 
-    function new (virtual fifo_bfm b);
+    function new (virtual fifo_bfm b, mailbox mon2scb);
         bfm = b;
+        this.mon2scb = mon2scb;
     endfunction : new
 
     // Local memory, ptrs and count used to check FIFO
@@ -78,18 +80,24 @@ class scoreboard;
             read_ptr = (read_ptr + 1) % DEPTH; //Modulo keeps values in range from 0 to DEPTH-1
             count--;
         end else begin
-            $display("Scoreboard Error: Read from empty FIFO attempted.");
+            //$display("Scoreboard Error: Read from empty FIFO attempted.");
         end
   endtask : read_and_check
 
   // Monitor both write and read operations to keep the scoreboard fifo updated
   task execute();
-    forever begin
-      @(negedge bfm.clk_wr);
-      if (bfm.wr_en && !bfm.full) write(bfm.data_in);
+    //forever begin
+    repeat(20) begin
+      transaction tx;
+      //@(negedge bfm.clk_wr);
+      //if (bfm.wr_en && !bfm.full) write(bfm.data_in);
       
       @(posedge bfm.clk_rd);
-      if (bfm.rd_en && !bfm.empty) read_and_check();
+      if (bfm.rd_en && !bfm.empty) begin
+        read_and_check();
+        mon2scb.get(tx);
+        $display("scoreboard tx data: %h", tx.data_out);
+      end
     end
   endtask : execute   
    

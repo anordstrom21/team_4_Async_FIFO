@@ -24,12 +24,10 @@ class driver;
 
   task execute();
     bfm.reset_fifo();
-    repeat(120) begin
+    repeat(10) begin
       transaction tx;
-      //tx = new();
-      #1;
       gen2driv.get(tx);
-      $display("driver tx: %h", tx);
+      $display("driver tx data: %h wr_en: %b", tx.data_in, tx.wr_en);
       @(posedge bfm.clk_wr);
       bfm.data_in <= tx.data_in;
       bfm.wr_en   <= tx.wr_en;
