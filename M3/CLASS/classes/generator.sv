@@ -16,15 +16,15 @@ class generator;
   mailbox gen2driv;
   int tx_count=1;
 
-  extern function new(mailbox gen2driv);
-    this.gen2driv = gen2driv;
+  function new (mailbox g2d);
+    gen2driv = g2d;
   endfunction
 
   task execute();
     $display("Generator started"); 
     repeat(tx_count) begin
       tx = new();
-      assert (tx.randomize());
+      assert(tx.randomize());
       gen2driv.put(tx);
     end
 

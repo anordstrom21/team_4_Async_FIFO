@@ -18,29 +18,31 @@
 class testbench;
   
   virtual fifo_bfm bfm;
+  mailbox gen2driv;
 
-  tester      tester_h;
+  //tester      tester_h;
   coverage    coverage_h;
   scoreboard  scoreboard_h;
   monitor     monitor_h;
   driver      driver_h;
   generator   generator_h;
 
-  function new (virtual fifo_bfm b);
+  function new (virtual fifo_bfm b, mailbox g2d);
     bfm = b;
+    gen2driv = g2d;
   endfunction : new
 
   task execute();
    
-    tester_h    = new(bfm);
+//    tester_h    = new(bfm);
     coverage_h   = new(bfm);
     scoreboard_h = new(bfm);
     monitor_h = new(bfm);
-    driver_h = new(bfm);
-    generator_h = new(bfm);
+    driver_h = new(bfm, gen2driv);
+    generator_h = new(gen2driv);
 
     fork
-      tester_h.execute();
+//      tester_h.execute();
       coverage_h.execute();
       scoreboard_h.execute();
       monitor_h.execute();

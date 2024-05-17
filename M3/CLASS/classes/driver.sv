@@ -12,26 +12,24 @@
 
 class driver;
   virtual fifo_bfm bfm;
+  mailbox gen2driv;
   
-  function new(virtual fifo_bfm b);
+  function new(virtual fifo_bfm b, mailbox g2d);
     bfm = b;
-  endfunction
-
-  extern function new(mailbox gen2driv);
-    this.gen2driv = gen2driv;
+    gen2driv = g2d;
   endfunction
 
   // internal signal to track address
   bit [ADDR_WIDTH-1:0]  address = 0;
 
   task execute();
+    bfm.reset_fifo();
     forever begin
       transaction tx;
       gen2driv.get(tx);
-      // I believe we want to call a write task here to drive tx into the bfm...
-      // Will need to code the write task below as well...
-
       @(posedge bfm.clk_wr);
+      bfm.data_in <= tx.data_in;
+      bfm.wr_en   <= tx.wr_en;
       if (bfm.wr_en && !bfm.full) begin
         address++;
         $display("Write to addr:  %d | Data: %h", address, bfm.data_in);

@@ -19,11 +19,12 @@ module top;
                  .half(bfm.half));
 
    fifo_bfm     bfm();
+   mailbox      gen2driv;
 
    testbench    testbench_h;
 
    initial begin
-      testbench_h = new(bfm);
+      testbench_h = new(bfm, gen2driv);
       testbench_h.execute();
    end
    
