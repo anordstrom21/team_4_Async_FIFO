@@ -87,7 +87,7 @@ class scoreboard;
   // Monitor both write and read operations to keep the scoreboard fifo updated
   task execute();
     //forever begin
-    repeat(20) begin
+    repeat(240) begin
       transaction tx;
       //@(negedge bfm.clk_wr);
       //if (bfm.wr_en && !bfm.full) write(bfm.data_in);
@@ -96,7 +96,7 @@ class scoreboard;
       if (bfm.rd_en && !bfm.empty) begin
         read_and_check();
         mon2scb.get(tx);
-        $display("scoreboard tx data: %h", tx.data_out);
+        $display("scoreboard tx data: %h  rd_en: %b", tx.data_out, tx.rd_en);
       end
     end
   endtask : execute   

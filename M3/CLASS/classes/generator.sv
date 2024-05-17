@@ -14,7 +14,7 @@ class generator;
 
   transaction tx;
   mailbox gen2driv;
-  int tx_count=10;
+  int tx_count=120;
 
 
  function new (mailbox g2d);

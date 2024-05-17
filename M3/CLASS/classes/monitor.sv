@@ -26,14 +26,15 @@ class monitor;
   
   task execute();
     //forever begin
-    repeat(20) begin
-      bfm.rd_en = 1'b1;
-      @(posedge bfm.clk_rd);
+    repeat(240) begin
       tx = new();
+      @(posedge bfm.clk_rd);
+      bfm.rd_en = $random;
+      tx.data_out = bfm.data_out;
+      tx.rd_en = bfm.rd_en;
+      $display("monitor tx data: %h rd_en: %b", tx.data_out, tx.rd_en); 
+      mon2scb.put(tx); 
       if (bfm.rd_en && !bfm.empty) begin
-        tx.data_out = bfm.data_out;
-        $display("monitor tx data: %h", tx.data_out); 
-        mon2scb.put(tx); 
         $display("Read from addr: %d | Data: %h", address, bfm.data_out);
         address++;
       end
