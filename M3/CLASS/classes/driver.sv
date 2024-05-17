@@ -24,7 +24,7 @@ class driver;
 
   task execute();
     bfm.reset_fifo();
-    repeat(3) begin
+    repeat(120) begin
       transaction tx;
       //tx = new();
       #1;
