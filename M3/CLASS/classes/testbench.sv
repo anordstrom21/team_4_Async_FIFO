@@ -17,8 +17,7 @@
 class testbench;
   
   virtual fifo_bfm bfm;
-  mailbox gen2driv;
-  mailbox mon2scb;
+  mailbox gen2driv, gen2scb, mon2scb;
 
   //tester      tester_h;
   coverage    coverage_h;
@@ -27,9 +26,10 @@ class testbench;
   driver      driver_h;
   generator   generator_h;
 
-  function new (virtual fifo_bfm b, mailbox gen2driv, mailbox mon2scb);
-    bfm = b;
+  function new (virtual fifo_bfm bfm, mailbox gen2driv, mailbox gen2scb, mailbox mon2dcb);
+    this.bfm = bfm;
     this.gen2driv = gen2driv;
+    this.gen2scb = gen2scb;
     this.mon2scb = mon2scb;
   endfunction : new
 
@@ -37,12 +37,13 @@ class testbench;
    
 //    tester_h    = new(bfm);
     gen2driv = new();
+    gen2scb = new();
     mon2scb = new();
     coverage_h   = new(bfm);
-    scoreboard_h = new(bfm, mon2scb);
+    scoreboard_h = new(bfm, mon2scb, gen2scb);
     monitor_h = new(bfm, mon2scb);
     driver_h = new(bfm, gen2driv);
-    generator_h = new(gen2driv);
+    generator_h = new(gen2driv, gen2scb);
 
     fork
 //      tester_h.execute();

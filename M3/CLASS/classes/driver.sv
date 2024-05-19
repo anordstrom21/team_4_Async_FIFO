@@ -13,9 +13,11 @@
 class driver;
   virtual fifo_bfm bfm;
   mailbox gen2driv;
-  
-  function new(virtual fifo_bfm b, mailbox gen2driv);
-    bfm = b;
+  transaction tx;
+  int tx_count = 500;
+
+  function new(virtual fifo_bfm bfm, mailbox gen2driv);
+    this.bfm = bfm;
     this.gen2driv = gen2driv;
   endfunction
 
@@ -23,19 +25,20 @@ class driver;
   bit [ADDR_WIDTH-1:0]  address = 0;
 
   task execute();
-    bfm.reset_fifo();
-    repeat(10) begin
-      transaction tx;
+    bfm.reset_fifo();  // reset takes 2 RD_CLKs
+    $display("********** Driver Started **********");
+    repeat(tx_count) begin
       gen2driv.get(tx);
-      $display("driver tx data: %h wr_en: %b", tx.data_in, tx.wr_en);
+      $display("Driver tx     |  wr_en: %b  |  data: %h", tx.wr_en, tx.data_in);
       @(posedge bfm.clk_wr);
       bfm.data_in <= tx.data_in;
       bfm.wr_en   <= tx.wr_en;
       if (bfm.wr_en && !bfm.full) begin
-        address++;
-        $display("Write to addr:  %d | Data: %h", address, bfm.data_in);
+        //address++;
+        //$display("Write to addr:  %d | Data: %h", address, bfm.data_in);
       end
     end
+    $display("********** Driver Ended **********");
   endtask : execute
   
 /*  

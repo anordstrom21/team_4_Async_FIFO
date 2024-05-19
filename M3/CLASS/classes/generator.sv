@@ -13,23 +13,26 @@
 class generator;
 
   transaction tx;
-  mailbox gen2driv;
-  int tx_count=120;
+  mailbox gen2driv, gen2scb;
+  int tx_count = 500;
 
 
- function new (mailbox g2d);
-    gen2driv = g2d;
+ function new (mailbox gen2driv, mailbox gen2scb);
+    this.gen2driv = gen2driv;
+    this.gen2scb = gen2scb;
   endfunction
 
 
   task execute();
-    $display("Generator started"); 
+    $display("********** Generator Started **********"); 
     repeat(tx_count) begin
       tx = new();
       assert(tx.randomize());
       gen2driv.put(tx);
-      $display("generator tx data: %h  wr_en: %b", tx.data_in, tx.wr_en); 
+      gen2scb.put(tx);
+      $display("Generator tx  |  wr_en: %b  |  data: %h  ", tx.wr_en, tx.data_in); 
     end
+    $display("********** Generator Ended **********"); 
 
   endtask : execute
 

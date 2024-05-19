@@ -22,10 +22,14 @@ class scoreboard;
     
     virtual fifo_bfm bfm;
     mailbox mon2scb;
+    mailbox gen2scb;
+    transaction tx_rd, tx_wr;
+    int tx_count = 1000;
 
-    function new (virtual fifo_bfm b, mailbox mon2scb);
-        bfm = b;
+    function new (virtual fifo_bfm bfm, mailbox mon2scb, mailbox gen2scb);
+        this.bfm = bfm;
         this.mon2scb = mon2scb;
+        this.gen2scb = gen2scb;
     endfunction : new
 
     // Local memory, ptrs and count used to check FIFO
@@ -43,13 +47,9 @@ class scoreboard;
     logic [DATA_WIDTH-1:0] data_last;
     logic  rd_en_last;
 
-    task shift();
-        @(posedge bfm.clk_rd) begin
-            if (bfm.rd_en && !bfm.empty) begin
-                data_last <= memory[read_ptr];
-                rd_en_last <= bfm.rd_en;
-            end
-        end
+    task shift(input logic [DATA_WIDTH-1:0] data, input logic rd_en);
+                data_last <= data;
+                rd_en_last <= rd_en;
     endtask : shift
    
     task write(input logic [DATA_WIDTH-1:0] data);
@@ -62,19 +62,19 @@ class scoreboard;
         end
      endtask : write
   
-    task read_and_check();
+    task read_and_check(input logic [DATA_WIDTH-1:0] data);
         if (count > 0) begin
             logic [DATA_WIDTH-1:0] expected_data = memory[read_ptr];
             // If rd_en wasn't asserted last cycle then read_addr points to data
             if (!rd_en_last) begin
-                if (bfm.data_out != expected_data) begin
-                    $error("Data mismatch!: expected %h, got %h at read pointer %0d", expected_data, bfm.data_out, read_ptr);
+                if (data != expected_data) begin
+                    $error("Data mismatch!: expected %h, got %h at read pointer %0d", expected_data, data, read_ptr);
                 end
             end
             // If rd_en was asserted last cycle then data will be one cycle behind
             else begin
-                if (bfm.data_out != data_last) begin
-                    $error("Data mismatch!: expected %h, got %h at read pointer %0d", expected_data, bfm.data_out, read_ptr);
+                if (data != data_last) begin
+                    $error("Data mismatch!: expected %h, got %h at read pointer %0d", expected_data, data, read_ptr);
                 end
             end
             read_ptr = (read_ptr + 1) % DEPTH; //Modulo keeps values in range from 0 to DEPTH-1
@@ -86,19 +86,26 @@ class scoreboard;
 
   // Monitor both write and read operations to keep the scoreboard fifo updated
   task execute();
+    #(CYCLE_TIME_RD*15+1);
+    $display("********** Scoreboard Started **********"); 
     //forever begin
-    repeat(240) begin
-      transaction tx;
-      //@(negedge bfm.clk_wr);
-      //if (bfm.wr_en && !bfm.full) write(bfm.data_in);
-      
+    repeat(tx_count) begin
+      tx_wr = new();
+      gen2scb.get(tx_wr);
+      @(posedge bfm.clk_wr);
+      if (tx_wr.wr_en && !bfm.full) write(tx_wr.data_in);
+
+      tx_rd = new(); 
+      mon2scb.get(tx_rd);
+      $display("Scoreboard tx | rd_en: %b | Data: %h", tx_rd.rd_en, tx_rd.data_out);
       @(posedge bfm.clk_rd);
-      if (bfm.rd_en && !bfm.empty) begin
-        read_and_check();
-        mon2scb.get(tx);
-        $display("scoreboard tx data: %h  rd_en: %b", tx.data_out, tx.rd_en);
+      shift(tx_rd.data_out, tx_rd.rd_en);
+      if (tx_rd.rd_en && !bfm.empty) begin
+        read_and_check(tx_rd.data_out);
       end
     end
+    $display("********** Scoreboard Ended **********"); 
+    $finish();
   endtask : execute   
    
-endclass : scoreboard
+endclass 
