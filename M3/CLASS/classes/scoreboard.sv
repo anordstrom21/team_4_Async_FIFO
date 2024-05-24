@@ -2,9 +2,6 @@
 //	Scoreboard Class for the OOP/Class Based 
 //  Testbench for an Asynchronous FIFO Module
 //
-//  Creates virtual bfm and calls constructor
-//  Contains functions shift(), write() and read_and_check()
-//  and task execute().  
 //
 //  @ shift() saves the past value of rd_eb and the data word that
 //  read_ptr points to in the local fifo
@@ -14,7 +11,7 @@
 //  @ execute() runs the write() and the read_and_check() functions indefinitely
 //
 //
-//	Alexander Maso
+//	Author: Alexander Maso
 //	 
 *********************************************/
 
@@ -22,14 +19,11 @@ class scoreboard;
     
     virtual fifo_bfm bfm;
     mailbox mon2scb;
-    mailbox gen2scb;
-    transaction tx_rd, tx_wr;
-    int tx_count = 1000;
+    transaction tx, tx_rd, tx_wr;
 
-    function new (virtual fifo_bfm bfm, mailbox mon2scb, mailbox gen2scb);
+    function new (mailbox mon2scb);
         this.bfm = bfm;
         this.mon2scb = mon2scb;
-        this.gen2scb = gen2scb;
     endfunction : new
 
     // Local memory, ptrs and count used to check FIFO
@@ -80,21 +74,34 @@ class scoreboard;
             read_ptr = (read_ptr + 1) % DEPTH; //Modulo keeps values in range from 0 to DEPTH-1
             count--;
         end else begin
-            //$display("Scoreboard Error: Read from empty FIFO attempted.");
+            $display("Scoreboard Error: Read from empty FIFO attempted.");
         end
   endtask : read_and_check
 
   // Monitor both write and read operations to keep the scoreboard fifo updated
   task execute();
-    #(CYCLE_TIME_RD*15+1);
     $display("********** Scoreboard Started **********"); 
     //forever begin
-    repeat(tx_count) begin
-      tx_wr = new();
-      gen2scb.get(tx_wr);
-      @(posedge bfm.clk_wr);
+    repeat(2*TX_COUNT) begin
+      mon2scb.get(tx);
+      // NOTE: NEED TO ADD FULL/EMPTY/HALF MONITORING
+      if (tx.wr_en) begin
+        tx_wr = tx;
+        $display("Scoreboard tx | wr_en: %b | rd_en: %b | Data: %h", tx_wr.wr_en, tx_wr.rd_en, tx_wr.data_in);
+        write(tx_wr.data_in);
+      end
+      else if (tx.rd_en) begin
+        tx_rd = tx;
+        shift(tx_rd.data_out, tx_rd.rd_en);
+        read_and_check(tx_rd.data_out);
+        $display("Scoreboard tx | wr_en: %b | rd_en: %b | Data: %h", tx_rd.wr_en, tx_rd.rd_en, tx_rd.data_out);
+      end
+    
+    end
+    $display("********** Scoreboard Ended **********"); 
+      
+      /*@(posedge bfm.clk_wr);
       if (tx_wr.wr_en && !bfm.full) write(tx_wr.data_in);
-
       tx_rd = new(); 
       mon2scb.get(tx_rd);
       $display("Scoreboard tx | rd_en: %b | Data: %h", tx_rd.rd_en, tx_rd.data_out);
@@ -102,10 +109,8 @@ class scoreboard;
       shift(tx_rd.data_out, tx_rd.rd_en);
       if (tx_rd.rd_en && !bfm.empty) begin
         read_and_check(tx_rd.data_out);
-      end
-    end
-    $display("********** Scoreboard Ended **********"); 
-    $finish();
+      end */
+  
   endtask : execute   
    
 endclass 

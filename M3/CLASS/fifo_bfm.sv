@@ -1,12 +1,12 @@
 /*********************************************
 //	Interface for the Asynchronous FIFO
-//	Contains external signals plus function reset_fifo()
+//	Contains external signals for the FIFO 
+//	and internal signals for the BFM. Also
+//	contains a reset_fifo task to reset the 
+//	FIFO and generate both the write and read 
+// 	clocks for our two domains
 //
-//	NOTE: I think this might need to have additonal functions
-//	for reading and writing from the fifo...
-//	Maybe specifically for read/write burst
-//
-//	Alexander Maso
+//	Author: Alexander Maso
 //	 
 *********************************************/
 
@@ -20,12 +20,14 @@ interface fifo_bfm;
 	logic full, empty, half;
 	
 	//Internal FIFO signals
+	/*
 	logic [ADDR_WIDTH:0] wptr;
 	logic [ADDR_WIDTH:0] rptr;
 	logic [ADDR_WIDTH-1:0] waddr;
 	logic [ADDR_WIDTH-1:0] raddr;
 	logic [ADDR_WIDTH:0] wq2_rptr;
 	logic [ADDR_WIDTH:0] rq2_wptr;
+	*/
 
 	// Clock Generation for Write and Read domains
 	initial begin
@@ -39,12 +41,13 @@ interface fifo_bfm;
 
 
 	task reset_fifo();
+	    @(negedge clk_rd);
 	    rst_n = 1'b0;
 	    @(negedge clk_rd);
-	    @(negedge clk_rd);
-	    rst_n = 1'b1;
 	    wr_en = 1'b0;
 	    rd_en = 1'b0;
+	    @(posedge clk_rd);
+	    rst_n = 1'b1;
 	endtask : reset_fifo
 
 endinterface

@@ -1,12 +1,15 @@
 /*********************************************
 //	Top Module for the OOP/Class Based Testbench
 //  of an Asynchronous FIFO Module
-//	Contains instantaion of the bfm and connection
-//  to the dut.  Also creates a new handle for the
-//  testbench class, passes the constructor the bfm
-//  and calls the execute() function 
+//	
+//  Contains instantaion of the bfm and connection
+//  to the dut as well as our three mailboxes.  Mailboxes
+//  are used to pass the transaction packet between
+//  the generator, driver, and monitor.  Also creates
+//  an instance of the testbench class, passes the constructor
+//  the bfm and calls the execute() function
 //
-//	Alexander Maso
+//	 Alexander Maso
 //	 
 *********************************************/
 module top;
@@ -19,11 +22,11 @@ module top;
                  .half(bfm.half));
 
    fifo_bfm     bfm();
-   mailbox      gen2driv, gen2scb, mon2scb;
+   mailbox      gen2drv, drv2mon, mon2scb;
    testbench    testbench_h;
 
    initial begin
-      testbench_h = new(bfm, gen2driv, gen2scb, mon2scb);
+      testbench_h = new(bfm, gen2drv, drv2mon, mon2scb);
       testbench_h.execute();
    end
    
