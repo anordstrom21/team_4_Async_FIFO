@@ -36,14 +36,15 @@ class scoreboard;
     // bfm.data_out, not the current one.  These signals
     // stores past value of data_out and rd_en for comparison
     // (Essentially the dut's read pointer is slower)
-    logic [DATA_WIDTH-1:0] data_last;
-    logic  rd_en_last;
+//    logic [DATA_WIDTH-1:0] data_last;
+//    logic  rd_en_last;
 
-    task shift(input logic [DATA_WIDTH-1:0] data, input logic rd_en);
+/*    task shift(input logic [DATA_WIDTH-1:0] data, input logic rd_en);
                 data_last <= data;
                 rd_en_last <= rd_en;
     endtask : shift
-   
+*/
+
     task write(input logic [DATA_WIDTH-1:0] data);
         if (count < DEPTH) begin
             memory[write_ptr] = data;
@@ -95,19 +96,15 @@ class scoreboard;
   // Monitor both write and read operations to keep the scoreboard fifo updated
   task execute();
     $display("********** Scoreboard Started **********"); 
-    //forever begin
     repeat(2*TX_COUNT) begin
       mon2scb.get(tx);
       // NOTE: NEED TO ADD FULL/EMPTY/HALF MONITORING
       if (tx.wr_en) begin
-        tx_wr = tx;
         $display("Scoreboard tx\t|  wr_en: %b  |  rd_en: %b  |  data: %h", tx_wr.wr_en, tx_wr.rd_en, tx_wr.data_in);
-        write(tx_wr.data_in);
+        write(tx.data_in);
       end
       else if (tx.rd_en) begin
-        tx_rd = tx;
-        shift(tx_rd.data_out, tx_rd.rd_en);
-        read_and_check(tx_rd.data_out);
+        read_and_check(tx.data_out);
         $display("Scoreboard tx\t|  wr_en: %b  |  rd_en: %b  |  data: %h", tx_wr.wr_en, tx_wr.rd_en, tx_wr.data_out);
       end
     

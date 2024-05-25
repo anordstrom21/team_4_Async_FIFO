@@ -25,22 +25,10 @@ class driver;
     bfm.reset_fifo();  // reset takes 2 RD_CLKs
     
     $display("********** Driver Started **********");
-    repeat(TX_COUNT) begin
+    repeat(2*TX_COUNT) begin
       gen2drv.get(tx);
       $display("Driver tx\t|  wr_en: %b  |  rd_en: %b  |  data: %h", tx.wr_en, tx.rd_en, tx.data_in);
       @(posedge bfm.clk_wr);
-      bfm.data_in <= tx.data_in;
-      bfm.wr_en   <= tx.wr_en;
-      bfm.rd_en   <= tx.rd_en;
-      drv2mon.put(tx);
-    end
-
-    #(CYCLE_TIME_WR*5); // wait for 5 write cycles before transitioning to read
-
-    repeat(TX_COUNT) begin
-      gen2drv.get(tx);
-      $display("Driver tx\t|  wr_en: %b  |  rd_en: %b  |  data: %h", tx.wr_en, tx.rd_en, tx.data_in);
-      @(posedge bfm.clk_rd);
       bfm.data_in <= tx.data_in;
       bfm.wr_en   <= tx.wr_en;
       bfm.rd_en   <= tx.rd_en;
