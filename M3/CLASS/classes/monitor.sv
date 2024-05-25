@@ -34,6 +34,7 @@ class monitor;
         @(posedge bfm.clk_rd);
         tx.data_out = bfm.data_out;
       end
+      @(posedge bfm.clk_rd);
       $display("Monitor tx \t\t|  wr_en: %b  |  rd_en: %b  |  data: %h", tx.wr_en, tx.rd_en, tx.data_out); 
       mon2scb.put(tx); 
     end
