@@ -29,7 +29,7 @@ class monitor;
       drv2mon.get(tx);
       @(posedge bfm.clk_rd);
         if (tx.rd_en) begin
-          if ($past(tx.rd_en) == 0) begin
+          if ($rose(tx.rd_en)) begin
             #(CYCLE_TIME_RD);
           end
           tx.data_out = bfm.data_out;
