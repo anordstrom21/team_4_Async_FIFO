@@ -18,7 +18,7 @@
 class scoreboard;
     
     mailbox mon2scb;
-    transaction tx, tx_rd, tx_wr;
+    transaction tx;
 
     function new (mailbox mon2scb);
         this.mon2scb = mon2scb;
@@ -100,12 +100,12 @@ class scoreboard;
       mon2scb.get(tx);
       // NOTE: NEED TO ADD FULL/EMPTY/HALF MONITORING
       if (tx.wr_en) begin
-        $display("Scoreboard tx\t|  wr_en: %b  |  rd_en: %b  |  data: %h", tx_wr.wr_en, tx_wr.rd_en, tx_wr.data_in);
+        $display("Scoreboard tx\t|  wr_en: %b  |  rd_en: %b  |  data: %h", tx.wr_en, tx.rd_en, tx.data_in);
         write(tx.data_in);
       end
       else if (tx.rd_en) begin
         read_and_check(tx.data_out);
-        $display("Scoreboard tx\t|  wr_en: %b  |  rd_en: %b  |  data: %h", tx_wr.wr_en, tx_wr.rd_en, tx_wr.data_out);
+        $display("Scoreboard tx\t|  wr_en: %b  |  rd_en: %b  |  data: %h", tx.wr_en, tx.rd_en, tx.data_out);
       end
     
     end
