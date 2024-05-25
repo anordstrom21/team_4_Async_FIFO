@@ -17,12 +17,10 @@
 
 class scoreboard;
     
-    virtual fifo_bfm bfm;
     mailbox mon2scb;
     transaction tx, tx_rd, tx_wr;
 
     function new (mailbox mon2scb);
-        this.bfm = bfm;
         this.mon2scb = mon2scb;
     endfunction : new
 
@@ -60,6 +58,21 @@ class scoreboard;
         if (count > 0) begin
             logic [DATA_WIDTH-1:0] expected_data = memory[read_ptr];
             // If rd_en wasn't asserted last cycle then read_addr points to data
+            if (data != expected_data) begin
+                $error("Data mismatch!: expected %h, got %h at read pointer %0d", expected_data, data, read_ptr);
+            end
+            read_ptr = (read_ptr + 1) % DEPTH; //Modulo keeps values in range from 0 to DEPTH-1
+            count--;
+        end else begin
+            $display("Scoreboard Error: Read from empty FIFO attempted.");
+        end
+    endtask : read_and_check
+
+/*
+    task read_and_check(input logic [DATA_WIDTH-1:0] data);
+        if (count > 0) begin
+            logic [DATA_WIDTH-1:0] expected_data = memory[read_ptr];
+            // If rd_en wasn't asserted last cycle then read_addr points to data
             if (!rd_en_last) begin
                 if (data != expected_data) begin
                     $error("Data mismatch!: expected %h, got %h at read pointer %0d", expected_data, data, read_ptr);
@@ -76,7 +89,8 @@ class scoreboard;
         end else begin
             $display("Scoreboard Error: Read from empty FIFO attempted.");
         end
-  endtask : read_and_check
+    endtask : read_and_check
+*/
 
   // Monitor both write and read operations to keep the scoreboard fifo updated
   task execute();
@@ -87,14 +101,14 @@ class scoreboard;
       // NOTE: NEED TO ADD FULL/EMPTY/HALF MONITORING
       if (tx.wr_en) begin
         tx_wr = tx;
-        $display("Scoreboard tx | wr_en: %b | rd_en: %b | Data: %h", tx_wr.wr_en, tx_wr.rd_en, tx_wr.data_in);
+        $display("Scoreboard tx\t|  wr_en: %b  |  rd_en: %b  |  data: %h", tx_wr.wr_en, tx_wr.rd_en, tx_wr.data_in);
         write(tx_wr.data_in);
       end
       else if (tx.rd_en) begin
         tx_rd = tx;
         shift(tx_rd.data_out, tx_rd.rd_en);
         read_and_check(tx_rd.data_out);
-        $display("Scoreboard tx | wr_en: %b | rd_en: %b | Data: %h", tx_rd.wr_en, tx_rd.rd_en, tx_rd.data_out);
+        $display("Scoreboard tx\t|  wr_en: %b  |  rd_en: %b  |  data: %h", tx_wr.wr_en, tx_wr.rd_en, tx_wr.data_out);
       end
     
     end

@@ -26,8 +26,8 @@ class generator;
       assert(tx.randomize());
       tx.wr_en = 1;
       tx.rd_en = 0;
-      gen2driv.put(tx);
-      $display("Generator tx  |  wr_en: %b  |  rd_en: %b  |  data: %h  ", tx.wr_en, tx.rd_en, tx.data_in); 
+      gen2drv.put(tx);
+      $display("Generator tx\t|  wr_en: %b  |  rd_en: %b  |  data: %h  ", tx.wr_en, tx.rd_en, tx.data_in); 
     end
     
     // #100; // wait for 100 time units before turning off wr_en and turning on rd_en
@@ -36,8 +36,8 @@ class generator;
       tx = new();
       tx.wr_en = 0;
       tx.rd_en = 1;
-      gen2driv.put(tx);
-      $display("Generator tx  |  wr_en: %b  |  rd_en: %b  |  data: %h  ", tx.wr_en, tx.rd_en, tx.data_in); 
+      gen2drv.put(tx);
+      $display("Generator tx\t|  wr_en: %b  |  rd_en: %b  |  data: %h  ", tx.wr_en, tx.rd_en, tx.data_in); 
     end
     $display("********** Generator Ended **********"); 
 

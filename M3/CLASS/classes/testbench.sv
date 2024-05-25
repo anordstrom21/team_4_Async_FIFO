@@ -40,7 +40,7 @@ class testbench;
     generator_h = new(gen2drv);
     monitor_h = new(bfm, drv2mon, mon2scb);
     driver_h = new(bfm, gen2drv, drv2mon);
-    scoreboard_h = new(bfm, mon2scb);
+    scoreboard_h = new(mon2scb);
 
     fork
       //coverage_h.execute();

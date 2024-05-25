@@ -27,7 +27,7 @@ class driver;
     $display("********** Driver Started **********");
     repeat(TX_COUNT) begin
       gen2drv.get(tx);
-      $display("Driver tx     |  wr_en: %b  |  rd_en: %b  |  data: %h", tx.wr_en, tx.rd_en, tx.data_in);
+      $display("Driver tx\t|  wr_en: %b  |  rd_en: %b  |  data: %h", tx.wr_en, tx.rd_en, tx.data_in);
       @(posedge bfm.clk_wr);
       bfm.data_in <= tx.data_in;
       bfm.wr_en   <= tx.wr_en;
@@ -39,7 +39,7 @@ class driver;
 
     repeat(TX_COUNT) begin
       gen2drv.get(tx);
-      $display("Driver tx     |  wr_en: %b  |  rd_en: %b  |  data: %h", tx.wr_en, tx.rd_en, tx.data_in);
+      $display("Driver tx\t|  wr_en: %b  |  rd_en: %b  |  data: %h", tx.wr_en, tx.rd_en, tx.data_in);
       @(posedge bfm.clk_rd);
       bfm.data_in <= tx.data_in;
       bfm.wr_en   <= tx.wr_en;

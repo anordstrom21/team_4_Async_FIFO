@@ -27,7 +27,7 @@ class monitor;
     //forever begin
     repeat(2*TX_COUNT) begin
       drv2mon.get(tx);
-      $display("Monitor tx   | wr_en: %b | rd_en: %b | Data: %h", tx.wr_en, tx.rd_en, tx.data_out); 
+      $display("Monitor tx\t|  wr_en: %b  |  rd_en: %b  |  data: %h", tx.wr_en, tx.rd_en, tx.data_out); 
       if (tx.rd_en) begin
         @(posedge bfm.clk_rd);
         tx.data_out = bfm.data_out;

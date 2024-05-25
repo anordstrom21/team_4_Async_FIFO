@@ -16,7 +16,7 @@ package fifo_pkg;
 	parameter CYCLE_TIME_RD = 20;    // 50 MHz
 	parameter TX_COUNT = 10;
 
-	`include "coverage.sv"
+//	`include "coverage.sv"
 	`include "transaction.sv"
 	`include "generator.sv"
 	`include "driver.sv"
