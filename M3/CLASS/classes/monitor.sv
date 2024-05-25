@@ -29,6 +29,9 @@ class monitor;
       drv2mon.get(tx);
       @(posedge bfm.clk_rd);
         if (tx.rd_en) begin
+          if ($past(tx.rd_en) == 0) begin
+            #(CYCLE_TIME_RD);
+          end
           tx.data_out = bfm.data_out;
         end
         $display("Monitor tx \t\t|  wr_en: %b  |  rd_en: %b  |  data: %h", tx.wr_en, tx.rd_en, tx.data_out); 
