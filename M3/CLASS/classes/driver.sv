@@ -22,17 +22,22 @@ class driver;
   // bit [ADDR_WIDTH-1:0]  address = 0;
 
   task execute();
-    bfm.reset_fifo();  // reset takes 2 RD_CLKs
-    
     $display("********** Driver Started **********");
+    bfm.reset_fifo();  // reset takes 2 RD_CLKs
     repeat(2*TX_COUNT) begin
       gen2drv.get(tx);
-      $display("Driver tx\t|  wr_en: %b  |  rd_en: %b  |  data: %h", tx.wr_en, tx.rd_en, tx.data_in);
-      @(posedge bfm.clk_wr);
-      bfm.data_in <= tx.data_in;
-      bfm.wr_en   <= tx.wr_en;
-      bfm.rd_en   <= tx.rd_en;
-      drv2mon.put(tx);
+      $display("Driver tx  \t|  wr_en: %b  |  rd_en: %b  |  data: %h", tx.wr_en, tx.rd_en, tx.data_in);
+      if (tx.wr_en) begin
+        @(posedge bfm.clk_wr);
+        bfm.data_in <= tx.data_in;
+        bfm.wr_en   <= tx.wr_en;
+        bfm.rd_en   <= tx.rd_en;
+      end else if (tx.rd_en) begin
+        @(posedge bfm.clk_rd);
+        bfm.wr_en   <= tx.wr_en;
+        bfm.rd_en   <= tx.rd_en;
+      end
+        drv2mon.put(tx);
     end
     $display("********** Driver Ended **********");
   endtask : execute
