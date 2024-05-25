@@ -28,10 +28,10 @@ class monitor;
     repeat(2*TX_COUNT) begin
       drv2mon.get(tx);
       if (tx.rd_en) begin
-      //  @(posedge bfm.clk_rd);
+        @(posedge bfm.clk_rd);
         tx.data_out = bfm.data_out;
       end
-      $display("Monitor tx \t|  wr_en: %b  |  rd_en: %b  |  data: %h", tx.wr_en, tx.rd_en, tx.data_out); 
+      $display("Monitor tx \t\t|  wr_en: %b  |  rd_en: %b  |  data: %h", tx.wr_en, tx.rd_en, tx.data_out); 
       mon2scb.put(tx); 
     end
     $display("********** Monitor Ended **********"); 
