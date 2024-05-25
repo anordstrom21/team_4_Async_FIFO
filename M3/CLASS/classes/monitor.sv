@@ -33,10 +33,14 @@ class monitor;
         //end
         @(posedge bfm.clk_rd);
         tx.data_out = bfm.data_out;
+        $display("Monitor tx \t\t|  wr_en: %b  |  rd_en: %b  |  data: %h", tx.wr_en, tx.rd_en, tx.data_out); 
+        mon2scb.put(tx);
       end
-      @(posedge bfm.clk_rd);
-      $display("Monitor tx \t\t|  wr_en: %b  |  rd_en: %b  |  data: %h", tx.wr_en, tx.rd_en, tx.data_out); 
-      mon2scb.put(tx); 
+      else begin
+        @(posedge bfm.clk_rd);
+        $display("Monitor tx \t\t|  wr_en: %b  |  rd_en: %b  |  data: %h", tx.wr_en, tx.rd_en, tx.data_out); 
+        mon2scb.put(tx);
+      end 
     end
     $display("********** Monitor Ended **********"); 
   endtask : execute
