@@ -31,7 +31,7 @@ class monitor;
     repeat(2*TX_COUNT) begin
       drv2mon.get(tx);
       if (tx.rd_en) begin
-        if (!last_rd_en && !last_empty) begin
+        if (!last_rd_en || last_empty) begin
           #(CYCLE_TIME_RD);
         end
         @(posedge bfm.clk_rd);
