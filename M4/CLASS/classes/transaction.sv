@@ -15,10 +15,8 @@
 class transaction;
 
 	// inputs
-	logic wr_en;	// not randomizing wr_en and rd_en for now
-	logic rd_en;	// will be used in the future
-	//rand logic wr_en;
-	//rand logic rd_en;
+	rand logic wr_en;
+	rand logic rd_en;
 	rand logic [DATA_WIDTH-1:0] data_in;
 
 	// outputs

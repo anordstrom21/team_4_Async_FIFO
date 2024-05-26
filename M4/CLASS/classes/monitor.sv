@@ -22,26 +22,27 @@ class monitor;
   // internal signal to track address
   // bit [ADDR_WIDTH-1:0]  address = 0;
 
-  bit read_flag = 0;
+  bit last_rd_en = 0;
   
   task execute();
     $display("********** Monitor Started **********"); 
     // NOTE: NEED TO ADD FULL/EMPTY/HALF MONITORING
     repeat(2*TX_COUNT) begin
       drv2mon.get(tx);
-      if (tx.rd_en) begin
-        if (!read_flag) begin
+      if (tx.rd_en && !bfm.empty) begin
+        if (!last_rd_en) begin
           #(CYCLE_TIME_RD);
-          read_flag = 1;
         end
         @(posedge bfm.clk_rd);
         tx.data_out = bfm.data_out;
         $display("Monitor tx \t\t|  wr_en: %b  |  rd_en: %b  |  data: %h", tx.wr_en, tx.rd_en, tx.data_out); 
+        last_rd_en = tx.rd_en;
         mon2scb.put(tx);
       end
       else begin
         @(posedge bfm.clk_rd);
         $display("Monitor tx \t\t|  wr_en: %b  |  rd_en: %b  |  data: %h", tx.wr_en, tx.rd_en, tx.data_out); 
+        last_rd_en = tx.rd_en;
         mon2scb.put(tx);
       end 
     end
