@@ -23,26 +23,29 @@ class monitor;
   // bit [ADDR_WIDTH-1:0]  address = 0;
 
   bit last_rd_en = 0;
+  bit last_empty = 0;
   
   task execute();
     $display("********** Monitor Started **********"); 
     // NOTE: NEED TO ADD FULL/EMPTY/HALF MONITORING
     repeat(2*TX_COUNT) begin
       drv2mon.get(tx);
-      if (tx.rd_en && !bfm.empty) begin
-        if (!last_rd_en) begin
+      if (tx.rd_en) begin
+        if (!last_rd_en && !last_empty) begin
           #(CYCLE_TIME_RD);
         end
         @(posedge bfm.clk_rd);
         tx.data_out = bfm.data_out;
-        $display("Monitor tx \t|  wr_en: %b  |  rd_en: %b  |  data_in: %h |  data_out: %h", tx.wr_en, tx.rd_en, tx.data_in, tx.data_out); 
+        $display("Monitor tx \t|  wr_en: %b  |  rd_en: %b  |  data_in: %h  |  data_out: %h", tx.wr_en, tx.rd_en, tx.data_in, tx.data_out); 
         last_rd_en = tx.rd_en;
+        last_empty= tx.empty;
         mon2scb.put(tx);
       end
       else begin
         @(posedge bfm.clk_rd);
-        $display("Monitor tx \t|  wr_en: %b  |  rd_en: %b  |  data_in: %h |  data_out: %h", tx.wr_en, tx.rd_en, tx.data_in, tx.data_out); 
+        $display("Monitor tx \t|  wr_en: %b  |  rd_en: %b  |  data_in: %h  |  data_out: %h", tx.wr_en, tx.rd_en, tx.data_in, tx.data_out); 
         last_rd_en = tx.rd_en;
+        last_empty= tx.empty;
         mon2scb.put(tx);
       end 
     end
