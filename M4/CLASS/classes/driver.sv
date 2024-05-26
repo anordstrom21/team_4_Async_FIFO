@@ -27,7 +27,7 @@ class driver;
     repeat(2*TX_COUNT) begin
       gen2drv.get(tx);
       @(posedge bfm.clk_wr);
-        $display("Driver tx \t|  wr_en: %b  |  rd_en: %b  |  data_in : %h |  data_out : %h", tx.wr_en, tx.rd_en, tx.data_in, tx.data_out);
+        $display("Driver tx \t|  wr_en: %b  |  rd_en: %b  |  data_in: %h |  data_out: %h", tx.wr_en, tx.rd_en, tx.data_in, tx.data_out);
         if (tx.wr_en && !bfm.full) begin
           bfm.data_in <= tx.data_in;
         end

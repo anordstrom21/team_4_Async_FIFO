@@ -103,12 +103,12 @@ class scoreboard;
       mon2scb.get(tx);
       // NOTE: NEED TO ADD FULL/EMPTY/HALF MONITORING
       if (tx.wr_en) begin
-        $display("Scoreboard tx\t|  wr_en: %b  |  rd_en: %b  |  data: %h", tx.wr_en, tx.rd_en, tx.data_in);
+        $display("Scoreboard tx\t|  wr_en: %b  |  rd_en: %b  |  data_in: %h  |  data_out: %h", tx.wr_en, tx.rd_en, tx.data_in, tx.data_out);
         write(tx.data_in);
       end
       else if (tx.rd_en) begin
         read_and_check(tx.data_out);
-        $display("Scoreboard tx\t|  wr_en: %b  |  rd_en: %b  |  data: %h", tx.wr_en, tx.rd_en, tx.data_out);
+        $display("Scoreboard tx\t|  wr_en: %b  |  rd_en: %b  |  data_in: %h  |  data_out: %h", tx.wr_en, tx.rd_en, tx.data_in, tx.data_out);
       end
     
     end
