@@ -27,7 +27,7 @@ class generator;
       //tx.wr_en = 1;
       //tx.rd_en = 0;
       gen2drv.put(tx);
-      $display("Generator tx\t|  wr_en: %b  |  rd_en: %b  |  data: %h  ", tx.wr_en, tx.rd_en, tx.data_in); 
+      $display("Generator tx\t|  wr_en: %b  |  rd_en: %b  |  data_in: %h  |  data_out: %h", tx.wr_en, tx.rd_en, tx.data_in, tx.data_out); 
     end
     
     // #100; // wait for 100 time units before turning off wr_en and turning on rd_en
