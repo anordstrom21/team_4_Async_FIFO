@@ -21,6 +21,8 @@ class monitor;
 
   // internal signal to track address
   // bit [ADDR_WIDTH-1:0]  address = 0;
+
+  bit read_flag = 0;
   
   task execute();
     $display("********** Monitor Started **********"); 
@@ -28,9 +30,10 @@ class monitor;
     repeat(2*TX_COUNT) begin
       drv2mon.get(tx);
       if (tx.rd_en) begin
-        //if ($rose(tx.rd_en)) begin
-        //  #(CYCLE_TIME_RD);
-        //end
+        if (!read_flag) begin
+          #(CYCLE_TIME_RD);
+          read_flag = 1;
+        end
         @(posedge bfm.clk_rd);
         tx.data_out = bfm.data_out;
         $display("Monitor tx \t\t|  wr_en: %b  |  rd_en: %b  |  data: %h", tx.wr_en, tx.rd_en, tx.data_out); 
