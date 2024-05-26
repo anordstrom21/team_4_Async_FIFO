@@ -62,6 +62,9 @@ class scoreboard;
             if (data != expected_data) begin
                 $error("Data mismatch!: expected %h, got %h at read pointer %0d", expected_data, data, read_ptr);
             end
+            else begin
+                $display("Data match!: expected %h, got %h at read pointer %0d", expected_data, data, read_ptr);
+            end
             read_ptr = (read_ptr + 1) % DEPTH; //Modulo keeps values in range from 0 to DEPTH-1
             count--;
         end else begin
