@@ -28,21 +28,22 @@ class monitor;
     // NOTE: NEED TO ADD FULL/EMPTY/HALF MONITORING
     repeat(TX_COUNT_RD) begin
       gen2mon.get(tx_rd);
-      @(posedge bfm.clk_rd);
+      @(negedge bfm.clk_rd);
         bfm.rd_en <= tx_rd.rd_en;
         #(CYCLE_TIME_RD);
-        if (tx_rd.rd_en) begin
-            if (!last_rd_en || last_empty) begin
-            #(CYCLE_TIME_RD);
-            end
-        end 
+        //if (tx_rd.rd_en) begin
+        //if (!last_rd_en || last_empty) begin
+        //if (tx_rd.rd_en && last_rd_en) begin
+        //    #(CYCLE_TIME_RD);
+        //end
+        @(posedge bfm.clk_rd);
         tx_rd.data_out = tx_rd.rd_en ? bfm.data_out : tx_rd.data_out; // if rd_en is high, grab data_out from FIFO
         // udpdate flags in this transaction
         tx_rd.empty = bfm.empty;
         tx_rd.full = bfm.full;
         tx_rd.half = bfm.half;
         last_rd_en = tx_rd.rd_en;
-        last_empty= tx_rd.empty;
+        //last_empty= tx_rd.empty;
         mon2scb.put(tx_rd);
         $display("Monitor tx_rd \t|  wr_en: %b  |  rd_en: %b  |  data_in: %h  |  data_out: %h", tx_rd.wr_en, tx_rd.rd_en, tx_rd.data_in, tx_rd.data_out); 
     end
