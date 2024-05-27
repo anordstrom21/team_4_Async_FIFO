@@ -37,6 +37,7 @@ class monitor;
         //end
         // If the last transaction was a read, then sample immediately
         if (tx_rd.rd_en && last_rd_en) begin
+          #(CYCLE_TIME_RD);
           tx_rd.data_out = bfm.data_out;
           tx_rd.empty = bfm.empty;
           tx_rd.full = bfm.full;
