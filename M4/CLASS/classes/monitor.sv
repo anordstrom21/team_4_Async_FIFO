@@ -35,14 +35,22 @@ class monitor;
         //if (tx_rd.rd_en && last_rd_en) begin
         //    #(CYCLE_TIME_RD);
         //end
-
-        // Sample data and flags from FIFO
-        @(posedge bfm.clk_rd);
-        tx_rd.data_out = bfm.data_out;
-        tx_rd.empty = bfm.empty;
-        tx_rd.full = bfm.full;
-        tx_rd.half = bfm.half;
-        //last_rd_en = tx_rd.rd_en;
+        // If the last transaction was a read, then sample immediately
+        if (tx_rd.rd_en && last_rd_en) begin
+          tx_rd.data_out = bfm.data_out;
+          tx_rd.empty = bfm.empty;
+          tx_rd.full = bfm.full;
+          tx_rd.half = bfm.half;
+        end
+        // Otherwise, wait for the next read clock edge
+        else begin
+          @(posedge bfm.clk_rd);
+          tx_rd.data_out = bfm.data_out;
+          tx_rd.empty = bfm.empty;
+          tx_rd.full = bfm.full;
+          tx_rd.half = bfm.half;
+        end
+        last_rd_en = tx_rd.rd_en;
         //last_empty= tx_rd.empty;
         mon2scb.put(tx_rd);
         $display("Monitor tx_rd \t|  wr_en: %b  |  rd_en: %b  |  data_in: %h  |  data_out: %h  |  full: %b  |  empty: %b  |  half: %b", tx_rd.wr_en, tx_rd.rd_en, tx_rd.data_in, tx_rd.data_out, tx_rd.full, tx_rd.empty, tx_rd.half); 
