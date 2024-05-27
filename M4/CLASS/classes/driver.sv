@@ -24,15 +24,16 @@ class driver;
     bfm.reset_fifo();  // reset takes 2 RD_CLKs
     repeat(TX_COUNT_WR) begin
       gen2drv.get(tx_wr);
+      // Drive data to FIFO
       @(posedge bfm.clk_wr);
-        bfm.data_in <= tx_wr.wr_en ? tx_wr.data_in : bfm.data_in; // if wr_en is high, drive data_in to FIFO
-        bfm.wr_en   <= tx_wr.wr_en; // drive wr_en to FIFO
-        // bfm.rd_en   <= tx_wr.rd_en; // drive rd_en to FIFO
-        // udpdate flags in this transaction
+        bfm.data_in <= tx_wr.data_in; 
+        bfm.wr_en   <= tx_wr.wr_en; 
+      // Update flags in this transaction
+      @(negedge bfm.clk_wr); 
         tx_wr.full      = bfm.full;
         tx_wr.empty     = bfm.empty;
         tx_wr.half      = bfm.half;
-        $display("Driver tx_wr \t\t|  wr_en: %b  |  rd_en: %b  |  data_in: %h  |  data_out: %h", tx_wr.wr_en, tx_wr.rd_en, tx_wr.data_in, tx_wr.data_out);
+        $display("Driver tx_wr \t\t|  wr_en: %b  |  rd_en: %b  |  data_in: %h  |  data_out: %h  |  full: %b  |  empty: %b  |  half: %b", tx_wr.wr_en, tx_wr.rd_en, tx_wr.data_in, tx_wr.data_out, tx_wr.full, tx_wr.empty, tx_wr.half);
         drv2scb.put(tx_wr);
     end
     $display("********** Driver Ended **********");

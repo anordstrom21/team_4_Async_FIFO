@@ -23,12 +23,11 @@ class monitor;
   bit last_empty = 0;
   
   task execute();
-    #(40*CYCLE_TIME_RD); // wait for the driver to reset the FIFO (2 RD_CLKs might be enough...)
+    #((READ_DELAY+3)*CYCLE_TIME_RD); // wait for the driver to reset the FIFO (2 RD_CLKs might be enough...)
     $display("********** Monitor Started **********"); 
-    // NOTE: NEED TO ADD FULL/EMPTY/HALF MONITORING
     repeat(TX_COUNT_RD) begin
       gen2mon.get(tx_rd);
-      @(negedge bfm.clk_rd);
+      @(posedge bfm.clk_rd);
         bfm.rd_en <= tx_rd.rd_en;
         #(CYCLE_TIME_RD);
         //if (tx_rd.rd_en) begin
@@ -36,16 +35,17 @@ class monitor;
         //if (tx_rd.rd_en && last_rd_en) begin
         //    #(CYCLE_TIME_RD);
         //end
-        @(posedge bfm.clk_rd);
-        tx_rd.data_out = tx_rd.rd_en ? bfm.data_out : tx_rd.data_out; // if rd_en is high, grab data_out from FIFO
-        // udpdate flags in this transaction
+
+        // Sample data and flags from FIFO
+        @(negedge bfm.clk_rd);
+        tx_rd.data_out = bfm.data_out;
         tx_rd.empty = bfm.empty;
         tx_rd.full = bfm.full;
         tx_rd.half = bfm.half;
-        last_rd_en = tx_rd.rd_en;
+        //last_rd_en = tx_rd.rd_en;
         //last_empty= tx_rd.empty;
         mon2scb.put(tx_rd);
-        $display("Monitor tx_rd \t|  wr_en: %b  |  rd_en: %b  |  data_in: %h  |  data_out: %h", tx_rd.wr_en, tx_rd.rd_en, tx_rd.data_in, tx_rd.data_out); 
+        $display("Monitor tx_rd \t|  wr_en: %b  |  rd_en: %b  |  data_in: %h  |  data_out: %h |  full: %b  |  empty: %b  |  half: %b", tx_rd.wr_en, tx_rd.rd_en, tx_rd.data_in, tx_rd.data_out, tx_rd.full, tx_rd.empty, tx_rd.half); 
     end
     $display("********** Monitor Ended **********"); 
   endtask : execute

@@ -23,8 +23,8 @@ class generator;
     repeat(TX_COUNT_WR) begin
       tx_wr = new();
       assert(tx_wr.randomize());
-      //tx_wr.wr_en = 1;
-      //tx_wr.rd_en = 0;
+      tx_wr.wr_en = 1;
+      tx_wr.rd_en = 0;
       gen2drv.put(tx_wr);
       $display("Generator tx_wr\t|  wr_en: %b  |  rd_en: %b  |  data_in: %h  |  data_out: %h", tx_wr.wr_en, tx_wr.rd_en, tx_wr.data_in, tx_wr.data_out); 
     end
@@ -33,9 +33,9 @@ class generator;
   task read();
     repeat(TX_COUNT_RD) begin
       tx_rd = new();
-      assert(tx_rd.randomize());
-      //tx_rd.wr_en = 0;
-      //tx_rd.rd_en = 1;
+      //assert(tx_rd.randomize());
+      tx_rd.wr_en = 0;
+      tx_rd.rd_en = 1;
       gen2mon.put(tx_rd);
       $display("Generator tx_rd\t|  wr_en: %b  |  rd_en: %b  |  data_in: %h  |  data_out: %h", tx_rd.wr_en, tx_rd.rd_en, tx_rd.data_in, tx_rd.data_out);    
     end
