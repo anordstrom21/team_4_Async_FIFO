@@ -29,7 +29,7 @@ class monitor;
       gen2mon.get(tx_rd);
       @(posedge bfm.clk_rd);
         bfm.rd_en <= tx_rd.rd_en;
-        #(CYCLE_TIME_RD);
+        //#(CYCLE_TIME_RD);
         //if (tx_rd.rd_en) begin
         //if (!last_rd_en || last_empty) begin
         //if (tx_rd.rd_en && last_rd_en) begin
@@ -37,7 +37,7 @@ class monitor;
         //end
 
         // Sample data and flags from FIFO
-        @(negedge bfm.clk_rd);
+        @(posedge bfm.clk_rd);
         tx_rd.data_out = bfm.data_out;
         tx_rd.empty = bfm.empty;
         tx_rd.full = bfm.full;
@@ -45,7 +45,7 @@ class monitor;
         //last_rd_en = tx_rd.rd_en;
         //last_empty= tx_rd.empty;
         mon2scb.put(tx_rd);
-        $display("Monitor tx_rd \t|  wr_en: %b  |  rd_en: %b  |  data_in: %h  |  data_out: %h |  full: %b  |  empty: %b  |  half: %b", tx_rd.wr_en, tx_rd.rd_en, tx_rd.data_in, tx_rd.data_out, tx_rd.full, tx_rd.empty, tx_rd.half); 
+        $display("Monitor tx_rd \t|  wr_en: %b  |  rd_en: %b  |  data_in: %h  |  data_out: %h  |  full: %b  |  empty: %b  |  half: %b", tx_rd.wr_en, tx_rd.rd_en, tx_rd.data_in, tx_rd.data_out, tx_rd.full, tx_rd.empty, tx_rd.half); 
     end
     $display("********** Monitor Ended **********"); 
   endtask : execute
