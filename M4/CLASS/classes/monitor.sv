@@ -23,18 +23,19 @@ class monitor;
   bit last_empty = 0;
   
   task execute();
-    #(4*CYCLE_TIME_RD); // wait for the driver to reset the FIFO (2 RD_CLKs might be enough...)
+    #(40*CYCLE_TIME_RD); // wait for the driver to reset the FIFO (2 RD_CLKs might be enough...)
     $display("********** Monitor Started **********"); 
     // NOTE: NEED TO ADD FULL/EMPTY/HALF MONITORING
     repeat(TX_COUNT_RD) begin
       gen2mon.get(tx_rd);
-      if (tx_rd.rd_en) begin
-        if (!last_rd_en || last_empty) begin
-          #(CYCLE_TIME_RD);
-        end
-      end 
       @(posedge bfm.clk_rd);
-        bfm_rd_en <= bfm.rd_en;
+        bfm.rd_en <= tx_rd.rd_en;
+        #(CYCLE_TIME_RD);
+        if (tx_rd.rd_en) begin
+            if (!last_rd_en || last_empty) begin
+            #(CYCLE_TIME_RD);
+            end
+        end 
         tx_rd.data_out = tx_rd.rd_en ? bfm.data_out : tx_rd.data_out; // if rd_en is high, grab data_out from FIFO
         // udpdate flags in this transaction
         tx_rd.empty = bfm.empty;

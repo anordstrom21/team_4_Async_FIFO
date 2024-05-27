@@ -54,7 +54,7 @@ class scoreboard;
         end else begin
             $display("Scoreboard Error: Write to full FIFO attempted.");
         end
-     endtask : write
+     endtask : tb_write
   
     task read_and_check(input logic [DATA_WIDTH-1:0] data);
         if (count > 0) begin

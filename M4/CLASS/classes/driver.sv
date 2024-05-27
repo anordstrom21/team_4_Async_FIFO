@@ -25,7 +25,7 @@ class driver;
     repeat(TX_COUNT_WR) begin
       gen2drv.get(tx_wr);
       @(posedge bfm.clk_wr);
-        $display("Driver tx_wr \t|  wr_en: %b  |  rd_en: %b  |  data_in: %h  |  data_out: %h", tx_wr.wr_en, tx_wr.rd_en, tx_wr.data_in, tx_wr.data_out);
+        $display("Driver tx_wr \t\t|  wr_en: %b  |  rd_en: %b  |  data_in: %h  |  data_out: %h", tx_wr.wr_en, tx_wr.rd_en, tx_wr.data_in, tx_wr.data_out);
         bfm.data_in <= tx_wr.wr_en ? tx_wr.data_in : bfm.data_in; // if wr_en is high, drive data_in to FIFO
         bfm.wr_en   <= tx_wr.wr_en; // drive wr_en to FIFO
         // bfm.rd_en   <= tx_wr.rd_en; // drive rd_en to FIFO

@@ -16,8 +16,8 @@ package fifo_pkg;
 	parameter CYCLE_TIME_RD = 20;    // 50 MHz
 	
 	
-	parameter TX_COUNT_WR = 5;
-	parameter TX_COUNT_RD = 5;
+	parameter TX_COUNT_WR = 25;
+	parameter TX_COUNT_RD = 25;
 
 //	`include "coverage.sv"
 	`include "transaction.sv"
