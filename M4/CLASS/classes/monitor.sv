@@ -10,44 +10,40 @@
 class monitor;
   
   virtual fifo_bfm bfm;
-  mailbox drv2mon, mon2scb;
-  transaction tx;
+  mailbox gen2mon, mon2scb;
+  transaction tx_rd;
 
-  function new (virtual fifo_bfm bfm, mailbox drv2mon, mailbox mon2scb);
+  function new (virtual fifo_bfm bfm, mailbox gen2mon, mailbox mon2scb);
     this.bfm = bfm;
-    this.drv2mon= drv2mon;
+    this.gen2mon= gen2mon;
     this.mon2scb = mon2scb;
   endfunction
-
-  // internal signal to track address
-  // bit [ADDR_WIDTH-1:0]  address = 0;
 
   bit last_rd_en = 0;
   bit last_empty = 0;
   
   task execute();
+    #(4*CYCLE_TIME_RD); // wait for the driver to reset the FIFO (2 RD_CLKs might be enough...)
     $display("********** Monitor Started **********"); 
     // NOTE: NEED TO ADD FULL/EMPTY/HALF MONITORING
-    repeat(2*TX_COUNT) begin
-      drv2mon.get(tx);
-      if (tx.rd_en) begin
+    repeat(TX_COUNT_RD) begin
+      gen2mon.get(tx_rd);
+      if (tx_rd.rd_en) begin
         if (!last_rd_en || last_empty) begin
           #(CYCLE_TIME_RD);
         end
-        @(posedge bfm.clk_rd);
-        tx.data_out = bfm.data_out;
-        $display("Monitor tx \t|  wr_en: %b  |  rd_en: %b  |  data_in: %h  |  data_out: %h", tx.wr_en, tx.rd_en, tx.data_in, tx.data_out); 
-        last_rd_en = tx.rd_en;
-        last_empty= tx.empty;
-        mon2scb.put(tx);
-      end
-      else begin
-        @(posedge bfm.clk_rd);
-        $display("Monitor tx \t|  wr_en: %b  |  rd_en: %b  |  data_in: %h  |  data_out: %h", tx.wr_en, tx.rd_en, tx.data_in, tx.data_out); 
-        last_rd_en = tx.rd_en;
-        last_empty= tx.empty;
-        mon2scb.put(tx);
       end 
+      @(posedge bfm.clk_rd);
+        bfm_rd_en <= bfm.rd_en;
+        tx_rd.data_out = tx_rd.rd_en ? bfm.data_out : tx_rd.data_out; // if rd_en is high, grab data_out from FIFO
+        // udpdate flags in this transaction
+        tx_rd.empty = bfm.empty;
+        tx_rd.full = bfm.full;
+        tx_rd.half = bfm.half;
+        last_rd_en = tx_rd.rd_en;
+        last_empty= tx_rd.empty;
+        mon2scb.put(tx_rd);
+        $display("Monitor tx_rd \t|  wr_en: %b  |  rd_en: %b  |  data_in: %h  |  data_out: %h", tx_rd.wr_en, tx_rd.rd_en, tx_rd.data_in, tx_rd.data_out); 
     end
     $display("********** Monitor Ended **********"); 
   endtask : execute

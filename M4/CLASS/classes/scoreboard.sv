@@ -17,10 +17,11 @@
 
 class scoreboard;
     
-    mailbox mon2scb;
-    transaction tx;
+    mailbox drv2scb, mon2scb;
+    transaction tx_wr, tx_rd;;
 
-    function new (mailbox mon2scb);
+    function new (mailbox drv2scb, mailbox mon2scb);
+        this.drv2scb = drv2scb;
         this.mon2scb = mon2scb;
     endfunction : new
 
@@ -45,7 +46,7 @@ class scoreboard;
     endtask : shift
 */
 
-    task write(input logic [DATA_WIDTH-1:0] data);
+    task tb_write(input logic [DATA_WIDTH-1:0] data);
         if (count < DEPTH) begin
             memory[write_ptr] = data;
             write_ptr = (write_ptr + 1) % DEPTH; //Modulo keeps values in range from 0 to DEPTH-1
@@ -58,7 +59,6 @@ class scoreboard;
     task read_and_check(input logic [DATA_WIDTH-1:0] data);
         if (count > 0) begin
             logic [DATA_WIDTH-1:0] expected_data = memory[read_ptr];
-            // If rd_en wasn't asserted last cycle then read_addr points to data
             if (data != expected_data) begin
                 $error("Data mismatch!: expected %h, got %h at read pointer %0d", expected_data, data, read_ptr);
             end
@@ -96,23 +96,34 @@ class scoreboard;
     endtask : read_and_check
 */
 
-  // Monitor both write and read operations to keep the scoreboard fifo updated
+  task write();
+    repeat(TX_COUNT_WR) begin
+      drv2scb.get(tx_wr);
+      if (tx_wr.wr_en && !tx_wr.full) begin
+        $display("Scoreboard tx_wr\t|  wr_en: %b  |  rd_en: %b  |  data_in: %h  |  data_out: %h", tx_wr.wr_en, tx_wr.rd_en, tx_wr.data_in, tx_wr.data_out);
+        tb_write(tx_wr.data_in);
+      end
+    end
+  endtask : write
+
+  task read();
+    repeat(TX_COUNT_RD) begin
+      mon2scb.get(tx_rd);
+      if (tx_rd.rd_en && !tx_rd.empty) begin
+        read_and_check(tx_rd.data_out);
+        $display("Scoreboard tx_rd\t|  wr_en: %b  |  rd_en: %b  |  data_in: %h  |  data_out: %h", tx_rd.wr_en, tx_rd.rd_en, tx_rd.data_in, tx_rd.data_out);
+      end
+    end
+  endtask : read
+
   task execute();
     $display("********** Scoreboard Started **********"); 
-    repeat(2*TX_COUNT) begin
-      mon2scb.get(tx);
-      // NOTE: NEED TO ADD FULL/EMPTY/HALF MONITORING
-      if (tx.wr_en) begin
-        $display("Scoreboard tx\t|  wr_en: %b  |  rd_en: %b  |  data_in: %h  |  data_out: %h", tx.wr_en, tx.rd_en, tx.data_in, tx.data_out);
-        write(tx.data_in);
-      end
-      else if (tx.rd_en) begin
-        read_and_check(tx.data_out);
-        $display("Scoreboard tx\t|  wr_en: %b  |  rd_en: %b  |  data_in: %h  |  data_out: %h", tx.wr_en, tx.rd_en, tx.data_in, tx.data_out);
-      end
-    
-    end
+    fork
+        write();
+        read();
+    join_none
     $display("********** Scoreboard Ended **********"); 
+  endtask : execute   
       
       /*@(posedge bfm.clk_wr);
       if (tx_wr.wr_en && !bfm.full) write(tx_wr.data_in);
@@ -125,6 +136,5 @@ class scoreboard;
         read_and_check(tx_rd.data_out);
       end */
   
-  endtask : execute   
    
 endclass 

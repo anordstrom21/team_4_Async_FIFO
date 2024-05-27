@@ -10,38 +10,45 @@
 
 class generator;
 
-  transaction tx;
-  mailbox gen2drv;
+  transaction tx_wr, tx_rd;
+  mailbox gen2drv, gen2mon;
 
 
- function new (mailbox gen2drv);
+ function new (mailbox gen2drv, mailbox gen2mon);
     this.gen2drv = gen2drv;
+    this.gen2mon = gen2mon;
   endfunction
+
+  task write();
+    repeat(TX_COUNT_WR) begin
+      tx_wr = new();
+      assert(tx_wr.randomize());
+      tx_wr.wr_en = 1;
+      tx_wr.rd_en = 0;
+      gen2drv.put(tx_wr);
+      $display("Generator tx_wr\t|  wr_en: %b  |  rd_en: %b  |  data_in: %h  |  data_out: %h", tx_wr.wr_en, tx_wr.rd_en, tx_wr.data_in, tx_wr.data_out); 
+    end
+  endtask : write
+
+  task read();
+    repeat(TX_COUNT_RD) begin
+      tx_rd = new();
+      tx_rd.wr_en = 0;
+      tx_rd.rd_en = 1;
+      gen2mon.put(tx_rd);
+      $display("Generator tx_rd\t|  wr_en: %b  |  rd_en: %b  |  data_in: %h  |  data_out: %h", tx_rd.wr_en, tx_rd.rd_en, tx_rd.data_in, tx_rd.data_out);    
+    end
+  endtask : read
 
 
   task execute();
     $display("********** Generator Started **********"); 
-    repeat(2*TX_COUNT) begin
-      tx = new();
-      assert(tx.randomize());
-      //tx.wr_en = 1;
-      //tx.rd_en = 0;
-      gen2drv.put(tx);
-      $display("Generator tx\t|  wr_en: %b  |  rd_en: %b  |  data_in: %h  |  data_out: %h", tx.wr_en, tx.rd_en, tx.data_in, tx.data_out); 
-    end
-    
-    // #100; // wait for 100 time units before turning off wr_en and turning on rd_en
-/*    
-    repeat(TX_COUNT) begin
-      tx = new();
-      tx.wr_en = 0;
-      tx.rd_en = 1;
-      gen2drv.put(tx);
-      $display("Generator tx\t|  wr_en: %b  |  rd_en: %b  |  data: %h  ", tx.wr_en, tx.rd_en, tx.data_in); 
-    end
-*/
+    fork
+      write();
+      read();
+    join_none
+    // #100; 
     $display("********** Generator Ended **********"); 
-
   endtask : execute
 
 endclass

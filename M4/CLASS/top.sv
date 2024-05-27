@@ -22,11 +22,11 @@ module top;
                  .half(bfm.half));
 
    fifo_bfm     bfm();
-   mailbox      gen2drv, drv2mon, mon2scb;
+   mailbox      gen2drv, gen2mon, drv2scb, mon2scb;
    testbench    testbench_h;
 
    initial begin
-      testbench_h = new(bfm, gen2drv, drv2mon, mon2scb);
+      testbench_h = new(bfm, gen2drv, gen2mon, drv2scb, mon2scb);
       testbench_h.execute();
    end
    

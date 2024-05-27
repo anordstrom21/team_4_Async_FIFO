@@ -39,7 +39,7 @@ interface fifo_bfm;
 		end
 	end
 
-
+	// Reset uses the slower, read clock
 	task reset_fifo();
 	    @(negedge clk_rd);
 	    rst_n = 1'b0;
