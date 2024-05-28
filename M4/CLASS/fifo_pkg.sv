@@ -16,9 +16,9 @@ package fifo_pkg;
 	parameter CYCLE_TIME_RD = 20;    // 50 MHz
 	
 	// Parameters for the testbench	
-	parameter TX_COUNT_WR = 5;
-	parameter TX_COUNT_RD = 5;
-	parameter READ_DELAY = 5;
+	parameter TX_COUNT_WR = 120;
+	parameter TX_COUNT_RD = 120;
+	parameter READ_DELAY = 0;
 
 //	`include "coverage.sv"
 	`include "transaction.sv"

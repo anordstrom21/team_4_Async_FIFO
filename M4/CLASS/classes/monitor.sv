@@ -23,7 +23,7 @@ class monitor;
   bit last_rd_en = 0;
   
   task execute();
-    #((READ_DELAY+3)*CYCLE_TIME_RD); // wait for the driver to reset the FIFO (2 RD_CLKs might be enough...)
+    #((READ_DELAY+8)*CYCLE_TIME_RD); // wait for the driver to reset and for some data to be put on the FIFO (8 RD_CLK min...)
     $display("********** Monitor Started **********"); 
     repeat(TX_COUNT_RD) begin
       gen2mon.get(tx_rd);
