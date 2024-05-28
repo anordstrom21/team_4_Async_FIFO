@@ -14,7 +14,7 @@ class generator;
   mailbox gen2drv, gen2mon;
 
 
- function new (mailbox gen2drv, mailbox gen2mon);
+  function new (mailbox gen2drv, mailbox gen2mon);
     this.gen2drv = gen2drv;
     this.gen2mon = gen2mon;
   endfunction

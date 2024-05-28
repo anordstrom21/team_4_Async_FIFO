@@ -19,8 +19,8 @@ class monitor;
     this.mon2scb = mon2scb;
   endfunction
 
+  // This variable is used to determine if the last transaction was a read
   bit last_rd_en = 0;
-  bit last_empty = 0;
   
   task execute();
     #((READ_DELAY+3)*CYCLE_TIME_RD); // wait for the driver to reset the FIFO (2 RD_CLKs might be enough...)
@@ -29,13 +29,7 @@ class monitor;
       gen2mon.get(tx_rd);
       @(posedge bfm.clk_rd);
         bfm.rd_en <= tx_rd.rd_en;
-        //#(CYCLE_TIME_RD);
-        //if (tx_rd.rd_en) begin
-        //if (!last_rd_en || last_empty) begin
-        //if (tx_rd.rd_en && last_rd_en) begin
-        //    #(CYCLE_TIME_RD);
-        //end
-        // If the last transaction was a read, then sample immediately
+        // If the last transaction was also a read, then we must wait for the next read clock edge
         if (tx_rd.rd_en && last_rd_en) begin
           #(CYCLE_TIME_RD);
           tx_rd.data_out = bfm.data_out;
@@ -43,7 +37,7 @@ class monitor;
           tx_rd.full = bfm.full;
           tx_rd.half = bfm.half;
         end
-        // Otherwise, wait for the next read clock edge
+        // Otherwise, we can sample the data_out on the same cycle as the read
         else begin
           @(posedge bfm.clk_rd);
           tx_rd.data_out = bfm.data_out;
@@ -52,7 +46,6 @@ class monitor;
           tx_rd.half = bfm.half;
         end
         last_rd_en = tx_rd.rd_en;
-        //last_empty= tx_rd.empty;
         mon2scb.put(tx_rd);
         $display("Monitor tx_rd \t|  wr_en: %b  |  rd_en: %b  |  data_in: %h  |  data_out: %h  |  full: %b  |  empty: %b  |  half: %b", tx_rd.wr_en, tx_rd.rd_en, tx_rd.data_in, tx_rd.data_out, tx_rd.full, tx_rd.empty, tx_rd.half); 
     end

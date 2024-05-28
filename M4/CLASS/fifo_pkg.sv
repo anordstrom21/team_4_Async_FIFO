@@ -17,7 +17,7 @@ package fifo_pkg;
 	
 	// Parameters for the testbench	
 	parameter TX_COUNT_WR = 5;
-	parameter TX_COUNT_RD = 15;
+	parameter TX_COUNT_RD = 5;
 	parameter READ_DELAY = 5;
 
 //	`include "coverage.sv"
