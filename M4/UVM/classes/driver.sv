@@ -29,7 +29,11 @@ class driver extends uvm_driver; // May need to add tx parameter...replace mbox?
   // Run Phase
   task run_phase(uvm_phase phase);
     //super.run_phase(phase);  Not included in Doulos Video
-    execute();
+    forever begin
+      seq_item_port.get_next_item(tx); 
+      execute();
+      seq_item_port.item_done(); 
+    end
   endtask : run_phase
 /*
   function new(virtual fifo_bfm bfm, mailbox gen2drv, mailbox drv2scb);
