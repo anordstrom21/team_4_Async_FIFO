@@ -7,7 +7,7 @@
 //	 
 *********************************************/
 
-class fifo_driver extends uvm_driver; // May need to add tx parameter...replace mbox?
+class fifo_driver extends uvm_driver #(fifo_transaction); 
   `uvm_component_utils(fifo_driver)
 
   virtual fifo_bfm bfm;
@@ -21,13 +21,19 @@ class fifo_driver extends uvm_driver; // May need to add tx parameter...replace 
 
   // Build Phase
   function void build_phase(uvm_phase phase);
-    super.build_phase(phase); // Not included in Doulos Video
+    super.build_phase(phase); 
     `uvm_info(get_type_name(), $sformatf("Building %s", get_full_name()), UVM_HIGH);
     
     if(!uvm_config_db #(virtual fifo_bfm)::get(this, "", "bfm", bfm))
       `uvm_fatal("NOBFM", {"bfm not defined for ", get_full_name(), "."});
   
   endfunction : build_phase
+
+  // Connect Phase
+  function void connect_phase(uvm_phase phase);
+    super.connect_phase(phase);  
+    `uvm_info(get_type_name(), $sformatf("Connecting %s", get_full_name()), UVM_HIGH);
+  endfunction : connect_phase
   
   // Run Phase
   task run_phase(uvm_phase phase);
