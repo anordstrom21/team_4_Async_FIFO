@@ -57,7 +57,7 @@ class fifo_monitor extends uvm_monitor;
     // TODO: This should be a forever loop if I can work the timing out
     #((READ_DELAY+8)*CYCLE_TIME_RD); // wait for the driver to reset and for some data to be put on the FIFO (8 RD_CLK min...)
     repeat(TX_COUNT_RD) begin
-      tx_rd = fifo_transaction::type_id::create("tx_rd");
+      tx_rd = fifo_transaction::type_id::create("fifo_transaction");
       @(posedge bfm.clk_rd);
         bfm.rd_en <= tx_rd.rd_en;
         // If the last transaction was also a read, then we must wait for the next read clock edge
