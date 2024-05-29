@@ -11,12 +11,11 @@ package fifo_pkg;
 	parameter TX_COUNT_RD = 120;
 	parameter READ_DELAY = 0;
 
-    // Sequencer typedef
-    typedef uvm_sequencer #(fifo_transaction) fifo_sequencer;
 
 //	`include "coverage.sv"
 	`include "transaction.sv"
-	`include "generator.sv"
+	`include "sequence.sv"
+	`include "sequencer.sv"
 	`include "driver.sv"
 	`include "monitor.sv"
     `include "agent.sv"
