@@ -14,7 +14,7 @@
 *********************************************/
 module top;
   import   fifo_pkg::*;
-//  import   uvm_pkg::*;
+  import   uvm_pkg::*;
    
    fifo_bfm     bfm();
    
