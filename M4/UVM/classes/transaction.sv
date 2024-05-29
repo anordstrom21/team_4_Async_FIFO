@@ -42,6 +42,7 @@ class fifo_transaction extends uvm_sequence_item;
 	*/
 
     // Useful methods suggested by John Aynsley
+/*
 	function string convert2string();
 		return $sformatf("Writing: %b or Reading: %b\nData in: %h, Data out: %h\nFull: %b, Half: %b, Empty: %b", wr_en, rd_en, data_in, data_out, full, half, empty);
 	endfunction: convert2string
@@ -79,5 +80,5 @@ class fifo_transaction extends uvm_sequence_item;
 			return 0;
 		return 1;
 	endfunction: do_compare
-
+*/
 endclass: transaction
