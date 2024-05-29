@@ -21,6 +21,6 @@ package fifo_pkg;
 	`include "monitor.sv"
     `include "agent.sv"
 //	`include "scoreboard.sv"
-    `include "enviroment.sv"
+    `include "environment.sv"
 
 endpackage : fifo_pkg

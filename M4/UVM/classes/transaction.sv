@@ -81,4 +81,4 @@ class fifo_transaction extends uvm_sequence_item;
 		return 1;
 	endfunction: do_compare
 */
-endclass: transaction
+endclass: fifo_transaction

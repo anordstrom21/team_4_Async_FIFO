@@ -14,7 +14,7 @@ class fifo_sequence extends uvm_sequence #(fifo_transaction);
       starting_phase.raise_objection(this);
 
     // generate some transactions
-    tx_wr = fifo_transaction::type_id::create("tx");
+    tx_wr = fifo_transaction::type_id::create("tx_wr");
     repeat(TX_COUNT_WR) begin
       start_item(tx_wr);
       
