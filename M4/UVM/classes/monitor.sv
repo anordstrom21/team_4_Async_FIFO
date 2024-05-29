@@ -44,8 +44,6 @@ class fifo_monitor extends uvm_monitor;
     super.connect_phase(phase);
     `uvm_info(get_type_name(), $sformatf("Connecting %s", get_full_name()), UVM_HIGH);
 
-    // Connect the monitor to the analysis port
-    monitor_port.connect(tracker.analysis_export); 
 
   endfunction : connect_phase
 
