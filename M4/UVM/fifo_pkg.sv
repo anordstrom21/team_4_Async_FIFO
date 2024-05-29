@@ -1,5 +1,6 @@
 package fifo_pkg;
-	`include "uvm_macros.svh"
+	import uvm_pkg::*;
+    `include "uvm_macros.svh"
     
     // Parameters for FIFO configuration
 	parameter DATA_WIDTH = 8, ADDR_WIDTH = 6;
