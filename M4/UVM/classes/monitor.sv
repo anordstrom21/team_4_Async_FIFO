@@ -44,8 +44,8 @@ class fifo_monitor extends uvm_monitor;
     super.connect_phase(phase);
     `uvm_info(get_type_name(), $sformatf("Connecting %s", get_full_name()), UVM_HIGH);
 
-  /*  // Connect the monitor to the analysis port
-    monitor_port.connect(tracker.analysis_export); */
+    // Connect the monitor to the analysis port
+    monitor_port.connect(tracker.analysis_export); 
 
   endfunction : connect_phase
 
@@ -57,6 +57,7 @@ class fifo_monitor extends uvm_monitor;
     // TODO: This should be a forever loop if I can work the timing out
     #((READ_DELAY+8)*CYCLE_TIME_RD); // wait for the driver to reset and for some data to be put on the FIFO (8 RD_CLK min...)
     repeat(TX_COUNT_RD) begin
+      tx_rd = fifo_transaction::type_id::create("tx_rd");
       @(posedge bfm.clk_rd);
         bfm.rd_en <= tx_rd.rd_en;
         // If the last transaction was also a read, then we must wait for the next read clock edge
@@ -77,6 +78,7 @@ class fifo_monitor extends uvm_monitor;
         end
         last_rd_en = tx_rd.rd_en;
         `uvm_info(get_type_name(), $sformatf("Monitor tx_rd \t|  wr_en: %b  |  rd_en: %b  |  data_in: %h  |  data_out: %h  |  full: %b  |  empty: %b  |  half: %b", tx_rd.wr_en, tx_rd.rd_en, tx_rd.data_in, tx_rd.data_out, tx_rd.full, tx_rd.empty, tx_rd.half), UVM_DEBUG);
+        monitor_port.write(tx_rd);
     end
 
   endtask : run_phase
