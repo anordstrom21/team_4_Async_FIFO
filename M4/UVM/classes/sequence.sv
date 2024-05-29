@@ -24,7 +24,7 @@ class fifo_sequence extends uvm_sequence #(fifo_transaction);
       tx_wr.wr_en = 1;
       tx_wr.rd_en = 0;
       `uvm_info("GENERATE", tx.convert2string(), UVM_MEDIUM)
-      finish_item(tx);
+      finish_item(tx_wr);
     end
 
     if (starting_phase != null)
