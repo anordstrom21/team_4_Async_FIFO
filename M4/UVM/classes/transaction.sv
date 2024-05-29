@@ -1,5 +1,5 @@
 /****************************************
-*  Transaction Class for the OOP/Class Based
+*  Transaction Class for the UVM Based 
 *  Testbench for an Asynchronous FIFO Module
 *
 *  This class contains the transaction packet
@@ -12,10 +12,10 @@
 *  Modifications: Alexander Maso
 ****************************************/
 
-class transaction extends uvm_sequence_item;
-	`uvm_object_utils(transaction)	//provides type name for factory creation
+class fifo_transaction extends uvm_sequence_item;
+	`uvm_object_utils(fifo_transaction)	//provides type name for factory creation
 
-	function new(string name = "transaction");
+	function new(string name = "fifo_transaction");
 		super.new(name);
 	endfunction: new
 
@@ -41,6 +41,7 @@ class transaction extends uvm_sequence_item;
 	endfunction: print
 	*/
 
+    // Useful methods suggested by John Aynsley
 	function string convert2string();
 		return $sformatf("Writing: %b or Reading: %b\nData in: %h, Data out: %h\nFull: %b, Half: %b, Empty: %b", wr_en, rd_en, data_in, data_out, full, half, empty);
 	endfunction: convert2string

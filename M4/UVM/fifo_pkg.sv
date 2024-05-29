@@ -12,15 +12,15 @@ package fifo_pkg;
 	parameter READ_DELAY = 0;
 
     // Sequencer typedef
-    typedef uvm_sequencer #(transaction) sequencer;
+    typedef uvm_sequencer #(fifo_transaction) fifo_sequencer;
 
 //	`include "coverage.sv"
-    `include "enviroment.sv"
 	`include "transaction.sv"
 	`include "generator.sv"
 	`include "driver.sv"
 	`include "monitor.sv"
-	`include "scoreboard.sv"
-	`include "testbench.sv"
+    `include "agent.sv"
+//	`include "scoreboard.sv"
+    `include "enviroment.sv"
 
 endpackage : fifo_pkg

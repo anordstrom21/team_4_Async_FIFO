@@ -10,7 +10,7 @@
 class driver;
   virtual fifo_bfm bfm;
   mailbox gen2drv, drv2scb;
-  transaction tx_wr;
+  fifo_transaction tx_wr;
 
   function new(virtual fifo_bfm bfm, mailbox gen2drv, mailbox drv2scb);
     this.bfm = bfm;
