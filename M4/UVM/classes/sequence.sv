@@ -1,6 +1,8 @@
 class fifo_sequence extends uvm_sequence #(fifo_transaction);
-  
-  `uvm_object_utils(fifo_sequence)
+  `uvm_object_utils(fifo_sequence) // Register the class with the factory
+
+  // Declare handles to the transaction packet
+  fifo_transaction tx_wr;
   
   // Constructor 
   function new(string name="fifo_sequence");
