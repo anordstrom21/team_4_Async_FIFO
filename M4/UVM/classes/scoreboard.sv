@@ -13,8 +13,8 @@ class fifo_scoreboard extends uvm_scoreboard;
 	`uvm_component_utils(fifo_scoreboard); // Register the component with the factory
 
     // Declare analysis port
-    uvm_analysis_port #(fifo_transaction, fifo_scoreboard) scoreboard_port_rd;
-    uvm_analysis_port #(fifo_transaction, fifo_scoreboard) scoreboard_port_wr;
+    uvm_analysis_imp #(fifo_transaction, fifo_scoreboard) scoreboard_port_rd;
+    uvm_analysis_imp #(fifo_transaction, fifo_scoreboard) scoreboard_port_wr;
     fifo_transaction tx_rd, tx_wr;
 
     // Local memory, ptrs and count used to check FIFO
