@@ -2,8 +2,8 @@ class fifo_sequence extends uvm_sequence #(fifo_transaction);
   `uvm_object_utils(fifo_sequence) // Register the class with the factory
 
   // Declare handles to the transaction packet
-  fifo_transaction tx_wr;
-  fifo_transaction tx_rd;
+  fifo_transaction tx;
+  fifo_transaction tx;
   
   // Constructor 
   function new(string name="fifo_sequence");
@@ -16,28 +16,27 @@ class fifo_sequence extends uvm_sequence #(fifo_transaction);
       starting_phase.raise_objection(this);
 
     // generate some transactions
-    tx_wr = fifo_transaction::type_id::create("tx_wr");
+    tx = fifo_transaction::type_id::create("tx");
     repeat(TX_COUNT_WR) begin
-      start_item(tx_wr);
+      start_item(tx);
       
-      if (!tx_wr.randomize())
+      if (!tx.randomize())
         `uvm_error("RANDOMIZE", "Failed to randomize transaction")
       
-      tx_wr.wr_en = 1;
-      tx_wr.rd_en = 0;
-      `uvm_info("GENERATE", tx_wr.convert2string(), UVM_MEDIUM)
-      finish_item(tx_wr);
+      tx.wr_en = 1;
+      tx.rd_en = 0;
+      `uvm_info("GENERATE", tx.convert2string(), UVM_MEDIUM)
+      finish_item(tx);
     end
 
     // generate some transactions
-    tx_rd = fifo_transaction::type_id::create("tx_rd");
     repeat(TX_COUNT_RD) begin
-      start_item(tx_rd);
+      start_item(tx);
       
-      tx_rd.wr_en = 0;
-      tx_rd.rd_en = 1;
-      `uvm_info("GENERATE", tx_rd.convert2string(), UVM_MEDIUM)
-      finish_item(tx_rd);
+      tx.wr_en = 0;
+      tx.rd_en = 1;
+      `uvm_info("GENERATE", tx.convert2string(), UVM_MEDIUM)
+      finish_item(tx);
     end
 
 

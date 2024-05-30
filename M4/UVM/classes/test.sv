@@ -38,9 +38,6 @@ class my_first_test extends uvm_test;
         phase.raise_objection(this);
         sequence_h = fifo_sequence::type_id::create("sequence_h");
 
-        if (!sequence_h.randomize())
-            `uvm_error("RANDOMIZE", "Failed to randomize sequence")
-
         sequence_h.starting_phase = phase;
 
         sequence_h.start(environment_h.agent_h.sequencer_h);
