@@ -51,7 +51,7 @@ class fifo_driver extends uvm_driver #(fifo_transaction);
           tx.rd_en    <= bfm.rd_en; 
       end 
       
-      `uvm_info(get_type_name(), $sformatf("Driver tx_wr \t\t|  wr_en: %b  |  rd_en: %b  |  data_in: %h  |  data_out: %h  |  full: %b  |  empty: %b  |  half: %b", tx_wr.wr_en, tx_wr.rd_en, tx_wr.data_in, tx_wr.data_out, tx_wr.full, tx_wr.empty, tx_wr.half), UVM_DEBUG);
+      `uvm_info(get_type_name(), $sformatf("Driver tx \t\t|  wr_en: %b  |  rd_en: %b  |  data_in: %h  |  data_out: %h  |  full: %b  |  empty: %b  |  half: %b", tx.wr_en, tx.rd_en, tx.data_in, tx.data_out, tx.full, tx.empty, tx.half), UVM_DEBUG);
       seq_item_port.item_done(); 
     end
   endtask : run_phase
@@ -61,18 +61,18 @@ class fifo_driver extends uvm_driver #(fifo_transaction);
     $display("********** Driver Started **********");
     bfm.reset_fifo();  // reset takes 2 RD_CLKs
     repeat(TX_COUNT_WR) begin
-      gen2drv.get(tx_wr);
+      gen2drv.get(tx);
       // Drive data to FIFO
       @(posedge bfm.clk_wr);
-        bfm.data_in <= tx_wr.data_in; 
-        bfm.wr_en   <= tx_wr.wr_en; 
+        bfm.data_in <= tx.data_in; 
+        bfm.wr_en   <= tx.wr_en; 
       // Update flags in this transaction
       @(negedge bfm.clk_wr); 
-        tx_wr.full      = bfm.full;
-        tx_wr.empty     = bfm.empty;
-        tx_wr.half      = bfm.half;
-        $display("Driver tx_wr \t\t|  wr_en: %b  |  rd_en: %b  |  data_in: %h  |  data_out: %h  |  full: %b  |  empty: %b  |  half: %b", tx_wr.wr_en, tx_wr.rd_en, tx_wr.data_in, tx_wr.data_out, tx_wr.full, tx_wr.empty, tx_wr.half);
-        drv2scb.put(tx_wr);
+        tx.full      = bfm.full;
+        tx.empty     = bfm.empty;
+        tx.half      = bfm.half;
+        $display("Driver tx \t\t|  wr_en: %b  |  rd_en: %b  |  data_in: %h  |  data_out: %h  |  full: %b  |  empty: %b  |  half: %b", tx.wr_en, tx.rd_en, tx.data_in, tx.data_out, tx.full, tx.empty, tx.half);
+        drv2scb.put(tx);
     end
     $display("********** Driver Ended **********");
   endtask : execute
