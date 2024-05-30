@@ -11,7 +11,7 @@ class fifo_driver extends uvm_driver #(fifo_transaction);
   `uvm_component_utils(fifo_driver)
 
   virtual fifo_bfm bfm;
-  fifo_transaction tx_wr;
+  fifo_transaction tx;
   
   // Constructor
   function new(string name = "fifo_driver", uvm_component parent);
@@ -39,16 +39,17 @@ class fifo_driver extends uvm_driver #(fifo_transaction);
   task run_phase(uvm_phase phase);
     super.run_phase(phase);  //Not included in Doulos Video
     forever begin
-      seq_item_port.get_next_item(tx_wr); 
+      seq_item_port.get_next_item(tx); 
       // Drive data to FIFO
-      @(posedge bfm.clk_wr);
-        bfm.data_in   <= tx_wr.data_in; 
-        bfm.wr_en     <= tx_wr.wr_en; 
-      // Update flags in this transaction
-      @(negedge bfm.clk_wr); 
-        tx_wr.full      = bfm.full;
-        tx_wr.empty     = bfm.empty;
-        tx_wr.half      = bfm.half;
+      if (tx.wr_en) begin
+        @(posedge bfm.clk_wr);
+          bfm.data_in   <= tx.data_in; 
+          bfm.wr_en     <= tx.wr_en; 
+      end
+      if (tx.rd_en) begin
+        @(posedge bfm.clk_rd);
+          tx.rd_en    <= bfm.rd_en; 
+      end 
       
       `uvm_info(get_type_name(), $sformatf("Driver tx_wr \t\t|  wr_en: %b  |  rd_en: %b  |  data_in: %h  |  data_out: %h  |  full: %b  |  empty: %b  |  half: %b", tx_wr.wr_en, tx_wr.rd_en, tx_wr.data_in, tx_wr.data_out, tx_wr.full, tx_wr.empty, tx_wr.half), UVM_DEBUG);
       seq_item_port.item_done(); 

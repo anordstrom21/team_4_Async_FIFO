@@ -8,8 +8,8 @@ package fifo_pkg;
 	parameter CYCLE_TIME_RD = 20;    // 50 MHz
 	
 	// Parameters for the testbench	
-	parameter TX_COUNT_WR = 120;
-	parameter TX_COUNT_RD = 120;
+	parameter TX_COUNT_WR = 10;
+	parameter TX_COUNT_RD = 10;
 	parameter READ_DELAY = 0;
 
 
@@ -20,7 +20,7 @@ package fifo_pkg;
 	`include "driver.sv"
 	`include "monitor.sv"
     `include "agent.sv"
-//	`include "scoreboard.sv"
+	`include "scoreboard.sv"
     `include "environment.sv"
 	`include "test.sv"
 
