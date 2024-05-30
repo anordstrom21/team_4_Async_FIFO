@@ -61,7 +61,19 @@ class fifo_monitor extends uvm_monitor;
   endtask : run_phase
 
   task monitor_wr();
-
+    // TODO: This should be a forever loop if I can work the timing out
+    repeat(TX_COUNT_WR) begin
+      tx_wr = fifo_transaction::type_id::create("fifo_transaction");
+      @(posedge bfm.clk_wr);
+        if (bfm.wr_en) begin 
+          tx_wr.data_in = bfm.data_in;
+          tx_wr.empty = bfm.empty;
+          tx_wr.full = bfm.full;
+          tx_wr.half = bfm.half;
+          `uvm_info(get_type_name(), $sformatf("Monitor tx_wr \t|  wr_en: %b  |  rd_en: %b  |  data_in: %h  |  data_out: %h  |  full: %b  |  empty: %b  |  half: %b", tx_wr.wr_en, tx_wr.rd_en, tx_wr.data_in, tx_wr.data_out, tx_wr.full, tx_wr.empty, tx_wr.half), UVM_DEBUG);
+          monitor_port_wr.write(tx_wr);
+        end
+    end
   endtask : monitor_wr
 
   task monitor_rd();
