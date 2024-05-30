@@ -41,12 +41,12 @@ class fifo_driver extends uvm_driver #(fifo_transaction);
     forever begin
       seq_item_port.get_next_item(tx); 
       // Drive data to FIFO
-      if tx.wr_en begin
+      if (tx.wr_en) begin
         @(posedge bfm.clk_wr);
           bfm.data_in   <= tx.data_in; 
           bfm.wr_en     <= tx.wr_en; 
       end
-      if tx.rd_en begin
+      if (tx.rd_en) begin
         @(posedge bfm.clk_rd);
           tx.rd_en    <= bfm.rd_en; 
       end 
