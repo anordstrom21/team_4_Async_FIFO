@@ -10,16 +10,17 @@ vlog -lint dut/write_pointer.sv
 vlog -lint dut/sync.sv
  
 vlog -f tb.f
-vopt top -o top_optimized  +acc +cover=sbfec+fifo_top(rtl).
-#vopt top -o top_optimized  +acc 
- vsim top_optimized -coverage
- set NoQuitOnFinish 1
- onbreak {resume}
- log /* -r
- run -all
+vsim -coverage -vopt work.top -c -do "+UVM_VERBOSITY=UVM_NONE coverage save -onexit -directive -codeAll test.ucdb; run -all"
 
- coverage save async_fifo.ucdb
- vcover report async_fifo.ucdb
- vcover report async_fifo.ucdb -cvg -details
+#vopt top -o top_optimized  +acc +cover=sbfec+fifo_top(rtl).
+#vsim top_optimized -coverage
+#set NoQuitOnFinish 1
+#onbreak {resume}
+#log /* -r
+#run -all
+
+#coverage save async_fifo.ucdb
+#vcover report async_fifo.ucdb
+#vcover report async_fifo.ucdb -cvg -details
 
 #quit 
