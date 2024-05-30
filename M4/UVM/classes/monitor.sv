@@ -36,6 +36,7 @@ class fifo_monitor extends uvm_monitor;
       `uvm_fatal("NOBFM", {"bfm not defined for ", get_full_name(), "."});
   
     // Use new constructor to create the analysis port
+    monitor_port_wr = new("monitor_port_wr", this);
     monitor_port_rd = new("monitor_port_rd", this);
   endfunction : build_phase
   
@@ -61,47 +62,48 @@ class fifo_monitor extends uvm_monitor;
   endtask : run_phase
 
   task monitor_wr();
-    // TODO: This should be a forever loop if I can work the timing out
-    repeat(TX_COUNT_WR) begin
+    forever begin
       tx_wr = fifo_transaction::type_id::create("fifo_transaction");
-      @(posedge bfm.clk_wr);
-        if (bfm.wr_en) begin 
+      if (bfm.wr_en) begin 
+        @(posedge bfm.clk_wr);
+          tx_wr.wr_en = bfm.wr_en;
           tx_wr.data_in = bfm.data_in;
           tx_wr.empty = bfm.empty;
           tx_wr.full = bfm.full;
           tx_wr.half = bfm.half;
           `uvm_info(get_type_name(), $sformatf("Monitor tx_wr \t|  wr_en: %b  |  rd_en: %b  |  data_in: %h  |  data_out: %h  |  full: %b  |  empty: %b  |  half: %b", tx_wr.wr_en, tx_wr.rd_en, tx_wr.data_in, tx_wr.data_out, tx_wr.full, tx_wr.empty, tx_wr.half), UVM_DEBUG);
           monitor_port_wr.write(tx_wr);
-        end
+      end
     end
   endtask : monitor_wr
 
   task monitor_rd();
-    // TODO: This should be a forever loop if I can work the timing out
     #((READ_DELAY+8)*CYCLE_TIME_RD); // wait for the driver to reset and for some data to be put on the FIFO (8 RD_CLK min...)
-    repeat(TX_COUNT_RD) begin
+    forever begin
       tx_rd = fifo_transaction::type_id::create("fifo_transaction");
-      @(posedge bfm.clk_rd);
-        bfm.rd_en <= tx_rd.rd_en;
-        // If the last transaction was also a read, then we must wait for the next read clock edge
-        if (tx_rd.rd_en && last_rd_en) begin
-          #(CYCLE_TIME_RD);
-          tx_rd.data_out = bfm.data_out;
-          tx_rd.empty = bfm.empty;
-          tx_rd.full = bfm.full;
-          tx_rd.half = bfm.half;
-        end
-        // Otherwise, we can sample the data_out on the same cycle as the read
-        else begin
-          @(posedge bfm.clk_rd);
-          tx_rd.data_out = bfm.data_out;
-          tx_rd.empty = bfm.empty;
-          tx_rd.full = bfm.full;
-          tx_rd.half = bfm.half;
-        end
-        last_rd_en = tx_rd.rd_en;
-        `uvm_info(get_type_name(), $sformatf("Monitor tx_rd \t|  wr_en: %b  |  rd_en: %b  |  data_in: %h  |  data_out: %h  |  full: %b  |  empty: %b  |  half: %b", tx_rd.wr_en, tx_rd.rd_en, tx_rd.data_in, tx_rd.data_out, tx_rd.full, tx_rd.empty, tx_rd.half), UVM_DEBUG);
-        monitor_port_rd.read(tx_rd);
+      if (bfm.rd_en) begin
+        @(posedge bfm.clk_rd);
+          tx_rd.rd_en = bfm.rd_en;
+          // If the last transaction was also a read, then we must wait for the next read clock edge
+          if (tx_rd.rd_en && last_rd_en) begin
+            #(CYCLE_TIME_RD);
+            tx_rd.data_out = bfm.data_out;
+            tx_rd.empty = bfm.empty;
+            tx_rd.full = bfm.full;
+            tx_rd.half = bfm.half;
+          end
+          // Otherwise, we can sample the data_out on the same cycle as the read
+          else begin
+            @(posedge bfm.clk_rd);
+            tx_rd.data_out = bfm.data_out;
+            tx_rd.empty = bfm.empty;
+            tx_rd.full = bfm.full;
+            tx_rd.half = bfm.half;
+          end
+          last_rd_en = tx_rd.rd_en;
+          `uvm_info(get_type_name(), $sformatf("Monitor tx_rd \t|  wr_en: %b  |  rd_en: %b  |  data_in: %h  |  data_out: %h  |  full: %b  |  empty: %b  |  half: %b", tx_rd.wr_en, tx_rd.rd_en, tx_rd.data_in, tx_rd.data_out, tx_rd.full, tx_rd.empty, tx_rd.half), UVM_DEBUG);
+          monitor_port_rd.read(tx_rd);
+      end
     end
   endtask : monitor_rd 
 

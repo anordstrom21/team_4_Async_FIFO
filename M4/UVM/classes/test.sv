@@ -44,15 +44,15 @@ class my_first_test extends uvm_test;
         sequence_h.starting_phase = phase;
 
         sequence_h.start(environment_h.agent_h.sequencer_h);
-        #10; // Example -> Consume some arbitrary time
-
-        // UVM Macro to report a message
-        // 1st argument: The type name of the component
-        // 2nd argument: The message to report
-        // 3rd argument: The verbosity level
-        `uvm_info(get_type_name(), "Hello, World!", UVM_MEDIUM);
 
         phase.drop_objection(this); 
     endtask
   
 endclass
+
+        // UVM Macro to report a message
+        // 1st argument: The type name of the component
+        // 2nd argument: The message to report
+        // 3rd argument: The verbosity level
+       //  Ex: `uvm_info(get_type_name(), "Hello, World!", UVM_MEDIUM);
+
