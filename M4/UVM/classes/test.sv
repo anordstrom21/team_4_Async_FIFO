@@ -41,7 +41,9 @@ class my_first_test extends uvm_test;
         sequence_h.starting_phase = phase;
 
         sequence_h.start(environment_h.agent_h.sequencer_h);
-
+        
+        #10000; // Consume time
+            
         phase.drop_objection(this); 
     endtask
   
