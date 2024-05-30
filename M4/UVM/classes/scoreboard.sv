@@ -49,11 +49,11 @@ class fifo_scoreboard extends uvm_scoreboard;
     endfunction: connect_phase
     
     // Run Phase
-    function void run_phase(uvm_phase phase);
+    task run_phase(uvm_phase phase);
         super.run_phase(phase);  
         `uvm_info(get_type_name(), $sformatf("Running %s", get_full_name()), UVM_HIGH);
    
-   endfunction: run_phase
+    endtask: run_phase
 
 
     task write(fifo_transaction tx_wr);
