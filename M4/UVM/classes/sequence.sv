@@ -3,20 +3,20 @@ class fifo_sequence extends uvm_sequence #(fifo_transaction);
 
   // Declare handles to the transaction packet
   fifo_transaction tx_wr;
+  fifo_transaction tx_rd;
   
   // Constructor 
   function new(string name="fifo_sequence");
     super.new(name);
   endfunction
-  
-  // virtual task body();
-  // Not virtual in Doulos Video
+
+  // virtual? 
   task body();
     if (starting_phase != null)
       starting_phase.raise_objection(this);
 
     // generate some transactions
-    tx_wr = fifo_transaction::type_id::create("fifo_transaction");
+    tx_wr = fifo_transaction::type_id::create("tx_wr");
     repeat(TX_COUNT_WR) begin
       start_item(tx_wr);
       
@@ -29,8 +29,23 @@ class fifo_sequence extends uvm_sequence #(fifo_transaction);
       finish_item(tx_wr);
     end
 
+    // generate some transactions
+    tx_rd = fifo_transaction::type_id::create("tx_rd");
+    repeat(TX_COUNT_RD) begin
+      start_item(tx_rd);
+      
+      tx_rd.wr_en = 0;
+      tx_rd.rd_en = 1;
+      `uvm_info("GENERATE", tx_rd.convert2string(), UVM_MEDIUM)
+      finish_item(tx_wr);
+    end
+
+
     if (starting_phase != null)
       starting_phase.drop_objection(this);
   endtask : body
-  
+
+
+
+
 endclass

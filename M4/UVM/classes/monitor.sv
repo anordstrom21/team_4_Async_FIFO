@@ -11,10 +11,11 @@ class fifo_monitor extends uvm_monitor;
   `uvm_component_utils(fifo_monitor) // Register the component with the factory
   
   virtual fifo_bfm bfm;
-  fifo_transaction tx_rd;
+  fifo_transaction tx_wr, tx_rd;
 
   // Declare analysis port
-  uvm_analysis_port #(fifo_transaction) monitor_port;
+  uvm_analysis_port #(fifo_transaction) monitor_port_rd;
+  uvm_analysis_port #(fifo_transaction) monitor_port_wr;
 
   // This variable is used to determine if the last transaction was a read
   bit last_rd_en = 0;
@@ -35,7 +36,7 @@ class fifo_monitor extends uvm_monitor;
       `uvm_fatal("NOBFM", {"bfm not defined for ", get_full_name(), "."});
   
     // Use new constructor to create the analysis port
-    monitor_port = new("monitor_port", this);
+    monitor_port_rd = new("monitor_port_rd", this);
   endfunction : build_phase
   
   // Connect phase   TODO: Check if this can be virtual
@@ -52,6 +53,18 @@ class fifo_monitor extends uvm_monitor;
     super.run_phase(phase); 
     `uvm_info(get_type_name(), $sformatf("Running %s", get_full_name()), UVM_HIGH);
 
+    fork
+      monitor_rd();
+      monitor_wr();
+    join_none
+    
+  endtask : run_phase
+
+  task monitor_wr();
+
+  endtask : monitor_wr
+
+  task monitor_rd();
     // TODO: This should be a forever loop if I can work the timing out
     #((READ_DELAY+8)*CYCLE_TIME_RD); // wait for the driver to reset and for some data to be put on the FIFO (8 RD_CLK min...)
     repeat(TX_COUNT_RD) begin
@@ -76,10 +89,9 @@ class fifo_monitor extends uvm_monitor;
         end
         last_rd_en = tx_rd.rd_en;
         `uvm_info(get_type_name(), $sformatf("Monitor tx_rd \t|  wr_en: %b  |  rd_en: %b  |  data_in: %h  |  data_out: %h  |  full: %b  |  empty: %b  |  half: %b", tx_rd.wr_en, tx_rd.rd_en, tx_rd.data_in, tx_rd.data_out, tx_rd.full, tx_rd.empty, tx_rd.half), UVM_DEBUG);
-        monitor_port.write(tx_rd);
+        monitor_port_rd.read(tx_rd);
     end
-
-  endtask : run_phase
+  endtask : monitor_rd 
 
 /*
   task execute();
