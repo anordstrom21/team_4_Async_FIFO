@@ -8,12 +8,11 @@ package fifo_pkg;
 	parameter CYCLE_TIME_RD = 20;    // 50 MHz
 	
 	// Parameters for the testbench	
-	parameter TX_COUNT_WR = 50;
-	parameter TX_COUNT_RD = 50;
+	parameter TX_COUNT_WR = 10;
+	parameter TX_COUNT_RD = 10;
 	parameter READ_DELAY = 0;
 
 
-//	`include "coverage.sv"
 	`include "transaction.sv"
 	`include "sequence.sv"
 	`include "sequencer.sv"
@@ -21,6 +20,7 @@ package fifo_pkg;
 	`include "monitor.sv"
     `include "agent.sv"
 	`include "scoreboard.sv"
+	`include "coverage.sv"
     `include "environment.sv"
 	`include "test.sv"
 
