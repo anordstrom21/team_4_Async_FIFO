@@ -76,12 +76,12 @@ class fifo_scoreboard extends uvm_scoreboard;
     function void write_port_wr(fifo_transaction mon_tx_wr);
         tx_stack_wr.push_back(mon_tx_wr);
         `uvm_info(get_type_name(), $sformatf("Scoreboard tx \t|  wr_en: %b  |  data_in: %h  |", mon_tx_wr.wr_en, mon_tx_wr.data_in), UVM_HIGH);
-    endfunction : write_port_a
+    endfunction : write_port_wr
 
     function void write_port_rd(fifo_transaction mon_tx_rd);
         tx_stack_rd.push_back(mon_tx_rd);
         `uvm_info(get_type_name(), $sformatf("Scoreboard tx \t|  rd_en: %b  |  data_out: %h  |", mon_tx_rd.rd_en, mon_tx_rd.data_out), UVM_HIGH);
-   endfunction : write_port_b 
+    endfunction : write_port_rd
     
 
 endclass 
