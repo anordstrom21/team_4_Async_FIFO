@@ -30,6 +30,7 @@ class fifo_coverage extends uvm_subscriber #(fifo_transaction);
     // Define covergroups
     // Covergroup for basic FIFO signals
     covergroup cg_fifo;
+	option.per_instance = 1;
         coverpoint tx.wr_en {
             bins wr_en = {1};
             bins wr_den = {0};
@@ -55,6 +56,7 @@ class fifo_coverage extends uvm_subscriber #(fifo_transaction);
     // Covergroup for depth levels of  FIFO
 /*
     covergroup cg_fifo_depth;
+	option.per_instance = 1;
         coverpoint tx.wptr {
             bins low = {[0:7]};             // Low depth
             bins mid = {[8:15]};            // Mid depth
@@ -72,6 +74,7 @@ class fifo_coverage extends uvm_subscriber #(fifo_transaction);
 
     // Covergroup for monitoring half full and empty states
     covergroup cg_half_full_empty;
+	option.per_instance = 1;
         coverpoint tx.half {
             bins half_full_true = {1};
             bins half_full_false = {0};
@@ -80,6 +83,7 @@ class fifo_coverage extends uvm_subscriber #(fifo_transaction);
 
     // Covergroup for data integrity
     covergroup cg_data_integrity;
+	option.per_instance = 1;
         coverpoint tx.data_out {
             bins data_low = {[0:63]};
             bins data_mid = {[64:127]};
@@ -90,6 +94,7 @@ class fifo_coverage extends uvm_subscriber #(fifo_transaction);
 
     // Covergroup for specific data patterns
     covergroup cg_data_patterns;
+	option.per_instance = 1;
         coverpoint tx.data_in {
             bins pattern_zero = {8'h00};
             bins pattern_all_ones = {8'hFF};
@@ -104,6 +109,7 @@ class fifo_coverage extends uvm_subscriber #(fifo_transaction);
 
     // Covergroup for burst w/r ops
     covergroup cg_burst_ops;
+	option.per_instance = 1;
         coverpoint tx.wr_en {
             bins burst_write = {1};
         }
@@ -115,6 +121,7 @@ class fifo_coverage extends uvm_subscriber #(fifo_transaction);
 /*
     // Covergroup for RST 
     covergroup cg_reset;
+	option.per_instance = 1;
         coverpoint tx.rst_n {
             bins reset_active = {0};
             bins reset_inactive = {1};
@@ -144,6 +151,7 @@ class fifo_coverage extends uvm_subscriber #(fifo_transaction);
 */
     // Covergroup for capturing abrupt changes in r/w rates
     covergroup cg_abrupt_change;
+	option.per_instance = 1;
         coverpoint tx.wr_en {
             bins wr_en_change = {1};
             bins wr_en_stable = {0};
@@ -156,6 +164,7 @@ class fifo_coverage extends uvm_subscriber #(fifo_transaction);
 
     // Covergroup for capturing throughput under varied conditions
     covergroup cg_throughput;
+	option.per_instance = 1;
         coverpoint tx.wr_en {
             bins wr_en_active = {1};
             bins wr_en_inactive = {0};
