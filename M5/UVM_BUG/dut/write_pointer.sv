@@ -3,7 +3,10 @@ module write_pointer #(
 )(
     input  logic                    clk, rst_n, inc,
     input  logic [ADDR_WIDTH:0]     wq2_rptr,
-    output logic [ADDR_WIDTH:0]     wptr,
+   //output logic [ADDR_WIDTH:0]     wptr,
+    
+    // INJECTING BUG: Write pointr is too small
+    output logic [1:0]     wptr,
     output logic [ADDR_WIDTH-1:0]   waddr,
     output logic                    full
 );
@@ -26,8 +29,7 @@ module write_pointer #(
     end
 
     assign waddr = binary_wptr[ADDR_WIDTH-1:0];
-    //assign binary_wptr_next = binary_wptr + (inc & ~full); //proper line of code
-    assign binary_wptr_next = binary_wptr_next; //bug_injection, keep write pointer in the same place
+    assign binary_wptr_next = binary_wptr + (inc & ~full); //proper line of code
     assign gray_wptr_next = (binary_wptr_next>>1) ^ binary_wptr_next;
 
     assign full_next =  ((gray_wptr_next[ADDR_WIDTH-2:0] == wq2_rptr[ADDR_WIDTH-2:0]) &&
