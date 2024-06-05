@@ -9,15 +9,15 @@
 //	 
 *********************************************/
 
-`uvm_analysis_imp_decl(_port_a)
-`uvm_analysis_imp_decl(_port_b)
+`uvm_analysis_imp_decl(_port_wr)
+`uvm_analysis_imp_decl(_port_rd)
 
 class fifo_scoreboard extends uvm_scoreboard;
 	`uvm_component_utils(fifo_scoreboard); // Register the component with the factory
 
     // Declare analysis port
-    uvm_analysis_imp_port_a #(fifo_transaction, fifo_scoreboard) scoreboard_port_wr;
-    uvm_analysis_imp_port_b #(fifo_transaction, fifo_scoreboard) scoreboard_port_rd;
+    uvm_analysis_imp_port_wr #(fifo_transaction, fifo_scoreboard) scoreboard_port_wr;
+    uvm_analysis_imp_port_rd #(fifo_transaction, fifo_scoreboard) scoreboard_port_rd;
     fifo_transaction tx_stack_wr[$];
     fifo_transaction tx_stack_rd[$];
 
@@ -73,12 +73,12 @@ class fifo_scoreboard extends uvm_scoreboard;
         end
     endtask: run_phase
 
-    function void write_port_a(fifo_transaction mon_tx_wr);
+    function void write_port_wr(fifo_transaction mon_tx_wr);
         tx_stack_wr.push_back(mon_tx_wr);
         `uvm_info(get_type_name(), $sformatf("Scoreboard tx \t|  wr_en: %b  |  data_in: %h  |", mon_tx_wr.wr_en, mon_tx_wr.data_in), UVM_HIGH);
     endfunction : write_port_a
 
-    function void write_port_b(fifo_transaction mon_tx_rd);
+    function void write_port_rd(fifo_transaction mon_tx_rd);
         tx_stack_rd.push_back(mon_tx_rd);
         `uvm_info(get_type_name(), $sformatf("Scoreboard tx \t|  rd_en: %b  |  data_out: %h  |", mon_tx_rd.rd_en, mon_tx_rd.data_out), UVM_HIGH);
    endfunction : write_port_b 
