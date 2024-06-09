@@ -38,8 +38,11 @@ class fifo_write_driver extends uvm_driver #(fifo_transaction);
   // Run Phase
   task run_phase(uvm_phase phase);
     super.run_phase(phase);  //Not included in Doulos Video
-    bfm.reset_fifo();
 
+    // Reset FIFO and wait for 8 write cycles or 100 ticks
+    bfm.reset_fifo();
+    #(8*CYCLE_TIME_WR);    
+    
     forever begin
       seq_item_port.get_next_item(tx_wr); 
       // Drive data to FIFO
@@ -84,16 +87,19 @@ class fifo_read_driver extends uvm_driver #(fifo_transaction);
   // Run Phase
   task run_phase(uvm_phase phase);
     super.run_phase(phase);  
+
+    // Reset FIFO and wait for 5 read cycles or 100 ticks
     bfm.reset_fifo();
+    #(5*CYCLE_TIME_RD);
 
     #(READ_DELAY*CYCLE_TIME_RD);
     forever begin
-      seq_item_port.get_next_item(tx_rd); 
+      seq_item_port.get_next_item(tx_rd);
       // Drive data to FIFO
       @(posedge bfm.clk_rd);
         bfm.rd_en <= tx_rd.rd_en;
          
-      `uvm_info(get_type_name(), $sformatf("Driver tx_rd \t\t|  wr_en: %b  |  rd_en: %b  |  data_in: %h  ", tx_rd.wr_en, tx_rd.rd_en, tx_rd.data_in), UVM_MEDIUM);
+      `uvm_info(get_type_name(), $sformatf("Driver tx_rd \t\t|  wr_en: %b  |  rd_en: %b  ", tx_rd.wr_en, tx_rd.rd_en), UVM_HIGH);
       seq_item_port.item_done(); 
     end
   endtask : run_phase
