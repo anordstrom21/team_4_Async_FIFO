@@ -18,15 +18,28 @@ class fifo_transaction extends uvm_sequence_item;
 	rand op_type op;
 
 	// inputs
+	rand logic clk_wr;
+	rand logic clk_rd;
+
 	rand logic wr_en;
 	rand logic rd_en;
 	rand logic [DATA_WIDTH-1:0] data_in;
+
+	rand logic rst_n;
 
 	// outputs
 	logic [DATA_WIDTH-1:0] data_out;
 	logic full;
 	logic half;
 	logic empty;
+
+	//internal fifo signals
+	logic [ADDR_WIDTH:0] wptr;
+	logic [ADDR_WIDTH:0] rptr;
+	logic [ADDR_WIDTH-1:0] waddr;
+	logic [ADDR_WIDTH-1:0] raddr;
+	logic [ADDR_WIDTH:0] wq2_rptr;
+	logic [ADDR_WIDTH:0] rq2_wptr;
 
 	//constraint wr_con{wr_en dist {1 := 3, 0 := 1};}	//3x more likely to write than not
 	//constraint rd_con{rd_en dist {1 := 1, 0 := 2};}	//2x more likely to not read than read
