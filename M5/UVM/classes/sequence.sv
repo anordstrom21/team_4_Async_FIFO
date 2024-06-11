@@ -309,7 +309,6 @@ class fifo_flag_rd_seq extends fifo_burst_rd_seq;
       // 5 dummy transactions to buffer between tests 
       repeat(5) begin
         start_item(tx_rd);
-        tx_rd.wr_en = 0;
         tx_rd.rd_en = 0;
         `uvm_info("GENERATE", tx_rd.convert2string(), UVM_HIGH)
         finish_item(tx_rd);
