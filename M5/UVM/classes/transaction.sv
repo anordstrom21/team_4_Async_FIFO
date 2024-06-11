@@ -41,6 +41,9 @@ class fifo_transaction extends uvm_sequence_item;
 	logic [ADDR_WIDTH:0] wq2_rptr;
 	logic [ADDR_WIDTH:0] rq2_wptr;
 
+	// Data constraint to make distribution equally likely to have 00, FF, or any other value
+	constraint c_data{data_in dist {0 := 1, 255 := 1, data_in := 1};}
+
 	//constraint wr_con{wr_en dist {1 := 3, 0 := 1};}	//3x more likely to write than not
 	//constraint rd_con{rd_en dist {1 := 1, 0 := 2};}	//2x more likely to not read than read
 
