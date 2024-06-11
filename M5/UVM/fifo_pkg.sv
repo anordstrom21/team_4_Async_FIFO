@@ -12,7 +12,7 @@ package fifo_pkg;
 	parameter BURST_SIZE   	= 0;
 	parameter BUFFER_CNT	= 0;
 
-    parameter FLAG_TX_CNT   = 4;
+    parameter FLAG_TX_CNT   = 3;
 
 	parameter RANDOM_TX_CNT = 0;
 
