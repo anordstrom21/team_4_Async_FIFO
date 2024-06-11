@@ -7,14 +7,15 @@ package fifo_pkg;
 	parameter CYCLE_TIME_WR = 12.5;  // 80 MHz
 	parameter CYCLE_TIME_RD = 20;    // 50 MHz
 	
-	// Parameters for the Burst testbench	
-	parameter BURST_TX_CNT	= 0;
-	parameter BURST_SIZE   	= 0;
-	parameter BUFFER_CNT	= 0;
+	// Parameters for the testbench	
+	parameter BURST_SEQ_CNT	= 0;  // Number of burst_test sequences
+	parameter BURST_SIZE   	= 0;  // Number of transactions in each burst
+	parameter BUFFER_CNT	= 0;  // Number of buffer tx between burst_test
 
-    parameter FLAG_TX_CNT   = 3;
+	parameter FLAG_SEQ_CNT  = 1;  // Number of flag_test sequences
+    parameter FLAG_TX_CNT   = 3;  // Number of times each flag_test toggles the three flags
 
-	parameter RANDOM_TX_CNT = 0;
+	parameter RANDOM_TX_CNT = 0;  // Number of random_test transactions
 
 
 	`include "transaction.sv"

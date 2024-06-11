@@ -57,15 +57,15 @@ class fifo_read_monitor extends uvm_monitor;
       mon_tx_rd.op = READ;
       @(posedge bfm.clk_rd);
         if (bfm.rd_en) begin
-	  mon_tx_rd.clk_rd = bfm.clk_rd;
-	  mon_tx_rd.rst_n = bfm.rst_n;
+	        mon_tx_rd.clk_rd = bfm.clk_rd;
+	        mon_tx_rd.rst_n = bfm.rst_n;
           mon_tx_rd.rd_en = bfm.rd_en;
           mon_tx_rd.empty = bfm.empty;
           mon_tx_rd.full = bfm.full;
           mon_tx_rd.half = bfm.half;
-	  mon_tx_rd.rptr = bfm.rptr;
-	  mon_tx_rd.raddr = bfm.raddr;
-	  mon_tx_rd.rq2_wptr = bfm.rq2_wptr;
+	        mon_tx_rd.rptr = bfm.rptr;
+	        mon_tx_rd.raddr = bfm.raddr;
+	        mon_tx_rd.rq2_wptr = bfm.rq2_wptr;
           if (last_empty == 0) begin // If last empty signal wasn't asserted, data will be available next cycle
             #(CYCLE_TIME_RD);
             mon_tx_rd.data_out = bfm.data_out; 
@@ -94,7 +94,6 @@ class fifo_write_monitor extends uvm_monitor;
   endfunction : new
 
   // Build phase   TODO: Check if this can be virtual
-  // virtual function void build_phase(uvm_phase phase);
   function void build_phase(uvm_phase phase);
     super.build_phase(phase); 
     `uvm_info(get_type_name(), $sformatf("Building %s", get_full_name()), UVM_DEBUG);
@@ -107,7 +106,6 @@ class fifo_write_monitor extends uvm_monitor;
   endfunction : build_phase
   
   // Connect phase   TODO: Check if this can be virtual
-  //virtual function void connect_phase(uvm_phase phase);
   function void connect_phase(uvm_phase phase);
     super.connect_phase(phase);
     `uvm_info(get_type_name(), $sformatf("Connecting %s", get_full_name()), UVM_DEBUG);
@@ -123,15 +121,15 @@ class fifo_write_monitor extends uvm_monitor;
       mon_tx_wr = fifo_transaction::type_id::create("mon_tx_wr");
       mon_tx_wr.op = WRITE;
       @(posedge bfm.clk_wr);
-	mon_tx_wr.clk_wr = bfm.clk_wr;
+	      mon_tx_wr.clk_wr = bfm.clk_wr;
         mon_tx_wr.wr_en = bfm.wr_en;
-	mon_tx_wr.rst_n = bfm.rst_n;
+	      mon_tx_wr.rst_n = bfm.rst_n;
         mon_tx_wr.full = bfm.full;
         mon_tx_wr.empty = bfm.empty;
         mon_tx_wr.half = bfm.half;
-	mon_tx_wr.wptr = bfm.wptr;
-	mon_tx_wr.waddr = bfm.waddr;
-	mon_tx_wr.wq2_rptr = bfm.wq2_rptr;
+	      mon_tx_wr.wptr = bfm.wptr;
+	      mon_tx_wr.waddr = bfm.waddr;
+	      mon_tx_wr.wq2_rptr = bfm.wq2_rptr;
         if (bfm.wr_en) begin
           mon_tx_wr.data_in = bfm.data_in; 
           `uvm_info(get_type_name(), $sformatf("Monitor mon_tx_wr \t|  wr_en: %b  |  data_in: %h  |  full: %b  |  empty: %b  |  half: %b", mon_tx_wr.wr_en, mon_tx_wr.data_in, mon_tx_wr.full, mon_tx_wr.empty, mon_tx_wr.half), UVM_HIGH);
