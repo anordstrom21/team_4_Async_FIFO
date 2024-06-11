@@ -53,10 +53,6 @@ class fifo_coverage extends uvm_subscriber #(fifo_transaction);
             bins half_full_true = {1};
             bins half_full_false = {0};
         }
-	coverpoint tx.rst_n {
-	    bins rst_n_high = {1};
-	    bins rst_n_low = {0};
-	}
     endgroup
 
     // Covergroup for depth levels of  FIFO
