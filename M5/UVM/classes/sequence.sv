@@ -128,7 +128,6 @@ class fifo_flag_wr_seq extends fifo_burst_wr_seq;
 
     // 8 Writes = 5 Reads => Toggle write tx signals in sets of 8
     // FLAG_TX_CNT controls the number of times the HALF flag is toggled
-    // One less then FLAG_TX_CNT to allow for the initial 32 writes
     repeat (FLAG_TX_CNT) begin
       repeat (7) begin
         start_item(tx_wr);
@@ -182,16 +181,9 @@ class fifo_flag_wr_seq extends fifo_burst_wr_seq;
     
     // 8 Writes = 5 Reads => Toggle write tx signals in sets of 8
     // FLAG_TX_CNT controls the number of times the EMPTY flag is toggled
-    // One less then FLAG_TX_CNT to allow for the initial read to empty 
+    // No writes are needed to attempt to read from an empty FIFO 
     repeat (FLAG_TX_CNT) begin
-      repeat (1) begin
-        start_item(tx_wr);
-        assert(tx_wr.randomize() with {op == WRITE;});
-        tx_wr.wr_en = 1;
-        `uvm_info("GENERATED", tx_wr.convert2string(), UVM_HIGH)
-        finish_item(tx_wr);
-      end
-      repeat (7) begin
+      repeat (8) begin
         start_item(tx_wr);
         tx_wr.wr_en = 0;
         `uvm_info("GENERATED", tx_wr.convert2string(), UVM_HIGH)
@@ -268,16 +260,9 @@ class fifo_flag_rd_seq extends fifo_burst_rd_seq;
 
     // 5 Reads = 8 Writes => Toggle read tx signals in sets of 5
     // FLAG_TX_CNT controls the number of times the FULL flag is toggled
-    // One less then FLAG_TX_CNT to allow for the initial fill
+    // No reads are needed to attempt to write to a full FIFO 
     repeat (FLAG_TX_CNT) begin
-      repeat (1) begin
-        start_item(tx_rd);
-        tx_rd.op = READ;
-        tx_rd.rd_en = 1;
-        `uvm_info("GENERATED", tx_rd.convert2string(), UVM_HIGH)
-        finish_item(tx_rd);
-      end
-      repeat (4) begin 
+      repeat (5) begin 
         start_item(tx_rd);
         tx_rd.op = READ;
         tx_rd.rd_en = 0;
