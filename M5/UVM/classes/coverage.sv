@@ -15,7 +15,6 @@ class fifo_coverage extends uvm_subscriber #(fifo_transaction);
     // For coverage numbers/printing (.get_coverage() returns a value of type real)
 
     real cov_cg_fifo;
-    real cov_cg_fifo_depth;
     real cov_cg_data_range;
     real cov_cg_data_patterns;
     real cov_cg_abrupt_change;
@@ -55,24 +54,6 @@ class fifo_coverage extends uvm_subscriber #(fifo_transaction);
         }
     endgroup
 
-    // Covergroup for depth levels of  FIFO
-/*
-    covergroup cg_fifo_depth;
-	option.per_instance = 1;
-        coverpoint tx.wptr {
-            bins low = {[0:15]};            // Low depth
-            bins mid = {[16:31]};           // Mid depth
-            bins high = {[32:47]};          // High depth
-            bins max = {[48:63]};           // Max depth
-        }
-        coverpoint tx.rptr {
-            bins low = {[0:15]};            // Low depth
-            bins mid = {[16:31]};           // Mid depth
-            bins high = {[32:47]};          // High depth
-            bins max = {[48:63]};           // Max depth 
-        }
-    endgroup
-*/
 
     // Covergroup for data integrity
     covergroup cg_data_range;
@@ -141,7 +122,6 @@ class fifo_coverage extends uvm_subscriber #(fifo_transaction);
     
         tx = fifo_transaction::type_id::create("tx");
 	cg_fifo = new();
-	//cg_fifo_depth = new();
 	cg_data_range = new();
 	cg_data_patterns = new();
 	cg_abrupt_change = new();
@@ -153,26 +133,22 @@ class fifo_coverage extends uvm_subscriber #(fifo_transaction);
         t.print();
 
 	cg_fifo.sample();
-	//cg_fifo_depth.sample();
 	cg_data_range.sample();
 	cg_data_patterns.sample();
 	cg_abrupt_change.sample();
 
 
 	cov_cg_fifo = cg_fifo.get_coverage();
-    	//cov_cg_fifo_depth = cg_fifo_depth.get_coverage();
     	cov_cg_data_range = cg_data_range.get_coverage();
     	cov_cg_data_patterns = cg_data_patterns.get_coverage();
     	cov_cg_abrupt_change = cg_abrupt_change.get_coverage();
 
-/*
-        `uvm_info(get_type_name(), $sformatf("Coverage cg_fifo: %f", cov_cg_fifo), UVM_NONE);
-	    //`uvm_info(get_type_name(), $sformatf("Coverage cg_fifo_depth: %f", cov_cg_fifo_depth), UVM_NONE);
-	    `uvm_info(get_type_name(), $sformatf("Coverage cg_data_range: %f", cov_cg_data_range), UVM_NONE);
-	    `uvm_info(get_type_name(), $sformatf("Coverage cg_data_patterns: %f", cov_cg_data_patterns), UVM_NONE);
-	    `uvm_info(get_type_name(), $sformatf("Coverage cg_idle_cycles: %f", cov_cg_idle_cycles), UVM_NONE);
-	    `uvm_info(get_type_name(), $sformatf("Coverage cg_abrupt_change: %f", cov_cg_abrupt_change), UVM_NONE);
-*/
+
+        `uvm_info(get_type_name(), $sformatf("Coverage cg_fifo: %f", cov_cg_fifo), UVM_HIGH);
+	`uvm_info(get_type_name(), $sformatf("Coverage cg_data_range: %f", cov_cg_data_range), UVM_HIGH);
+	`uvm_info(get_type_name(), $sformatf("Coverage cg_data_patterns: %f", cov_cg_data_patterns), UVM_HIGH);
+	`uvm_info(get_type_name(), $sformatf("Coverage cg_abrupt_change: %f", cov_cg_abrupt_change), UVM_HIGH);
+
 
     endfunction : write
 
