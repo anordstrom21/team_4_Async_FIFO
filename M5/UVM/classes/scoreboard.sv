@@ -25,8 +25,6 @@ class fifo_scoreboard extends uvm_scoreboard;
     int half_count_wr  = 0;
     int half_count_rd  = 0;
     int full_count_wr  = 0;
-    int full_count_rd  = 0;
-    int empty_count_wr = 0;
     int empty_count_rd = 0;
     int read_count  = 0;
     int write_count = 0;
@@ -101,17 +99,15 @@ class fifo_scoreboard extends uvm_scoreboard;
         else begin // If full flag is not asserted, then data is written to the FIFO
             write_count++;
             `uvm_info("SCOREBOARD", $sformatf("Write count: %0d", write_count), UVM_MEDIUM);
+            // If full not asserted but half is then this is a write to a half-full fifo
+            if (mon_tx_wr.half) begin
+                half_count_wr++;
+                `uvm_info("SCOREBOARD", $sformatf("Write to half-full FIFO count: %0d", half_count_wr), UVM_MEDIUM);
+            end
             // Push the write transaction onto the stack
             tx_stack_wr.push_back(mon_tx_wr);
             `uvm_info(get_type_name(), $sformatf("Scoreboard tx \t|  wr_en: %b  |  data_in: %h  |", mon_tx_wr.wr_en, mon_tx_wr.data_in), UVM_HIGH);
         end
-        // TODO: This should be altered later... half read and half write shouldn't be different 
-        /*
-        if (mon_tx_wr.half) begin
-            half_count_wr++;
-            `uvm_info("SCOREBOARD", $sformatf("Half write count: %0d", half_count_wr), UVM_MEDIUM);
-        end
-        */
     endfunction : write_port_a
 
     function void write_port_b(fifo_transaction mon_tx_rd);
@@ -124,17 +120,15 @@ class fifo_scoreboard extends uvm_scoreboard;
         else begin // If empty flag is not asserted, then data is read from the FIFO
             read_count++;
             `uvm_info("SCOREBOARD", $sformatf("Read count: %0d", read_count), UVM_MEDIUM);
+            // If empty is not asserted but half is then this is a read from a half-full FIFO 
+            if (mon_tx_rd.half) begin
+                half_count_rd++;
+                `uvm_info("SCOREBOARD", $sformatf("Read from half-full FIFO count: %0d", half_count_rd), UVM_MEDIUM);
+            end
             // Push the read transaction onto the stack
             tx_stack_rd.push_back(mon_tx_rd);
             `uvm_info(get_type_name(), $sformatf("Scoreboard tx \t|  rd_en: %b  |  data_out: %h  |", mon_tx_rd.rd_en, mon_tx_rd.data_out), UVM_HIGH);
         end
-        //TODO: This should be altered later... half read and half write shouldn't be different
-        /*
-        if (mon_tx_rd.half) begin
-            half_count_rd++;
-            `uvm_info("SCOREBOARD", $sformatf("Half read count: %0d", half_count_rd), UVM_MEDIUM);
-        end
-        */
    endfunction : write_port_b 
 
 endclass 

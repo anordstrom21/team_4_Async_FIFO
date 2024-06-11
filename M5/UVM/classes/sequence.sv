@@ -129,7 +129,7 @@ class fifo_flag_wr_seq extends fifo_burst_wr_seq;
     // 8 Writes = 5 Reads => Toggle write tx signals in sets of 8
     // FLAG_TX_CNT controls the number of times the HALF flag is toggled
     // One less then FLAG_TX_CNT to allow for the initial 32 writes
-    repeat (FLAG_TX_CNT-1) begin
+    repeat (FLAG_TX_CNT) begin
       repeat (7) begin
         start_item(tx_wr);
         tx_wr.wr_en = 0;
@@ -157,7 +157,7 @@ class fifo_flag_wr_seq extends fifo_burst_wr_seq;
     // 8 Writes = 5 Reads => Toggle write tx signals in sets of 8
     // FLAG_TX_CNT controls the number of times the FULL flag is toggled
     // One less then FLAG_TX_CNT to allow for the initial 64 writes
-    repeat (FLAG_TX_CNT-1) begin
+    repeat (FLAG_TX_CNT) begin
       repeat (7) begin
         start_item(tx_wr);
         tx_wr.wr_en = 0;
@@ -183,7 +183,7 @@ class fifo_flag_wr_seq extends fifo_burst_wr_seq;
     // 8 Writes = 5 Reads => Toggle write tx signals in sets of 8
     // FLAG_TX_CNT controls the number of times the EMPTY flag is toggled
     // One less then FLAG_TX_CNT to allow for the initial read to empty 
-    repeat (FLAG_TX_CNT-1) begin
+    repeat (FLAG_TX_CNT) begin
       repeat (1) begin
         start_item(tx_wr);
         assert(tx_wr.randomize() with {op == WRITE;});
@@ -241,7 +241,7 @@ class fifo_flag_rd_seq extends fifo_burst_rd_seq;
     // 5 Reads = 8 Writes => Toggle read tx signals in sets of 5
     // FLAG_TX_CNT controls the number of times the HALF flag is toggled
     // One less then FLAG_TX_CNT to allow for the initial half-fill
-    repeat (FLAG_TX_CNT-1) begin
+    repeat (FLAG_TX_CNT) begin
       repeat (1) begin
         start_item(tx_rd);
         tx_rd.op = READ;
@@ -269,7 +269,7 @@ class fifo_flag_rd_seq extends fifo_burst_rd_seq;
     // 5 Reads = 8 Writes => Toggle read tx signals in sets of 5
     // FLAG_TX_CNT controls the number of times the FULL flag is toggled
     // One less then FLAG_TX_CNT to allow for the initial fill
-    repeat (FLAG_TX_CNT-1) begin
+    repeat (FLAG_TX_CNT) begin
       repeat (1) begin
         start_item(tx_rd);
         tx_rd.op = READ;
@@ -304,7 +304,7 @@ class fifo_flag_rd_seq extends fifo_burst_rd_seq;
     // 5 Reads = 8 Writes => Toggle read tx signals in sets of 5
     // FLAG_TX_CNT controls the number of times the EMPTY flag is toggled
     // One less then FLAG_TX_CNT to allow for the initial emptying
-    repeat (FLAG_TX_CNT-1) begin
+    repeat (FLAG_TX_CNT) begin
       repeat (4) begin
         start_item(tx_rd);
         tx_rd.op = READ;
