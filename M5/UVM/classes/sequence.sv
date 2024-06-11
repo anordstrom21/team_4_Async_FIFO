@@ -342,17 +342,8 @@ class fifo_random_wr_seq extends fifo_burst_wr_seq;
     
     // Force one write so there is data if first randomzied read tx has rd_en asserted
     tx_wr = fifo_transaction::type_id::create("tx_wr");
-    repeat(1) begin 
-      start_item(tx_wr);
-      
-      assert(tx_wr.randomize() with {op == WRITE;});
-      tx_wr.wr_en = 1;
-      
-      `uvm_info("GENERATED", tx_wr.convert2string(), UVM_HIGH)
-      finish_item(tx_wr);
-    end 
     // Remaining writes are fully randomzied
-    repeat(RANDOM_TX_CNT-1) begin 
+    repeat(RANDOM_TX_CNT) begin 
       start_item(tx_wr);
       
       assert(tx_wr.randomize() with {op == WRITE;});

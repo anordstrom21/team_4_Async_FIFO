@@ -14,7 +14,7 @@ vopt top -o top_optimized  +acc +cover=sbfec+fifo_top(rtl).
 #vopt top -o top_optimized  +acc 
 vsim top_optimized -coverage +UVM_TESTNAME=burst_test
 vsim top_optimized -coverage +UVM_TESTNAME=flag_test
-#vsim top_optimized -coverage +UVM_TESTNAME=random_test
+vsim top_optimized -coverage +UVM_TESTNAME=random_test
 
 set NoQuitOnFinish 1
 onbreak {resume}
