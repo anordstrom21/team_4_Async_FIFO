@@ -1,5 +1,5 @@
 /********************************************
-*   Environment class for a UVVM testbench 
+*   Environment class for a UVM testbench 
 *   of an asynchronous FIFO.
 *
 *   The environment is responsible for creating
