@@ -46,7 +46,7 @@ module write_pointer #(
     assign gray_wptr_next = (binary_wptr_next >> 1) ^ binary_wptr_next; // Convert binary pointer to Gray code
 
     // Full flag logic
-	// FIFO is full when the next Gray code write pointer matches the synchronized read pointer except for the most significant bit
+	// FIFO is full when the next Gray code write pointer matches the synchronized read pointer except for the most significant bits
     assign full_next =  ((gray_wptr_next[ADDR_WIDTH-2:0] == wq2_rptr[ADDR_WIDTH-2:0]) &&
                          (gray_wptr_next[ADDR_WIDTH-1:0] != wq2_rptr[ADDR_WIDTH-1:0]) && 
                          (gray_wptr_next[ADDR_WIDTH] != wq2_rptr[ADDR_WIDTH]));
