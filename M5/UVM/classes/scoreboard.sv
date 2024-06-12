@@ -1,12 +1,22 @@
 /*********************************************
-//	Scoreboard Class for our UVM Based 
-//  Testbench for an Asynchronous FIFO Module
-//
-//
-//
-//
-//	Author: Alexander Maso
-//	 
+*   Scoreboard Class for our UVM Based 
+*   Testbench for an Asynchronous FIFO Module
+*  
+*   The scoreboard is responsible for comparing
+*   the data written to the FIFO with the data
+*   read from the FIFO. If the data does not match
+*   then an error is reported. The scoreboard also
+*   keeps track of the number of read and write 
+*   transactions and the number of times the FIFO
+*   was written to or read from when full, half-full,
+*   or empty.
+
+*   The scoreboard uses the new() contructor to create
+*   the analysis ports.  It uses a UVM macro to declare 
+*   the two, separate analysis ports for read and write
+*   transactions.
+*
+*
 *********************************************/
 
 `uvm_analysis_imp_decl(_port_a)
@@ -63,23 +73,15 @@ class fifo_scoreboard extends uvm_scoreboard;
             fifo_transaction current_tx_rd;
             fifo_transaction current_tx_wr;
 
+            // Wait until we have a read transaction on the stack and then
+            // pop the oldest read and write transactions off the stack
+            // and compare the data
             wait(tx_stack_rd.size() > 0);
             current_tx_wr = tx_stack_wr.pop_front();
             current_tx_rd = tx_stack_rd.pop_front();
             expected = current_tx_wr.data_in;
             received = current_tx_rd.data_out;
 
-            // TODO: This should be altered later... half read and half write shouldn't be different
-            /*
-            if (current_tx_wr.half) begin
-                half_count_wr++;
-                `uvm_info("SCOREBOARD", $sformatf("Half write count: %0d", half_count_wr), UVM_MEDIUM);
-            end
-            if (current_tx_rd.half) begin
-                half_count_rd++;
-                `uvm_info("SCOREBOARD", $sformatf("Half read count: %0d", half_count_rd), UVM_MEDIUM);
-            end
-            */
             if (received !== expected) begin
                 `uvm_error("SCOREBOARD", $sformatf("Data mismatch!: expected %h, got %h", expected, received));  
             end

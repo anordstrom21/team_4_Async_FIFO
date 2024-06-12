@@ -1,9 +1,12 @@
-/***************************************************************
-*  Coverage class for a UVM Based FIFO Verification
-* 
+/**********************************************************************
+*  Coverage class for a UVM Based Verification of an Asynchronous FIFO
 *
-*  Author: Alexander Maso
-***************************************************************/
+*  The coverage class is responsible for capturing coverage data
+*  for the FIFO signals, data integrity, data patterns, and abrupt
+*  changes in the read/write rates.
+*
+*
+***********************************************************************/
 
 class fifo_coverage extends uvm_subscriber #(fifo_transaction);
     `uvm_component_utils(fifo_coverage) // Register the component with the factory
@@ -121,10 +124,10 @@ class fifo_coverage extends uvm_subscriber #(fifo_transaction);
         `uvm_info(get_type_name(), $sformatf("Constructing %s", get_full_name()), UVM_DEBUG);
     
         tx = fifo_transaction::type_id::create("tx");
-	cg_fifo = new();
-	cg_data_range = new();
-	cg_data_patterns = new();
-	cg_abrupt_change = new();
+	    cg_fifo = new();
+	    cg_data_range = new();
+	    cg_data_patterns = new();
+	    cg_abrupt_change = new();
     endfunction : new
 
     virtual function void write(fifo_transaction t);
@@ -132,24 +135,21 @@ class fifo_coverage extends uvm_subscriber #(fifo_transaction);
         tx = t;
         t.print();
 
-	cg_fifo.sample();
-	cg_data_range.sample();
-	cg_data_patterns.sample();
-	cg_abrupt_change.sample();
+	    cg_fifo.sample();
+	    cg_data_range.sample();
+	    cg_data_patterns.sample();
+    	cg_abrupt_change.sample();
 
-
-	cov_cg_fifo = cg_fifo.get_coverage();
+	    cov_cg_fifo = cg_fifo.get_coverage();
     	cov_cg_data_range = cg_data_range.get_coverage();
     	cov_cg_data_patterns = cg_data_patterns.get_coverage();
     	cov_cg_abrupt_change = cg_abrupt_change.get_coverage();
 
-
+        // High verbosity required to see all relevant coverage data
         `uvm_info(get_type_name(), $sformatf("Coverage cg_fifo: %f", cov_cg_fifo), UVM_HIGH);
-	`uvm_info(get_type_name(), $sformatf("Coverage cg_data_range: %f", cov_cg_data_range), UVM_HIGH);
-	`uvm_info(get_type_name(), $sformatf("Coverage cg_data_patterns: %f", cov_cg_data_patterns), UVM_HIGH);
-	`uvm_info(get_type_name(), $sformatf("Coverage cg_abrupt_change: %f", cov_cg_abrupt_change), UVM_HIGH);
-
-
+	    `uvm_info(get_type_name(), $sformatf("Coverage cg_data_range: %f", cov_cg_data_range), UVM_HIGH);
+	    `uvm_info(get_type_name(), $sformatf("Coverage cg_data_patterns: %f", cov_cg_data_patterns), UVM_HIGH);
+	    `uvm_info(get_type_name(), $sformatf("Coverage cg_abrupt_change: %f", cov_cg_abrupt_change), UVM_HIGH);
     endfunction : write
 
 endclass

@@ -1,11 +1,16 @@
 /*********************************************
-//	Monitor Classes for a UVM Based Testbench 
-//  of an Asynchronous FIFO Module
-//  
-//  Contains separate classes for read and write
-//
-//	Author: Alexander Maso
-//	 
+* Monitor Classes for a UVM Based Testbench 
+* of an Asynchronous FIFO Module
+*  
+* This class is responsible for grabbing the bfm
+* handle from the configuration database, using
+* the new() constructor to create the analysis
+* port, and monitoring the signals in the FIFO.
+* 
+* This file contains two separate classes, one
+* monitor for the write domain and one monitor
+* for the read domain.
+*	 
 *********************************************/
 
 class fifo_read_monitor extends uvm_monitor;
@@ -17,7 +22,11 @@ class fifo_read_monitor extends uvm_monitor;
   // Declare analysis port
   uvm_analysis_port #(fifo_transaction) monitor_port_rd;
 
-  // Flag for last read enable
+  // Flag for last vaue of empty
+  // This is used to determine if data will be actually be available
+  // Since the read and write domains are asynchronous, the two clocks
+  // can sometimes be only 1 ns apart. In this scenario, if the empty 
+  // signal was asserted last cycle the data may not be available next cycle
   bit last_empty = 0;
 
   // Constructor
@@ -27,7 +36,6 @@ class fifo_read_monitor extends uvm_monitor;
   endfunction : new
 
   // Build phase   TODO: Check if this can be virtual
-  // virtual function void build_phase(uvm_phase phase);
   function void build_phase(uvm_phase phase);
     super.build_phase(phase); 
     `uvm_info(get_type_name(), $sformatf("Building %s", get_full_name()), UVM_DEBUG);
@@ -134,7 +142,7 @@ class fifo_write_monitor extends uvm_monitor;
 	      mon_tx_wr.wptr = bfm.wptr;
 	      mon_tx_wr.waddr = bfm.waddr;
 	      mon_tx_wr.wq2_rptr = bfm.wq2_rptr;
-        if (bfm.wr_en) begin
+        if (bfm.wr_en) begin // If this was a read, then grab the data and write it to the port
           mon_tx_wr.data_in = bfm.data_in; 
           `uvm_info(get_type_name(), $sformatf("Monitor mon_tx_wr \t|  wr_en: %b  |  data_in: %h  |  full: %b  |  empty: %b  |  half: %b", mon_tx_wr.wr_en, mon_tx_wr.data_in, mon_tx_wr.full, mon_tx_wr.empty, mon_tx_wr.half), UVM_HIGH);
           monitor_port_wr.write(mon_tx_wr);

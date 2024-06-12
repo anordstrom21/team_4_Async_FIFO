@@ -1,3 +1,18 @@
+/**********************************************
+*   Test classes for a UVM testbench of an 
+*   asynchronous FIFO.
+*
+*   The test classes are responsible for creating
+*   the environment and sequences, printing out 
+*   the topology of the testbench and, finally 
+*   running the sequences in parallel.
+*
+*   This file contains three separate test classes,
+*   one for each type of sequence: burst, flag, and
+*   random. Each test class is a child of the previous
+*   test class.
+*
+**********************************************/
 class burst_test extends uvm_test;
     // Register the class with the factory 
     `uvm_component_utils(burst_test);

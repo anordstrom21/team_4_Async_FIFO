@@ -1,7 +1,8 @@
 /**************************************************
 *   Sequencer class for UVM Based FIFO Verification
 * 
-*   Essentially a dummy implementation
+*   Essentially a dummy implementation... likely 
+*   could just be a typedef
 *
 *   Author: Alexander Maso
 *

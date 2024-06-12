@@ -1,10 +1,16 @@
 /*********************************************
-//	Driver Class for a UVM Based Testbench 
-//  of an Asynchronous FIFO Module
-//
-//
-//	Author: Alexander Maso
-//	 
+* Driver Class for a UVM Based Testbench 
+* of an Asynchronous FIFO Module
+*
+* The driver is responsible for getting the bfm
+* handle from the configuration database and
+* driving the data coming from the sequencer
+* to the FIFO.
+*
+* This file contains two separate classes, one
+* driver for the write domain and one driver
+* for the read domain.
+*
 *********************************************/
 
 class fifo_write_driver extends uvm_driver #(fifo_transaction); 
@@ -39,7 +45,7 @@ class fifo_write_driver extends uvm_driver #(fifo_transaction);
   task run_phase(uvm_phase phase);
     super.run_phase(phase);  //Not included in Doulos Video
 
-    // Reset FIFO and wait for 8 write cycles or 100 ticks
+    // Reset FIFO and wait for 8 write cycles or 100 ticks -> Equivalent to 5 read cycles
     bfm.reset_fifo();
     #(8*CYCLE_TIME_WR);    
     
@@ -88,11 +94,11 @@ class fifo_read_driver extends uvm_driver #(fifo_transaction);
   task run_phase(uvm_phase phase);
     super.run_phase(phase);  
 
-    // Reset FIFO and wait for 5 read cycles or 100 ticks
+    // Reset FIFO and wait for 5 read cycles or 100 ticks -> Equivalent to 8 write cycles
     bfm.reset_fifo();
     #(5*CYCLE_TIME_RD);
 
-    #(5*CYCLE_TIME_RD); // Wait 5 ticks for FIFO to have data
+    #(5*CYCLE_TIME_RD); // Wait for 5 read cycles
     forever begin
       seq_item_port.get_next_item(tx_rd);
       // Drive data to FIFO

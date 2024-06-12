@@ -1,3 +1,16 @@
+/*******************************************
+*   Agent class for the UVM testbench of an
+*   asynchronous FIFO.  
+*
+*   The agent is responsible for creating the
+*   Creates sequencers, monitors, and drivers 
+*   for the separate read and write domains of
+*   the FIFO and connecting the sequencers to
+*   the drivers.
+*
+*
+*******************************************/
+
 class fifo_agent extends uvm_agent;
     // Register the class with the factory
     `uvm_component_utils(fifo_agent)
@@ -17,7 +30,6 @@ class fifo_agent extends uvm_agent;
     endfunction : new
 
     // Build phase   TODO: Check if this can be virtual
-    // virtual function void build_phase(uvm_phase phase);
     function void build_phase(uvm_phase phase);
         super.build_phase(phase);
         `uvm_info(get_type_name(), $sformatf("Building %s", get_full_name()), UVM_DEBUG);

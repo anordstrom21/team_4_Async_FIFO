@@ -1,9 +1,17 @@
 /****************************************
 *  Transaction Class for the UVM Based 
 *  Testbench for an Asynchronous FIFO Module
-*  
-*  Author: Nick Alleyer
-*  Modifications: Alexander Maso
+* 
+*  This class defines the transaction that will
+*  be passed between the sequencer and the driver.
+*  The same transaction are used by the monitor to
+*  grab the signals from the DUT and send them to
+*  the scoreboard and the coverage collector.
+*
+*  Contains functions for converting the transaction
+*  to a string as well as unused functions for copying
+*  or comparing transactions.
+*
 ****************************************/
 typedef enum {WRITE, READ} op_type;
 

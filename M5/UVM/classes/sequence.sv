@@ -1,3 +1,29 @@
+/********************************************
+*   Sequence class for a UVVM testbench 
+*   of an asynchronous FIFO.
+*
+*   The sequences are responsible for generating
+*   the read and write transactions for the FIFO.
+*   The sequences are parameterized to allow for
+*   different combinations.
+*
+*   This file constains the following sequences:
+*   - fifo_burst_wr_seq
+*   - fifo_burst_rd_seq
+*   - fifo_flag_wr_seq
+*   - fifo_flag_rd_seq
+*   - fifo_random_wr_seq
+*   - fifo_random_rd_seq
+*
+*   The burst sequences generate a burst of transactions
+*   with a fixed number of transactions per burst. The
+*   flag sequences generate transactions to test the
+*   full, half-full, and empty flags. The random sequences
+*   generate a number of fully randomized transactions.
+*   The flag sequences extend the burst sequences and the 
+*   random sequences extend the flag sequences. 
+********************************************/
+
 class fifo_burst_wr_seq extends uvm_sequence #(fifo_transaction);
   `uvm_object_utils(fifo_burst_wr_seq) // Register the class with the factory
 

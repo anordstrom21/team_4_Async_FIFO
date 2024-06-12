@@ -1,3 +1,15 @@
+/********************************************
+*   Environment class for a UVVM testbench 
+*   of an asynchronous FIFO.
+*
+*   The environment is responsible for creating
+*   the agent, scoreboard, and coverage components
+*   and connecting the ports from both the read
+*   and write monitors to the scoreboard and 
+*   coverage components.
+*
+********************************************/
+
 class fifo_environment extends uvm_env;
 
     // Register the class with the factory
