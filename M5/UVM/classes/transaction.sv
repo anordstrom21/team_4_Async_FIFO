@@ -18,14 +18,14 @@ class fifo_transaction extends uvm_sequence_item;
 	rand op_type op;
 
 	// inputs
-	rand logic clk_wr;
-	rand logic clk_rd;
+	logic clk_wr;
+	logic clk_rd;
 
 	rand logic wr_en;
 	rand logic rd_en;
 	rand logic [DATA_WIDTH-1:0] data_in;
 
-	rand logic rst_n;
+	logic rst_n;
 
 	// outputs
 	logic [DATA_WIDTH-1:0] data_out;
